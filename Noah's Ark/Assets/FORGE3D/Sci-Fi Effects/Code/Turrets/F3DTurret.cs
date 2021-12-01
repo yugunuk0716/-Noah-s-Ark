@@ -18,6 +18,7 @@ namespace FORGE3D
         
         public GameObject Mount;
         public GameObject Swivel;
+        public Transform camTrm;
 
         private Vector3 defaultDir;
         private Quaternion defaultRot;

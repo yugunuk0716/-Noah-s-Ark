@@ -25,6 +25,8 @@ namespace FORGE3D
         {
             CheckForTurn();
             CheckForFire();
+
+            
         }
 
         void CheckForFire()
