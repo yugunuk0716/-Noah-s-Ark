@@ -8,7 +8,7 @@ public class TowerSpawner : MonoBehaviour
 {
     public static TowerSpawner instance;
 
-    public CanvasGroup cv;
+    public CanvasGroup createTowerPanelCg;
     public LayerMask isGround;
     Ray ray;
     RaycastHit hit;
@@ -57,8 +57,8 @@ public class TowerSpawner : MonoBehaviour
 
     public void OpenPanel(bool on)
     {
-        cv.alpha = on ? 1 : 0;
-        cv.blocksRaycasts = on;
-        cv.interactable = on;
+        createTowerPanelCg.alpha = on ? 1 : 0;
+        createTowerPanelCg.blocksRaycasts = on;
+        createTowerPanelCg.interactable = on;
     }
 }
