@@ -7,7 +7,6 @@ namespace FORGE3D
     public class PlayerShooting : MonoBehaviour
     {
 
-        public Transform[] turretSockets;
         RaycastHit hitInfo; // Raycast structure
         private bool isFiring; // Is turret currently in firing state
         private F3DTurret turret;
@@ -33,7 +32,6 @@ namespace FORGE3D
             // Fire turret
             if (!isFiring && Input.GetMouseButtonDown(0))
             {
-                //fxController.SetTurretSocket(turretSockets);
                 isFiring = true;
                 fxController.Fire();
                 print("start");
@@ -45,6 +43,13 @@ namespace FORGE3D
                 isFiring = false;
                 fxController.Stop();
                 print("stop");
+            }
+            if (!isFiring && Input.GetKeyDown(KeyCode.Space))
+            {
+                isFiring = true;
+                fxController.Fire(isFiring);
+                fxController.Stop();
+                isFiring = false;
             }
         }
 

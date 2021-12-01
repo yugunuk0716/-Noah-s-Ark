@@ -8,7 +8,7 @@ namespace FORGE3D
     {
         public LayerMask layerMask;
 
-        public F3DFXType fxType; // Weapon type
+        //public F3DFXType fxType; // Weapon type
         public bool OneShot; // Constant or single beam?
 
         public Texture[] BeamFrames; // Animation frame sequence
@@ -91,26 +91,7 @@ namespace FORGE3D
                 // Calculate default beam proportion multiplier based on default scale and current length
                 propMult = beamLength * (beamScale / 10f);
                 // Spawn prefabs and apply force
-                switch (fxType)
-                {
-                    case F3DFXType.Sniper:
-                        F3DFXController.instance.SniperImpact(hitPoint.point + hitPoint.normal * fxOffset);
-                        ApplyForce(4f);
-                        break;
-
-                    case F3DFXType.RailGun:
-                        F3DFXController.instance.RailgunImpact(hitPoint.point + hitPoint.normal * fxOffset);
-                        ApplyForce(7f);
-                        break;
-
-                    case F3DFXType.PlasmaBeam:
-                        ApplyForce(0.5f);
-                        break;
-
-                    case F3DFXType.PlasmaBeamHeavy:
-                        ApplyForce(2f);
-                        break;
-                }
+               
 
                 // Adjust impact effect position
                 if (rayImpact)
@@ -130,27 +111,7 @@ namespace FORGE3D
                     // Calculate default beam proportion multiplier based on default scale and current length
                     propMult = beamLength * (beamScale / 10f);
                     // Spawn prefabs and apply force
-                    switch (fxType)
-                    {
-                        case F3DFXType.Sniper:
-
-                            F3DFXController.instance.SniperImpact(ray2D.point + ray2D.normal * fxOffset);
-                            ApplyForce(4f);
-                            break;
-
-                        case F3DFXType.RailGun:
-                            F3DFXController.instance.RailgunImpact(ray2D.point + ray2D.normal * fxOffset);
-                            ApplyForce(7f);
-                            break;
-
-                        case F3DFXType.PlasmaBeam:
-                            ApplyForce(0.5f);
-                            break;
-
-                        case F3DFXType.PlasmaBeamHeavy:
-                            ApplyForce(2f);
-                            break;
-                    }
+                    
 
                     // Adjust impact effect position
                     if (rayImpact)

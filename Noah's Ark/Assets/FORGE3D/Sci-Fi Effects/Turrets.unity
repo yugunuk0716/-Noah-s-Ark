@@ -1069,48 +1069,15 @@ MonoBehaviour:
   - {fileID: 674242173}
   ShellParticles:
   - {fileID: 1413191600}
-  DefaultFXType: 0
   vulcanProjectile: {fileID: 400000, guid: e496166a742ada640b89650ebebbd052, type: 3}
   vulcanMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   vulcanImpact: {fileID: 400000, guid: bfa7781c328a236468eda51a8ae2be55, type: 3}
   vulcanOffset: 0
   VulcanFireRate: 0.11
-  soloGunProjectile: {fileID: 6391351660618465683, guid: f1d6be8fd7d5cc6448b99caa0671e56f, type: 3}
-  soloGunMuzzle: {fileID: 400000, guid: b16d97c287e513344af2399ff138cd27, type: 3}
-  soloGunImpact: {fileID: 400004, guid: fd953838f1872d042a334b466e298967, type: 3}
-  soloGunOffset: 0
-  sniperBeam: {fileID: 400000, guid: 12e7c1b739173c946b6fa3d40e9f62d1, type: 3}
-  sniperMuzzle: {fileID: 400004, guid: 43a8e47b31adb9a47b81c4653b412e5c, type: 3}
-  sniperImpact: {fileID: 400004, guid: a980d2b7788c0ef489f3c79f44da79e1, type: 3}
-  sniperOffset: 0
-  shotGunProjectile: {fileID: 400002, guid: 0072b525437a5ed4891ebd255ec94fe6, type: 3}
-  shotGunMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
-  shotGunImpact: {fileID: 400000, guid: 5f10243d9632db04bb987838fb3b36b7, type: 3}
-  shotGunOffset: 0
-  seekerProjectile: {fileID: 400000, guid: 49ca46ce7082ccf4c91329cd9b7c4b61, type: 3}
-  seekerMuzzle: {fileID: 400004, guid: 43a8e47b31adb9a47b81c4653b412e5c, type: 3}
-  seekerImpact: {fileID: 400010, guid: 762a17aff08aa1f40ac72b27c15fe2d1, type: 3}
+  seekerProjectile: {fileID: 0}
+  seekerMuzzle: {fileID: 0}
+  seekerImpact: {fileID: 0}
   seekerOffset: 0
-  railgunBeam: {fileID: 400000, guid: ec0fb8bef2fb8a5459c55c3700521b70, type: 3}
-  railgunMuzzle: {fileID: 400000, guid: b16d97c287e513344af2399ff138cd27, type: 3}
-  railgunImpact: {fileID: 400010, guid: 2e92e894e0311c14c87f9544b2c88693, type: 3}
-  railgunOffset: 0
-  plasmagunProjectile: {fileID: 400000, guid: e7b84dec6cdbfb646a33fd06b85cf64e, type: 3}
-  plasmagunMuzzle: {fileID: 400002, guid: e4aff98840a58c94ea1cec28789d55d6, type: 3}
-  plasmagunImpact: {fileID: 400004, guid: ec543be1efaafca46aeac6f66e7a5ff0, type: 3}
-  plasmaGunOffset: 0
-  plasmaBeam: {fileID: 400000, guid: 66b50793fa1c780409218a1a1db5b1d8, type: 3}
-  plasmaOffset: 0
-  plasmaBeamHeavy: {fileID: 400000, guid: a5251bb5b54465f43aebe1ddc2724566, type: 3}
-  plasmaBeamHeavyOffset: 0
-  lightningGunBeam: {fileID: 400002, guid: 497cce4f043498049994c48e6e47f0ae, type: 3}
-  lightingGunBeamOffset: 0
-  flameRed: {fileID: 400002, guid: bd9162be33a5ce54aa35d8e984e6d39d, type: 3}
-  flameOffset: 0
-  laserImpulseProjectile: {fileID: 400004, guid: 64703ac190f718b4abd5d10cb23c96ce, type: 3}
-  laserImpulseMuzzle: {fileID: 400004, guid: 45116fb1512dc704b99d70267628129a, type: 3}
-  laserImpulseImpact: {fileID: 400010, guid: ce59e020d922ccb43866dee1ba26a673, type: 3}
-  laserImpulseOffset: 0
 --- !u!4 &183544236
 Transform:
   m_ObjectHideFlags: 0
@@ -1124,7 +1091,7 @@ Transform:
   m_Children:
   - {fileID: 26470951}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &183544237
 MonoBehaviour:
@@ -3461,7 +3428,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &875301039
 GameObject:
@@ -3519,7 +3486,7 @@ Transform:
   m_Children:
   - {fileID: 1351116702}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &875301042
 MonoBehaviour:
@@ -3539,48 +3506,15 @@ MonoBehaviour:
   - {fileID: 544912549}
   - {fileID: 243793736}
   - {fileID: 528501968}
-  DefaultFXType: 0
   vulcanProjectile: {fileID: 400000, guid: e496166a742ada640b89650ebebbd052, type: 3}
   vulcanMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   vulcanImpact: {fileID: 400000, guid: bfa7781c328a236468eda51a8ae2be55, type: 3}
   vulcanOffset: 0
   VulcanFireRate: 0.07
-  soloGunProjectile: {fileID: 6391351660618465683, guid: f1d6be8fd7d5cc6448b99caa0671e56f, type: 3}
-  soloGunMuzzle: {fileID: 400000, guid: b16d97c287e513344af2399ff138cd27, type: 3}
-  soloGunImpact: {fileID: 400004, guid: fd953838f1872d042a334b466e298967, type: 3}
-  soloGunOffset: 0
-  sniperBeam: {fileID: 400000, guid: 12e7c1b739173c946b6fa3d40e9f62d1, type: 3}
-  sniperMuzzle: {fileID: 400004, guid: 43a8e47b31adb9a47b81c4653b412e5c, type: 3}
-  sniperImpact: {fileID: 400004, guid: a980d2b7788c0ef489f3c79f44da79e1, type: 3}
-  sniperOffset: 0
-  shotGunProjectile: {fileID: 400002, guid: 0072b525437a5ed4891ebd255ec94fe6, type: 3}
-  shotGunMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
-  shotGunImpact: {fileID: 400000, guid: 5f10243d9632db04bb987838fb3b36b7, type: 3}
-  shotGunOffset: 0
-  seekerProjectile: {fileID: 400000, guid: 49ca46ce7082ccf4c91329cd9b7c4b61, type: 3}
-  seekerMuzzle: {fileID: 400004, guid: 43a8e47b31adb9a47b81c4653b412e5c, type: 3}
-  seekerImpact: {fileID: 400010, guid: 762a17aff08aa1f40ac72b27c15fe2d1, type: 3}
+  seekerProjectile: {fileID: 0}
+  seekerMuzzle: {fileID: 0}
+  seekerImpact: {fileID: 0}
   seekerOffset: 0
-  railgunBeam: {fileID: 400000, guid: ec0fb8bef2fb8a5459c55c3700521b70, type: 3}
-  railgunMuzzle: {fileID: 400000, guid: b16d97c287e513344af2399ff138cd27, type: 3}
-  railgunImpact: {fileID: 400010, guid: 2e92e894e0311c14c87f9544b2c88693, type: 3}
-  railgunOffset: 0
-  plasmagunProjectile: {fileID: 400000, guid: e7b84dec6cdbfb646a33fd06b85cf64e, type: 3}
-  plasmagunMuzzle: {fileID: 400002, guid: e4aff98840a58c94ea1cec28789d55d6, type: 3}
-  plasmagunImpact: {fileID: 400004, guid: ec543be1efaafca46aeac6f66e7a5ff0, type: 3}
-  plasmaGunOffset: 0
-  plasmaBeam: {fileID: 400000, guid: 66b50793fa1c780409218a1a1db5b1d8, type: 3}
-  plasmaOffset: 0
-  plasmaBeamHeavy: {fileID: 400000, guid: a5251bb5b54465f43aebe1ddc2724566, type: 3}
-  plasmaBeamHeavyOffset: 0
-  lightningGunBeam: {fileID: 400002, guid: 497cce4f043498049994c48e6e47f0ae, type: 3}
-  lightingGunBeamOffset: 0
-  flameRed: {fileID: 400002, guid: bd9162be33a5ce54aa35d8e984e6d39d, type: 3}
-  flameOffset: 0
-  laserImpulseProjectile: {fileID: 400004, guid: 64703ac190f718b4abd5d10cb23c96ce, type: 3}
-  laserImpulseMuzzle: {fileID: 400004, guid: 45116fb1512dc704b99d70267628129a, type: 3}
-  laserImpulseImpact: {fileID: 400010, guid: ce59e020d922ccb43866dee1ba26a673, type: 3}
-  laserImpulseOffset: 0
 --- !u!114 &875301043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3593,7 +3527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918170c09d88a7f47991f97e2ae42f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretSockets: []
 --- !u!1 &888207100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3794,13 +3727,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895608271}
-  m_LocalRotation: {x: 0.11821769, y: -0.009504213, z: 0.0011461019, w: 0.99294156}
-  m_LocalPosition: {x: 0, y: 6.11, z: -10.44}
+  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.73399913, z: 0.069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30.185001, y: 0, z: 0}
+  m_Father: {fileID: 2058627993}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!164 &895608279
 AudioReverbFilter:
   m_ObjectHideFlags: 0
@@ -3900,7 +3833,7 @@ Transform:
   - {fileID: 184077111}
   - {fileID: 2050440}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &917901174
 MonoBehaviour:
@@ -3914,7 +3847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e127e19ec5e70c542b78f8c3c20b70a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponTypeText: {fileID: 20914008}
 --- !u!114 &917901177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4328,7 +4260,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961502848
 GameObject:
@@ -5834,7 +5766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: c7e2470ffb667ef4f8bf7eded6e613df, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: c7e2470ffb667ef4f8bf7eded6e613df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7022,7 +6954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813246407862536, guid: c085d07aa21e59b428b60f2f44e073a4, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4813246407862536, guid: c085d07aa21e59b428b60f2f44e073a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7525,48 +7457,15 @@ MonoBehaviour:
   - {fileID: 315128952}
   ShellParticles:
   - {fileID: 230128849}
-  DefaultFXType: 0
   vulcanProjectile: {fileID: 400000, guid: e496166a742ada640b89650ebebbd052, type: 3}
   vulcanMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   vulcanImpact: {fileID: 400000, guid: bfa7781c328a236468eda51a8ae2be55, type: 3}
   vulcanOffset: 0
   VulcanFireRate: 0.085
-  soloGunProjectile: {fileID: 6391351660618465683, guid: f1d6be8fd7d5cc6448b99caa0671e56f, type: 3}
-  soloGunMuzzle: {fileID: 400000, guid: b16d97c287e513344af2399ff138cd27, type: 3}
-  soloGunImpact: {fileID: 400004, guid: fd953838f1872d042a334b466e298967, type: 3}
-  soloGunOffset: 0
-  sniperBeam: {fileID: 400000, guid: 12e7c1b739173c946b6fa3d40e9f62d1, type: 3}
-  sniperMuzzle: {fileID: 400004, guid: 43a8e47b31adb9a47b81c4653b412e5c, type: 3}
-  sniperImpact: {fileID: 400004, guid: a980d2b7788c0ef489f3c79f44da79e1, type: 3}
-  sniperOffset: 0
-  shotGunProjectile: {fileID: 400002, guid: 0072b525437a5ed4891ebd255ec94fe6, type: 3}
-  shotGunMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
-  shotGunImpact: {fileID: 400000, guid: 5f10243d9632db04bb987838fb3b36b7, type: 3}
-  shotGunOffset: 0
-  seekerProjectile: {fileID: 400000, guid: 49ca46ce7082ccf4c91329cd9b7c4b61, type: 3}
-  seekerMuzzle: {fileID: 400004, guid: 43a8e47b31adb9a47b81c4653b412e5c, type: 3}
-  seekerImpact: {fileID: 400010, guid: 762a17aff08aa1f40ac72b27c15fe2d1, type: 3}
+  seekerProjectile: {fileID: 0}
+  seekerMuzzle: {fileID: 0}
+  seekerImpact: {fileID: 0}
   seekerOffset: 0
-  railgunBeam: {fileID: 400000, guid: ec0fb8bef2fb8a5459c55c3700521b70, type: 3}
-  railgunMuzzle: {fileID: 400000, guid: b16d97c287e513344af2399ff138cd27, type: 3}
-  railgunImpact: {fileID: 400010, guid: 2e92e894e0311c14c87f9544b2c88693, type: 3}
-  railgunOffset: 0
-  plasmagunProjectile: {fileID: 400000, guid: e7b84dec6cdbfb646a33fd06b85cf64e, type: 3}
-  plasmagunMuzzle: {fileID: 400002, guid: e4aff98840a58c94ea1cec28789d55d6, type: 3}
-  plasmagunImpact: {fileID: 400004, guid: ec543be1efaafca46aeac6f66e7a5ff0, type: 3}
-  plasmaGunOffset: 0
-  plasmaBeam: {fileID: 400000, guid: 66b50793fa1c780409218a1a1db5b1d8, type: 3}
-  plasmaOffset: 0
-  plasmaBeamHeavy: {fileID: 400000, guid: a5251bb5b54465f43aebe1ddc2724566, type: 3}
-  plasmaBeamHeavyOffset: 0
-  lightningGunBeam: {fileID: 400002, guid: 497cce4f043498049994c48e6e47f0ae, type: 3}
-  lightingGunBeamOffset: 0
-  flameRed: {fileID: 400002, guid: bd9162be33a5ce54aa35d8e984e6d39d, type: 3}
-  flameOffset: 0
-  laserImpulseProjectile: {fileID: 400004, guid: 64703ac190f718b4abd5d10cb23c96ce, type: 3}
-  laserImpulseMuzzle: {fileID: 400004, guid: 45116fb1512dc704b99d70267628129a, type: 3}
-  laserImpulseImpact: {fileID: 400010, guid: ce59e020d922ccb43866dee1ba26a673, type: 3}
-  laserImpulseOffset: 0
 --- !u!4 &1519095726
 Transform:
   m_ObjectHideFlags: 0
@@ -7580,7 +7479,7 @@ Transform:
   m_Children:
   - {fileID: 2022757547}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1519095727
 MonoBehaviour:
@@ -7795,7 +7694,7 @@ Transform:
   m_Children:
   - {fileID: 2052330470}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1585125679
 MonoBehaviour:
@@ -7809,7 +7708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918170c09d88a7f47991f97e2ae42f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretSockets: []
 --- !u!114 &1585125680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7830,48 +7728,15 @@ MonoBehaviour:
   - {fileID: 544912549}
   - {fileID: 243793736}
   - {fileID: 528501968}
-  DefaultFXType: 0
   vulcanProjectile: {fileID: 400000, guid: e496166a742ada640b89650ebebbd052, type: 3}
   vulcanMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   vulcanImpact: {fileID: 400000, guid: bfa7781c328a236468eda51a8ae2be55, type: 3}
   vulcanOffset: 0
   VulcanFireRate: 0.07
-  soloGunProjectile: {fileID: 6391351660618465683, guid: f1d6be8fd7d5cc6448b99caa0671e56f, type: 3}
-  soloGunMuzzle: {fileID: 400000, guid: b16d97c287e513344af2399ff138cd27, type: 3}
-  soloGunImpact: {fileID: 400004, guid: fd953838f1872d042a334b466e298967, type: 3}
-  soloGunOffset: 0
-  sniperBeam: {fileID: 400000, guid: 12e7c1b739173c946b6fa3d40e9f62d1, type: 3}
-  sniperMuzzle: {fileID: 400004, guid: 43a8e47b31adb9a47b81c4653b412e5c, type: 3}
-  sniperImpact: {fileID: 400004, guid: a980d2b7788c0ef489f3c79f44da79e1, type: 3}
-  sniperOffset: 0
-  shotGunProjectile: {fileID: 400002, guid: 0072b525437a5ed4891ebd255ec94fe6, type: 3}
-  shotGunMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
-  shotGunImpact: {fileID: 400000, guid: 5f10243d9632db04bb987838fb3b36b7, type: 3}
-  shotGunOffset: 0
   seekerProjectile: {fileID: 400000, guid: 49ca46ce7082ccf4c91329cd9b7c4b61, type: 3}
   seekerMuzzle: {fileID: 400004, guid: 43a8e47b31adb9a47b81c4653b412e5c, type: 3}
   seekerImpact: {fileID: 400010, guid: 762a17aff08aa1f40ac72b27c15fe2d1, type: 3}
   seekerOffset: 0
-  railgunBeam: {fileID: 400000, guid: ec0fb8bef2fb8a5459c55c3700521b70, type: 3}
-  railgunMuzzle: {fileID: 400000, guid: b16d97c287e513344af2399ff138cd27, type: 3}
-  railgunImpact: {fileID: 400010, guid: 2e92e894e0311c14c87f9544b2c88693, type: 3}
-  railgunOffset: 0
-  plasmagunProjectile: {fileID: 400000, guid: e7b84dec6cdbfb646a33fd06b85cf64e, type: 3}
-  plasmagunMuzzle: {fileID: 400002, guid: e4aff98840a58c94ea1cec28789d55d6, type: 3}
-  plasmagunImpact: {fileID: 400004, guid: ec543be1efaafca46aeac6f66e7a5ff0, type: 3}
-  plasmaGunOffset: 0
-  plasmaBeam: {fileID: 400000, guid: 66b50793fa1c780409218a1a1db5b1d8, type: 3}
-  plasmaOffset: 0
-  plasmaBeamHeavy: {fileID: 400000, guid: a5251bb5b54465f43aebe1ddc2724566, type: 3}
-  plasmaBeamHeavyOffset: 0
-  lightningGunBeam: {fileID: 400002, guid: 497cce4f043498049994c48e6e47f0ae, type: 3}
-  lightingGunBeamOffset: 0
-  flameRed: {fileID: 400002, guid: bd9162be33a5ce54aa35d8e984e6d39d, type: 3}
-  flameOffset: 0
-  laserImpulseProjectile: {fileID: 400004, guid: 64703ac190f718b4abd5d10cb23c96ce, type: 3}
-  laserImpulseMuzzle: {fileID: 400004, guid: 45116fb1512dc704b99d70267628129a, type: 3}
-  laserImpulseImpact: {fileID: 400010, guid: ce59e020d922ccb43866dee1ba26a673, type: 3}
-  laserImpulseOffset: 0
 --- !u!1 &1623273108
 GameObject:
   m_ObjectHideFlags: 0
@@ -9210,6 +9075,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1446550944}
+  - {fileID: 895608277}
   m_Father: {fileID: 1321610999}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

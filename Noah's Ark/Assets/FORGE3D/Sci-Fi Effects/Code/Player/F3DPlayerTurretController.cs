@@ -13,7 +13,6 @@ namespace FORGE3D
 
         void Update()
         {
-           
             CheckForFire();
         }
 
@@ -37,6 +36,8 @@ namespace FORGE3D
                 isFiring = false;
                 fxController.Stop();
             }
+
+            
         }
 
         void CheckForTurn()

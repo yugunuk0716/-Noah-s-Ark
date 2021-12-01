@@ -5,7 +5,7 @@ namespace FORGE3D
 {
     public class F3DProjectile : MonoBehaviour
     {
-        public F3DFXType fxType; // Weapon type 
+        //public F3DFXType fxType; // Weapon type 
         public LayerMask layerMask;
         public float lifeTime = 5f; // Projectile life time
         public float despawnDelay; // Delay despawn in ms
@@ -88,34 +88,11 @@ namespace FORGE3D
                 // Execute once
                 if (!isFXSpawned)
                 {
-                    // Invoke corresponding method that spawns FX
-                    switch (fxType)
-                    {
-                        case F3DFXType.Vulcan:
-                            F3DFXController.instance.VulcanImpact(hitPoint.point + hitPoint.normal * fxOffset);
-                            ApplyForce(2.5f);
-                            break;
 
-                        case F3DFXType.SoloGun:
-                            F3DFXController.instance.SoloGunImpact(hitPoint.point + hitPoint.normal * fxOffset);
-                            ApplyForce(25f);
-                            break;
+                    F3DFXController.instance.VulcanImpact(hitPoint.point + hitPoint.normal * fxOffset);
+                    ApplyForce(2.5f);
 
-                        case F3DFXType.Seeker:
-                            F3DFXController.instance.SeekerImpact(hitPoint.point + hitPoint.normal * fxOffset);
-                            ApplyForce(30f);
-                            break;
 
-                        case F3DFXType.PlasmaGun:
-                            F3DFXController.instance.PlasmaGunImpact(hitPoint.point + hitPoint.normal * fxOffset);
-                            ApplyForce(25f);
-                            break;
-
-                        case F3DFXType.LaserImpulse:
-                            F3DFXController.instance.LaserImpulseImpact(hitPoint.point + hitPoint.normal * fxOffset);
-                            ApplyForce(25f);
-                            break;
-                    }
 
                     isFXSpawned = true;
                 }
