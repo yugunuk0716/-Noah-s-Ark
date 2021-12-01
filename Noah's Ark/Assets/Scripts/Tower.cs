@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TowerState { SearchTarget = 0, AttackToTarget,}
+public enum TowerState { SearchTarget = 0, AttackToTarget, }
+public enum TowerGroundState { None = 0, Builded, }
 
 public class Tower : MonoBehaviour
 {
@@ -37,5 +38,42 @@ public class Tower : MonoBehaviour
     {
         Vector3 vec = attackTarget.position - transform.position;
         transform.rotation = Quaternion.LookRotation(vec.normalized);
+    }
+
+    IEnumerator SearchTarget()
+    {
+        while (true)
+        {
+            
+            if(attackTarget != null)
+            {
+                ChangeState(TowerState.AttackToTarget);
+            }
+
+            yield return null;
+        }
+    }
+
+    IEnumerator AttackToTarget()
+    {
+        while (true)
+        {
+            if(attackTarget == null)
+            {
+                ChangeState(TowerState.SearchTarget);
+                break;
+            }
+            float distance = Vector3.Distance(attackTarget.position, transform.position);
+            if(distance > attackRange)
+            {
+                attackTarget = null;
+                ChangeState(TowerState.SearchTarget);
+                break;
+            }
+
+            yield return new WaitForSeconds(attackRate);
+
+            //АјАн
+        }
     }
 }
