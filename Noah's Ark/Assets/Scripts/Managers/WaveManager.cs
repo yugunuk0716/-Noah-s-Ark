@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : MonoSingleton<WaveManager>
 {
     /// <summary>
     /// 모든 웨이브들
