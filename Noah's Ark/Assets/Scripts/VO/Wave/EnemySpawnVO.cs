@@ -10,14 +10,14 @@ public class EnemySpawnVO
     public float time;
 
     /// <summary>
-    /// 스폰할 적 Type
+    /// 스폰할 적 데이터
     /// </summary>
-    public EnemyType type;
+    public SpawnAmountVO spawn;
 
 
-    public EnemySpawnVO(float time, EnemyType type)
+    public EnemySpawnVO(float time, SpawnAmountVO spawn)
     {
         this.time = time;
-        this.type = type;
+        this.spawn = spawn;
     }
 }
