@@ -41,14 +41,14 @@ namespace FORGE3D
             // Initialize singleton  
             instance = this;
 
-                // Initialize bullet shells particles
-                for (int i = 0; i < ShellParticles.Length; i++)
-                {
-                    var em = ShellParticles[i].emission;
-                    em.enabled = false;
-                    ShellParticles[i].Stop();
-                    ShellParticles[i].gameObject.SetActive(true);
-                }
+            // Initialize bullet shells particles
+            for (int i = 0; i < ShellParticles.Length; i++)
+            {
+                var em = ShellParticles[i].emission;
+                em.enabled = false;
+                ShellParticles[i].Stop();
+                ShellParticles[i].gameObject.SetActive(true);
+            }
         }
 
 

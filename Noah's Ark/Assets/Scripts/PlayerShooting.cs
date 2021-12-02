@@ -10,14 +10,14 @@ namespace FORGE3D
         RaycastHit hitInfo; // Raycast structure
         private bool isFiring; // Is turret currently in firing state
         private F3DTurret turret;
-        private F3DFXController fxController;
+        public F3DFXController fxController;
 
 
 
         private void Start()
         {
             turret = GetComponent<F3DTurret>();
-            fxController = F3DFXController.instance;
+            fxController = GetComponent<F3DFXController>();
             //fxController.SetTurretSocket(turretSockets);
         }
 
@@ -32,7 +32,7 @@ namespace FORGE3D
         void CheckForFire()
         {
             // Fire turret
-            if (!isFiring && Input.GetMouseButtonDown(0))
+            if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0))
             {
                 isFiring = true;
                 fxController.Fire();
@@ -40,13 +40,13 @@ namespace FORGE3D
             }
 
             // Stop firing
-            if (isFiring && Input.GetMouseButtonUp(0))
+            if (turret.isPlayer && isFiring && Input.GetMouseButtonUp(0))
             {
                 isFiring = false;
                 fxController.Stop();
                 print("stop");
             }
-            if (!isFiring && Input.GetKeyDown(KeyCode.Space))
+            if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space))
             {
                 isFiring = true;
                 fxController.Fire(isFiring);
