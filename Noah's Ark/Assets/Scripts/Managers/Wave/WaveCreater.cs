@@ -18,8 +18,20 @@ public class WaveCreater : MonoBehaviour
 {
     public EnemySpawnVO[] spawnData = new EnemySpawnVO[0];
 
+    [Header("되도록이면 이름은 건들지 말아줘요.")]
+    public string waveName = "wave";
+    [Header("웨이브 단계")]
+    public int waveNumber = 1;
+
     private void Start()
     {
-        JsonFileManager.Write(Time.deltaTime.ToString(), JsonUtility.ToJson(spawnData));
+        string waveJson = "";
+
+        for (int i = 0; i < spawnData.Length; ++i)
+        {
+            waveJson += JsonUtility.ToJson(spawnData[i]);
+        }
+
+        JsonFileManager.Write(waveName + waveNumber.ToString(), waveJson);
     }
 }

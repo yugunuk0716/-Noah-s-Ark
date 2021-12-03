@@ -2413,6 +2413,8 @@ MonoBehaviour:
     spawn:
       delay: 0.1
       spawnList: 010000000100000001000000010000000100000001000000
+  waveName: wave
+  waveNumber: 1
 --- !u!4 &2143686219
 Transform:
   m_ObjectHideFlags: 0
