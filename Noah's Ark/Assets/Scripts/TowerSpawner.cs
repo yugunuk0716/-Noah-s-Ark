@@ -43,6 +43,7 @@ public class TowerSpawner : MonoBehaviour
                 if (ground.state == TowerGroundState.Builded)
                 {
                     //이미 건설되어 있음
+                    PopupManager.instance.OpenPopup("upgradeTower");
                 }
                 else
                 {
