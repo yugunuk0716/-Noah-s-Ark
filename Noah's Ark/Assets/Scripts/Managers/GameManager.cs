@@ -15,8 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    private List<F3DTurret> turrets = new List<F3DTurret>();
-
+    
     private void Awake()
     {
         if (_instance != null)
@@ -29,17 +28,9 @@ public class GameManager : MonoSingleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
-    public void SetTurret(F3DTurret turret) 
-    {
-        turrets.Add(turret);
-    }
-
-    public List<F3DTurret> GetTurret() 
-    {
-        return turrets;
-    }
+    
 }
 
