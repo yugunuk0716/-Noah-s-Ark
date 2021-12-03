@@ -81,8 +81,8 @@ namespace FORGE3D
             targetPos = headTransform.transform.position + headTransform.transform.forward * 100f;
             defaultDir = Swivel.transform.forward;
             defaultRot = Quaternion.FromToRotation(transform.forward, defaultDir);
-            if (HeadingLimit.y - HeadingLimit.x >= 359.9f)
-                fullAccess = true;
+            //if (HeadingLimit.y - HeadingLimit.x >= 359.9f)
+            fullAccess = true;
             StopAnimation();
         }
 
@@ -182,7 +182,7 @@ namespace FORGE3D
                         HeadingTrackingSpeed * Time.deltaTime);
                     barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
 
-                   
+
                     //checking for turning up too much
                     if (barrelX.transform.localEulerAngles.x >= 180f &&
                         barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
@@ -190,12 +190,12 @@ namespace FORGE3D
                         barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
                     }
 
-                    //down
-                    else if (barrelX.transform.localEulerAngles.x < 180f &&
-                             barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
-                    {
-                        barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
-                    }
+                    ////down
+                    //else if (barrelX.transform.localEulerAngles.x < 180f &&
+                    //         barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
+                    //{
+                    //    barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
+                    //}
 
                     //finding position for turning just for Y axis
                     Vector3 targetY = targetPos;
@@ -207,22 +207,7 @@ namespace FORGE3D
                         ElevationTrackingSpeed * Time.deltaTime);
                     barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
 
-                    if (!fullAccess)
-                    {
-                        //checking for turning left
-                        if (barrelY.transform.localEulerAngles.y >= 180f &&
-                            barrelY.transform.localEulerAngles.y < (360f - HeadingLimit.y))
-                        {
-                            barrelY.transform.localEulerAngles = new Vector3(0f, 360f - HeadingLimit.y, 0f);
-                        }
-
-                        //right
-                        else if (barrelY.transform.localEulerAngles.y < 180f &&
-                                 barrelY.transform.localEulerAngles.y > -HeadingLimit.x)
-                        {
-                            barrelY.transform.localEulerAngles = new Vector3(0f, -HeadingLimit.x, 0f);
-                        }
-                    }
+                  
                 }
 
                 if (DebugDraw)
@@ -267,8 +252,14 @@ namespace FORGE3D
                 barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
                     ElevationTrackingSpeed * Time.deltaTime);
                 barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
+
+               
+
             }
 
         }
+
+
+        
     }
 }

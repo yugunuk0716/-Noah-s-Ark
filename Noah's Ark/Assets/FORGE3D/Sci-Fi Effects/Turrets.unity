@@ -2593,10 +2593,10 @@ MonoBehaviour:
   testTrms:
   - {fileID: 849507249}
   isPlayer: 0
-  HeadingTrackingSpeed: 2
-  ElevationTrackingSpeed: 2
+  HeadingTrackingSpeed: 1
+  ElevationTrackingSpeed: 1
   headingVetor: {x: 0, y: 0, z: 0}
-  HeadingLimit: {x: -60, y: 60}
+  HeadingLimit: {x: 0, y: 360}
   ElevationLimit: {x: -30, y: 0}
   shooter: {fileID: 0}
   DebugDraw: 1
@@ -10158,10 +10158,10 @@ MonoBehaviour:
   testTrms:
   - {fileID: 849507249}
   isPlayer: 0
-  HeadingTrackingSpeed: 2
-  ElevationTrackingSpeed: 2
+  HeadingTrackingSpeed: 1
+  ElevationTrackingSpeed: 1
   headingVetor: {x: 0, y: 0, z: 0}
-  HeadingLimit: {x: -60, y: 60}
+  HeadingLimit: {x: 0, y: 360}
   ElevationLimit: {x: -30, y: 0}
   shooter: {fileID: 0}
   DebugDraw: 1
