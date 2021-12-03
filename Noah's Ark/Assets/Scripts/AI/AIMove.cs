@@ -20,9 +20,11 @@ public class AIMove : MonoBehaviour
     public List<Transform> defaultDestination = new List<Transform>(); // 기본 목적지
     private List<Transform> destination = new List<Transform>(); // 실제 목적지
 
-    private NavMeshAgent agent;
+    private NavMeshAgent agent; // agent
+    private float defaultSpeed = 0.0f; // 기본 속도
     private int currentDestIdx = 0; // 목적지 인덱스
 
+    private Coroutine currentSpeedEffect = null; // 속도 원상복귀 저장용
 
     /// <summary>
     /// AI가 지나갈 목적지를 추가합니다.
@@ -65,6 +67,7 @@ public class AIMove : MonoBehaviour
     protected virtual void Start()
     {
         agent.destination = destination[0].position;
+        defaultSpeed = agent.speed;
     }
 
     protected virtual void Update()
@@ -73,5 +76,29 @@ public class AIMove : MonoBehaviour
         {
             ToNextDestination();
         }
+    }
+
+    /// <summary>
+    /// AI 속도를 설정합니다.<br/>
+    /// 이미 감소, 상승이 진행중이면 덮어씁니다.
+    /// </summary>
+    /// <param name="multipy">비율</param>
+    /// <param name="duration">기간 (second)<br/>0: 종료, -1: 영구</param>
+    public void SetSpeed(float multipy, float duration)
+    {
+        agent.speed *= multipy;
+        
+        if(currentSpeedEffect != null)
+            StopCoroutine(currentSpeedEffect);
+
+        if(duration != -1.0f)
+            currentSpeedEffect = StartCoroutine(SetSpeedToNormal(duration));
+    }
+
+    private IEnumerator SetSpeedToNormal(float duration) // 속도 원상복귀 용도
+    {
+        yield return new WaitForSeconds(duration);
+        agent.speed = defaultSpeed;
+        
     }
 }
