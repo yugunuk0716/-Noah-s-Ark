@@ -8,7 +8,10 @@ public class TowerSpawner : MonoBehaviour
 {
     public static TowerSpawner instance;
 
-    public CanvasGroup createTowerPanelCg;
+    public Tower towerPrefab;
+
+    private Transform towerSpawnPos;
+
     public LayerMask isGround;
     Ray ray;
     RaycastHit hit;
@@ -44,21 +47,21 @@ public class TowerSpawner : MonoBehaviour
                 else
                 {
                     //건설 해야함
-                    ClickTowerGround();
+                    PopupManager.instance.OpenPopup("createTower");
+                    towerSpawnPos = ground.towerPos;
+                    ground.ChangeTowerGroundState(TowerGroundState.Builded);
                 }
             }
         }
     }
     
-    public void ClickTowerGround()
-    {
-        OpenPanel(true);
-    }
 
-    public void OpenPanel(bool on)
+    public Transform GetTowerSpawnPos()
     {
-        createTowerPanelCg.alpha = on ? 1 : 0;
-        createTowerPanelCg.blocksRaycasts = on;
-        createTowerPanelCg.interactable = on;
+        return towerSpawnPos;
+    }
+    public Tower CreateTower(Transform parent)
+    {
+        return Instantiate(towerPrefab, towerSpawnPos.position,Quaternion.identity, parent);
     }
 }
