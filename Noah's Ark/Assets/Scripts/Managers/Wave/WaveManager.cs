@@ -52,11 +52,12 @@ public class WaveManager : MonoSingleton<WaveManager>
     IEnumerator SpawnEnemy(SpawnAmountVO spawnData)
     {
         WaitForSeconds wait = new WaitForSeconds(spawnData.delay);
-        
 
+        //EnemyPoolManager.Instance.Spawn(spawnData);
         for (int i = 0; i < spawnData.spawnList.Count; ++i)
         {
             yield return wait;
+            EnemyPoolManager.Instance.Spawn(spawnData.spawnList[i]);
         }
     }
 }
