@@ -17,7 +17,10 @@ public class WaveManager : MonoSingleton<WaveManager>
     /// </summary>
     private List<EnemySpawnVO> waves;
 
-    
+    private float time = 0;
+    private int idx = 0;
+
+
     private void Awake()
     {
         int index = 0;
@@ -33,6 +36,8 @@ public class WaveManager : MonoSingleton<WaveManager>
     
     private void Update()
     {
+        time += Time.deltaTime;
+
         
     }
 
