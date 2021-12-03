@@ -36,10 +36,25 @@ public class TurretManager : MonoSingleton<TurretManager>
         {
             turrets[currentTurretIndex].isPlayer = false;
             turrets[currentTurretIndex].shooter.fxController.Stop();
-            ++currentTurretIndex;
+            currentTurretIndex++;
             if (turrets.Count <= currentTurretIndex)
             {
                 currentTurretIndex = 0;
+            }
+            mainCam.transform.SetParent(turrets[currentTurretIndex].camTrm);
+            mainCam.transform.localPosition = Vector3.zero;
+            mainCam.transform.localRotation = Quaternion.identity;
+            turrets[currentTurretIndex].isPlayer = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
+            turrets[currentTurretIndex].isPlayer = false;
+            turrets[currentTurretIndex].shooter.fxController.Stop();
+            currentTurretIndex--;
+            if (0 > currentTurretIndex)
+            {
+                currentTurretIndex = turrets.Count-1;
             }
             mainCam.transform.SetParent(turrets[currentTurretIndex].camTrm);
             mainCam.transform.localPosition = Vector3.zero;

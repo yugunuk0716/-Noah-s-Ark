@@ -19,6 +19,7 @@ namespace FORGE3D
         public GameObject Mount;
         public GameObject Swivel;
         public Transform camTrm;
+        public Transform[] testTrms;
         public bool isPlayer = false;
 
         private Vector3 defaultDir;
@@ -27,8 +28,8 @@ namespace FORGE3D
         private Transform headTransform;
         private Transform barrelTransform;
 
-        public float HeadingTrackingSpeed = 2f;
-        public float ElevationTrackingSpeed = 2f;
+        public float HeadingTrackingSpeed = 1f;
+        public float ElevationTrackingSpeed = 1f;
 
         private Vector3 targetPos;
         [HideInInspector] public Vector3 headingVetor;
@@ -181,6 +182,7 @@ namespace FORGE3D
                         HeadingTrackingSpeed * Time.deltaTime);
                     barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
 
+                   
                     //checking for turning up too much
                     if (barrelX.transform.localEulerAngles.x >= 180f &&
                         barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
@@ -228,6 +230,45 @@ namespace FORGE3D
                         barrelTransform.position +
                         barrelTransform.forward * Vector3.Distance(barrelTransform.position, targetPos), Color.red);
             }
+            else
+            {
+                Transform barrelX = barrelTransform;
+                Transform barrelY = Swivel.transform;
+
+                //finding position for turning just for X axis (down-up)
+                Vector3 targetX = testTrms[0].position - barrelX.transform.position;
+                Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
+
+                barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
+                    HeadingTrackingSpeed * Time.deltaTime);
+                barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
+
+
+                //checking for turning up too much
+                if (barrelX.transform.localEulerAngles.x >= 180f &&
+                    barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
+                {
+                    barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
+                }
+
+                //down
+                else if (barrelX.transform.localEulerAngles.x < 180f &&
+                         barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
+                {
+                    barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
+                }
+
+                //finding position for turning just for Y axis
+                Vector3 targetY = testTrms[0].position;
+                targetY.y = barrelY.position.y;
+
+                Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
+
+                barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
+                    ElevationTrackingSpeed * Time.deltaTime);
+                barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
+            }
+
         }
     }
 }

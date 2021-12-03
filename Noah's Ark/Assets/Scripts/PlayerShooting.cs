@@ -36,7 +36,6 @@ namespace FORGE3D
             {
                 isFiring = true;
                 fxController.Fire();
-                print("start");
             }
 
             // Stop firing
@@ -44,7 +43,6 @@ namespace FORGE3D
             {
                 isFiring = false;
                 fxController.Stop();
-                print("stop");
             }
             if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space))
             {
