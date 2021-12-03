@@ -38,7 +38,25 @@ public class WaveManager : MonoSingleton<WaveManager>
     {
         time += Time.deltaTime;
 
-        
+        while(true)
+        {
+            if(time >= waves[idx].time)
+            {
+                ++idx;
+                StartCoroutine(SpawnEnemy(waves[idx].spawn));
+            }
+        }
     }
 
+
+    IEnumerator SpawnEnemy(SpawnAmountVO spawnData)
+    {
+        WaitForSeconds wait = new WaitForSeconds(spawnData.delay);
+        
+
+        for (int i = 0; i < spawnData.spawnList.Count; ++i)
+        {
+            yield return wait;
+        }
+    }
 }

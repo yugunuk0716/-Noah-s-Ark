@@ -34,7 +34,8 @@ public class WaveCreater : MonoBehaviour
             
             if (i > 0) // 스폰 시간 
             {
-                time += spawnData[beforeIndex].time;
+                time = spawnData[beforeIndex].time;
+                time += spawnData[i].time;
                 for (int j = 0; j < spawnData[beforeIndex].spawn.spawnList.Count; ++j)
                 {
                     time += spawnData[beforeIndex].spawn.delay;
