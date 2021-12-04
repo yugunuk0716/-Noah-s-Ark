@@ -2549,11 +2549,11 @@ MonoBehaviour:
   spawnData:
   - time: 1
     spawn:
-      delay: 0.5
+      delay: 1
       spawnList: 010000000100000001000000010000000100000001000000
-  - time: 1
+  - time: 3
     spawn:
-      delay: 0.25
+      delay: 0.5
       spawnList: 010000000100000001000000010000000100000001000000010000000100000001000000
   waveName: wave
   waveNumber: 1

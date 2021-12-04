@@ -15,8 +15,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     /// <summary>
     /// 모든 웨이브들을 가짐
     /// </summary>
-    private List<EnemySpawnVO> waves;
-
+    private WaveVO waves;
     private float time = 0;
     private int idx = 0;
 
@@ -28,26 +27,39 @@ public class WaveManager : MonoSingleton<WaveManager>
         while(index < waveCount)
         {
             string waveJson = JsonFileManager.Read(waveName + ++index);
+            Debug.Log(waveJson);
 
             if(waveJson == null) break;
-            waves.Add(JsonUtility.FromJson<EnemySpawnVO>(waveJson));
+            waves = JsonUtility.FromJson<WaveVO>(waveJson);
         }
     }
-    
-    private void Update1()
+
+    private void Start()
     {
-        time += Time.deltaTime;
-
-        while(true)
+        foreach(var item in waves.spawnData)
         {
-            if(time >= waves[idx].time)
-            {
-                ++idx;
-                StartCoroutine(SpawnEnemy(waves[idx].spawn));
-            }
+            Debug.Log(item.time);
         }
+
+        StartCoroutine(StartWave());
     }
 
+    IEnumerator StartWave()
+    {
+        while (true)
+        {
+            time += Time.deltaTime;
+            if (time >= waves[idx].time)
+            {
+                StartCoroutine(SpawnEnemy(waves[idx++].spawn));
+
+                if(idx >= waves.spawnData.Length) break;
+            }
+            yield return null;
+        }
+
+
+    }
 
     IEnumerator SpawnEnemy(SpawnAmountVO spawnData)
     {

@@ -26,7 +26,7 @@ public class WaveCreater : MonoBehaviour
 
     private void Start()
     {
-        string waveJson = "";
+        List<string> waveJson = new List<string>();
 
         for (int i = 0; i < spawnData.Length; ++i)
         {
@@ -43,9 +43,9 @@ public class WaveCreater : MonoBehaviour
             }
 
             spawnData[i].time = time;
-            waveJson += JsonUtility.ToJson(spawnData[i]);
+            // waveJson.Add(JsonUtility.ToJson(spawnData[i]));
         }
 
-        JsonFileManager.Write(waveName + waveNumber.ToString(), waveJson);
+        JsonFileManager.Write(waveName + waveNumber.ToString(), JsonUtility.ToJson(new WaveVO(spawnData)));
     }
 }

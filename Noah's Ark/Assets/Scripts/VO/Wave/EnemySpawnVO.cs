@@ -5,7 +5,7 @@
 public class EnemySpawnVO
 {
     /// <summary>
-    /// 스폰될 시간<br/>0 ~ n 기준
+    /// 스폰될 시간<br/>이전 스폰 시간 + time;
     /// </summary>
     public float time;
 
