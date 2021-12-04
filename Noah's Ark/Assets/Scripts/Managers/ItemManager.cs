@@ -58,11 +58,9 @@ public class ItemManager : MonoSingleton<ItemManager>
 
     public void EnemySlowItem()
     {
-        for (int i = 0; i < EnemyPoolManager.Instance.enemyList.Count; i++)
-        {
-            //임시로 3초간 슬로우
-            EnemyPoolManager.Instance.enemyList[i].SetSpeed(0.5f, 3f);
-        }
+        ActiveEnemyManager.Instance.ControlAllEnemy((enemy) => {
+            enemy.GetComponent<IMoveManagement>().SetSpeed(0.5f, 3.0f);
+        });
     }
 
     

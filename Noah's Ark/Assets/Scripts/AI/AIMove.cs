@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIMove : MonoBehaviour
+public class AIMove : MonoBehaviour, IMoveManagement
 {
     /// <summary>
     /// 목적지에 도착하면 호출됩니다.
@@ -21,8 +21,12 @@ public class AIMove : MonoBehaviour
     private List<Transform> destination = new List<Transform>(); // 실제 목적지
 
     private NavMeshAgent agent; // agent
-    private float defaultSpeed = 0.0f; // 기본 속도
-    private int currentDestIdx = 0; // 목적지 인덱스
+
+    private float _defaultSpeed = 0.0f;
+    public float DefaultSpeed { get; } // 기본 속도
+
+    private int _currentDestIdx = 0;
+    public int CurrentDestIdx { get; } // 목적지 인덱스
 
     private Coroutine currentSpeedEffect = null; // 속도 원상복귀 저장용
 
@@ -40,14 +44,14 @@ public class AIMove : MonoBehaviour
     /// </summary>
     protected virtual void ToNextDestination()
     {
-        ++currentDestIdx;
-        if(currentDestIdx >= destination.Count)
+        ++_currentDestIdx;
+        if(_currentDestIdx >= destination.Count)
         {
             OnFinalDestinationArrived();
             return;
         }
 
-        agent.destination = destination[currentDestIdx].position;
+        agent.destination = destination[_currentDestIdx].position;
         OnDestinationArrived();
     }
 
@@ -67,7 +71,7 @@ public class AIMove : MonoBehaviour
     protected virtual void Start()
     {
         agent.destination = destination[0].position;
-        defaultSpeed = agent.speed;
+        _defaultSpeed = agent.speed;
     }
 
     protected virtual void Update()
@@ -98,7 +102,12 @@ public class AIMove : MonoBehaviour
     private IEnumerator SetSpeedToNormal(float duration) // 속도 원상복귀 용도
     {
         yield return new WaitForSeconds(duration);
-        agent.speed = defaultSpeed;
+        agent.speed = _defaultSpeed;
         
+    }
+
+    public float GetRemainDistance()
+    {
+        return agent.remainingDistance;
     }
 }

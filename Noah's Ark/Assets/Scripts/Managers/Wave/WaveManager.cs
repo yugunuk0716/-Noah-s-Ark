@@ -34,7 +34,7 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
     }
     
-    private void Update()
+    private void Update1()
     {
         time += Time.deltaTime;
 
