@@ -43,14 +43,17 @@ public class TowerSpawner : MonoBehaviour
                 if (ground.state == TowerGroundState.Builded)
                 {
                     //이미 건설되어 있음
+                    //정보를 넘겨줄게 있으면 여기서 넘겨주면됨
+                    //물론 거기에 변수가 없다면 만들어야함 
                     PopupManager.instance.OpenPopup("upgradeTower");
                 }
                 else
                 {
                     //건설 해야함
-                    PopupManager.instance.OpenPopup("createTower");
                     towerSpawnPos = ground.towerPos;
                     ground.ChangeTowerGroundState(TowerGroundState.Builded);
+                    PopupManager.instance.OpenPopup("createTower");
+
                 }
             }
         }
