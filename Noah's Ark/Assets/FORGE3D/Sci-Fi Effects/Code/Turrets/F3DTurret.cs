@@ -42,6 +42,8 @@ namespace FORGE3D
 
         public PlayerShooting shooter;
 
+        public bool canMoveX;
+        public bool canMoveY;
         public bool DebugDraw;
 
         public Transform DebugTarget;
@@ -81,7 +83,6 @@ namespace FORGE3D
             targetPos = headTransform.transform.position + headTransform.transform.forward * 100f;
             defaultDir = Swivel.transform.forward;
             defaultRot = Quaternion.FromToRotation(transform.forward, defaultDir);
-            //if (HeadingLimit.y - HeadingLimit.x >= 359.9f)
             fullAccess = true;
             StopAnimation();
         }
@@ -105,110 +106,118 @@ namespace FORGE3D
 
         private void Update()
         {
-            if (isPlayer) 
+            if (isPlayer)
             {
                 //return;
                 if (DebugTarget != null)
                     targetPos = DebugTarget.transform.position;
 
-                if (TrackingType == TurretTrackingType.Step)
+
+                if (barrelTransform != null)
                 {
-                    if (barrelTransform != null)
+                    /////// Heading
+                    headingVetor =
+                        Vector3.Normalize(F3DMath.ProjectVectorOnPlane(headTransform.up,
+                            targetPos - headTransform.position));
+                    float headingAngle =
+                        F3DMath.SignedVectorAngle(headTransform.forward, headingVetor, headTransform.up);
+                    float turretDefaultToTargetAngle = F3DMath.SignedVectorAngle(defaultRot * headTransform.forward,
+                        headingVetor, headTransform.up);
+                    float turretHeading = F3DMath.SignedVectorAngle(defaultRot * headTransform.forward,
+                        headTransform.forward, headTransform.up);
+
+                    float headingStep = HeadingTrackingSpeed * Time.deltaTime;
+
+                    // Heading step and correction
+                    // Full rotation
+                    if (HeadingLimit.x <= -180f && HeadingLimit.y >= 180f)
+                        headingStep *= Mathf.Sign(headingAngle);
+                    else // Limited rotation
+                        headingStep *= Mathf.Sign(turretDefaultToTargetAngle - turretHeading);
+
+                    // Hard stop on reach no overshooting
+                    if (Mathf.Abs(headingStep) > Mathf.Abs(headingAngle))
+                        headingStep = headingAngle;
+
+                    // Heading limits
+                    if (curHeadingAngle + headingStep > HeadingLimit.x &&
+                        curHeadingAngle + headingStep < HeadingLimit.y ||
+                        HeadingLimit.x <= -180f && HeadingLimit.y >= 180f || fullAccess)
                     {
-                        /////// Heading
-                        headingVetor =
-                            Vector3.Normalize(F3DMath.ProjectVectorOnPlane(headTransform.up,
-                                targetPos - headTransform.position));
-                        float headingAngle =
-                            F3DMath.SignedVectorAngle(headTransform.forward, headingVetor, headTransform.up);
-                        float turretDefaultToTargetAngle = F3DMath.SignedVectorAngle(defaultRot * headTransform.forward,
-                            headingVetor, headTransform.up);
-                        float turretHeading = F3DMath.SignedVectorAngle(defaultRot * headTransform.forward,
-                            headTransform.forward, headTransform.up);
+                        curHeadingAngle += headingStep;
+                        headTransform.rotation = headTransform.rotation * Quaternion.Euler(0f, headingStep, 0f);
+                    }
 
-                        float headingStep = HeadingTrackingSpeed * Time.deltaTime;
+                    /////// Elevation
+                    Vector3 elevationVector =
+                        Vector3.Normalize(F3DMath.ProjectVectorOnPlane(headTransform.right,
+                            targetPos - barrelTransform.position));
+                    float elevationAngle =
+                        F3DMath.SignedVectorAngle(barrelTransform.forward, elevationVector, headTransform.right);
 
-                        // Heading step and correction
-                        // Full rotation
-                        if (HeadingLimit.x <= -180f && HeadingLimit.y >= 180f)
-                            headingStep *= Mathf.Sign(headingAngle);
-                        else // Limited rotation
-                            headingStep *= Mathf.Sign(turretDefaultToTargetAngle - turretHeading);
+                    // Elevation step and correction
+                    float elevationStep = Mathf.Sign(elevationAngle) * ElevationTrackingSpeed * Time.deltaTime;
+                    if (Mathf.Abs(elevationStep) > Mathf.Abs(elevationAngle))
+                        elevationStep = elevationAngle;
 
-                        // Hard stop on reach no overshooting
-                        if (Mathf.Abs(headingStep) > Mathf.Abs(headingAngle))
-                            headingStep = headingAngle;
-
-                        // Heading limits
-                        if (curHeadingAngle + headingStep > HeadingLimit.x &&
-                            curHeadingAngle + headingStep < HeadingLimit.y ||
-                            HeadingLimit.x <= -180f && HeadingLimit.y >= 180f || fullAccess)
-                        {
-                            curHeadingAngle += headingStep;
-                            headTransform.rotation = headTransform.rotation * Quaternion.Euler(0f, headingStep, 0f);
-                        }
-
-                        /////// Elevation
-                        Vector3 elevationVector =
-                            Vector3.Normalize(F3DMath.ProjectVectorOnPlane(headTransform.right,
-                                targetPos - barrelTransform.position));
-                        float elevationAngle =
-                            F3DMath.SignedVectorAngle(barrelTransform.forward, elevationVector, headTransform.right);
-
-                        // Elevation step and correction
-                        float elevationStep = Mathf.Sign(elevationAngle) * ElevationTrackingSpeed * Time.deltaTime;
-                        if (Mathf.Abs(elevationStep) > Mathf.Abs(elevationAngle))
-                            elevationStep = elevationAngle;
-
-                        // Elevation limits
-                        if (curElevationAngle + elevationStep < ElevationLimit.y &&
-                            curElevationAngle + elevationStep > ElevationLimit.x)
-                        {
-                            curElevationAngle += elevationStep;
-                            barrelTransform.rotation = barrelTransform.rotation * Quaternion.Euler(elevationStep, 0f, 0f);
-                        }
+                    // Elevation limits
+                    if (curElevationAngle + elevationStep < ElevationLimit.y &&
+                        curElevationAngle + elevationStep > ElevationLimit.x)
+                    {
+                        curElevationAngle += elevationStep;
+                        barrelTransform.rotation = barrelTransform.rotation * Quaternion.Euler(elevationStep, 0f, 0f);
                     }
                 }
-                else if (TrackingType == TurretTrackingType.Smooth)
-                {
-                    Transform barrelX = barrelTransform;
-                    Transform barrelY = Swivel.transform;
 
-                    //finding position for turning just for X axis (down-up)
+
+                Transform barrelX = barrelTransform;
+                Transform barrelY = Swivel.transform;
+
+                //finding position for turning just for X axis (down-up)
+                if (canMoveX) 
+                {
                     Vector3 targetX = targetPos - barrelX.transform.position;
+                    
                     Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
 
                     barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
                         HeadingTrackingSpeed * Time.deltaTime);
                     barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
 
+                }
 
-                    //checking for turning up too much
-                    if (barrelX.transform.localEulerAngles.x >= 180f &&
-                        barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
-                    {
-                        barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
-                    }
+                //checking for turning up too much
+                if (barrelX.transform.localEulerAngles.x >= 180f &&
+                    barrelX.transform.localEulerAngles.x <= (360f - ElevationLimit.y))
+                {
+                    barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
+                }
 
-                    ////down
-                    //else if (barrelX.transform.localEulerAngles.x < 180f &&
-                    //         barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
+                //down
+                else if (barrelX.transform.localEulerAngles.x <= 180f &&
+                         barrelX.transform.localEulerAngles.x >= -ElevationLimit.x)
+                {
+                    barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
+                }
+
+                //finding position for turning just for Y axis
+                if (canMoveY)
+                {
+                    //if (Mount.transform.rotation.y < 0.0001f)
                     //{
-                    //    barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
+                    //    Mount.transform.localRotation = Quaternion.Euler(0.1f, Mount.transform.localRotation.y, Mount.transform.localRotation.z);
                     //}
-
-                    //finding position for turning just for Y axis
                     Vector3 targetY = targetPos;
                     targetY.y = barrelY.position.y;
-
                     Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
 
                     barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
                         ElevationTrackingSpeed * Time.deltaTime);
                     barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
-
-                  
                 }
+
+
+
 
                 if (DebugDraw)
                     Debug.DrawLine(barrelTransform.position,
@@ -221,7 +230,11 @@ namespace FORGE3D
                 Transform barrelY = Swivel.transform;
 
                 //finding position for turning just for X axis (down-up)
+          
+
+
                 Vector3 targetX = testTrms[0].position - barrelX.transform.position;
+               
                 Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
 
                 barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
@@ -243,22 +256,34 @@ namespace FORGE3D
                     barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
                 }
 
-                //finding position for turning just for Y axis
-                Vector3 targetY = testTrms[0].position;
-                targetY.y = barrelY.position.y;
 
+                //finding position for turning just for Y axis
+                Vector3 targetY = new Vector3(30f, 0);
+                Vector3 targetDir = (testTrms[0].position - transform.position).normalized;
+                float dot = Vector3.Dot(transform.forward, targetDir);
+                float degree = Mathf.Acos(dot) * Mathf.Rad2Deg;
+                //float degree = Mathf.Acos(Vector3.Dot(transform.forward, (testTrms[0].transform.position - transform.position).normalized) * Mathf.Rad2Deg);
+                print(degree);
+                if (HeadingLimit.x < degree && degree < HeadingLimit.y)
+                {
+                    print("?");
+                    targetY = testTrms[0].position;
+                    targetY.y = barrelY.position.y;
+                }
                 Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
 
                 barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
                     ElevationTrackingSpeed * Time.deltaTime);
                 barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
 
-               
+
 
             }
 
         }
 
+
+        
 
         
     }

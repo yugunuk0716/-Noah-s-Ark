@@ -1481,6 +1481,8 @@ MonoBehaviour:
   HeadingLimit: {x: -60, y: 60}
   ElevationLimit: {x: -60, y: 20}
   shooter: {fileID: 0}
+  canMoveX: 0
+  canMoveY: 0
   DebugDraw: 0
   DebugTarget: {fileID: 0}
   Animators: []
@@ -2596,9 +2598,11 @@ MonoBehaviour:
   HeadingTrackingSpeed: 1
   ElevationTrackingSpeed: 1
   headingVetor: {x: 0, y: 0, z: 0}
-  HeadingLimit: {x: 0, y: 360}
+  HeadingLimit: {x: -60, y: 60}
   ElevationLimit: {x: -30, y: 0}
   shooter: {fileID: 0}
+  canMoveX: 0
+  canMoveY: 0
   DebugDraw: 1
   DebugTarget: {fileID: 0}
   Animators: []
@@ -4969,10 +4973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e521ac4ad97b55d4f8c1e4a2a651523d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turrets:
-  - {fileID: 1585125677}
-  - {fileID: 348957733}
-  mainCam: {fileID: 895608276}
 --- !u!1 &875301039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5017,6 +5017,8 @@ MonoBehaviour:
   HeadingLimit: {x: -60, y: 60}
   ElevationLimit: {x: -60, y: 60}
   shooter: {fileID: 0}
+  canMoveX: 0
+  canMoveY: 0
   DebugDraw: 1
   DebugTarget: {fileID: 0}
   Animators: []
@@ -9878,6 +9880,8 @@ MonoBehaviour:
   HeadingLimit: {x: -60, y: 60}
   ElevationLimit: {x: -20, y: 60}
   shooter: {fileID: 0}
+  canMoveX: 0
+  canMoveY: 0
   DebugDraw: 0
   DebugTarget: {fileID: 0}
   Animators: []
@@ -10157,13 +10161,15 @@ MonoBehaviour:
   camTrm: {fileID: 1548109710}
   testTrms:
   - {fileID: 849507249}
-  isPlayer: 0
+  isPlayer: 1
   HeadingTrackingSpeed: 1
   ElevationTrackingSpeed: 1
   headingVetor: {x: 0, y: 0, z: 0}
-  HeadingLimit: {x: 0, y: 360}
+  HeadingLimit: {x: -60, y: 60}
   ElevationLimit: {x: -30, y: 0}
   shooter: {fileID: 0}
+  canMoveX: 1
+  canMoveY: 1
   DebugDraw: 1
   DebugTarget: {fileID: 0}
   Animators: []
@@ -10175,7 +10181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585125676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.69, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2052330470}
