@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class EnemyPoolManager : MonoSingleton<EnemyPoolManager>
 {
+    public List<AIMove> enemyList;
 
+    private void Awake()
+    {
+        enemyList = new List<AIMove>();
+    }
     // TODO : 적 스폰 기능, Pool, type[], delay 만큼 넣어줘야 함
 
     /// <summary>
@@ -14,5 +19,6 @@ public class EnemyPoolManager : MonoSingleton<EnemyPoolManager>
     public void Spawn(EnemyType type)
     {
 
+        //enemyList.Add()
     }
 }

@@ -497,6 +497,8 @@ GameObject:
   m_Component:
   - component: {fileID: 208877591}
   - component: {fileID: 208877592}
+  - component: {fileID: 208877593}
+  - component: {fileID: 208877594}
   m_Layer: 0
   m_Name: ManagerObj
   m_TagString: Untagged
@@ -533,6 +535,31 @@ MonoBehaviour:
   popupParent: {fileID: 419999248}
   createTowerPopupPrefab: {fileID: 8489069019439166424, guid: bad31e136101f2d4c9620b5b9c27f998, type: 3}
   upgradeTowerPopupPrefab: {fileID: 7255983615095072032, guid: 34bc012776ca49f48bcb4d5c85cc973f, type: 3}
+--- !u!114 &208877593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208877590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3765b8ec4301a48af7a9e7628777d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &208877594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208877590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1148553248100e4a793fe2fd139f6902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyList: []
 --- !u!1 &283747437
 GameObject:
   m_ObjectHideFlags: 0
