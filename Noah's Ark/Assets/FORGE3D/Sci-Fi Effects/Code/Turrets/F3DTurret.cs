@@ -19,7 +19,7 @@ namespace FORGE3D
         public GameObject Mount;
         public GameObject Swivel;
         public Transform camTrm;
-        public Transform[] testTrms;
+        //public Transform[] testTrms;
         public bool isPlayer = false;
 
         private Vector3 defaultDir;
@@ -40,12 +40,12 @@ namespace FORGE3D
         public Vector2 HeadingLimit;
         public Vector2 ElevationLimit;
 
+        [HideInInspector]
         public PlayerShooting shooter;
 
-        public bool canMoveX;
-        public bool canMoveY;
         public bool DebugDraw;
-
+        
+        [HideInInspector]
         public Transform DebugTarget;
 
         private bool fullAccess;
@@ -57,6 +57,7 @@ namespace FORGE3D
             headTransform = Swivel.GetComponent<Transform>();
             barrelTransform = Mount.GetComponent<Transform>();
             shooter = GetComponent<PlayerShooting>();
+
         }
 
         public void PlayAnimation()
@@ -174,17 +175,15 @@ namespace FORGE3D
                 Transform barrelY = Swivel.transform;
 
                 //finding position for turning just for X axis (down-up)
-                if (canMoveX) 
-                {
-                    Vector3 targetX = targetPos - barrelX.transform.position;
-                    
-                    Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
 
-                    barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
-                        HeadingTrackingSpeed * Time.deltaTime);
-                    barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
+                Vector3 targetX = targetPos - barrelX.transform.position;
 
-                }
+                Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
+
+                barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
+                    HeadingTrackingSpeed * Time.deltaTime);
+                barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
+
 
                 //checking for turning up too much
                 if (barrelX.transform.localEulerAngles.x >= 180f &&
@@ -201,20 +200,15 @@ namespace FORGE3D
                 }
 
                 //finding position for turning just for Y axis
-                if (canMoveY)
-                {
-                    //if (Mount.transform.rotation.y < 0.0001f)
-                    //{
-                    //    Mount.transform.localRotation = Quaternion.Euler(0.1f, Mount.transform.localRotation.y, Mount.transform.localRotation.z);
-                    //}
-                    Vector3 targetY = targetPos;
-                    targetY.y = barrelY.position.y;
-                    Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
 
-                    barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
-                        ElevationTrackingSpeed * Time.deltaTime);
-                    barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
-                }
+                Vector3 targetY = targetPos;
+                targetY.y = barrelY.position.y;
+                Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
+
+                barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
+                    ElevationTrackingSpeed * Time.deltaTime);
+                barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
+
 
 
 
@@ -224,7 +218,7 @@ namespace FORGE3D
                         barrelTransform.position +
                         barrelTransform.forward * Vector3.Distance(barrelTransform.position, targetPos), Color.red);
             }
-            else
+            else 
             {
                 Transform barrelX = barrelTransform;
                 Transform barrelY = Swivel.transform;
@@ -233,7 +227,7 @@ namespace FORGE3D
           
 
 
-                Vector3 targetX = testTrms[0].position - barrelX.transform.position;
+                Vector3 targetX = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - barrelX.transform.position;
                
                 Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
 
@@ -259,15 +253,13 @@ namespace FORGE3D
 
                 //finding position for turning just for Y axis
                 Vector3 targetY = new Vector3(30f, 0);
-                Vector3 targetDir = (testTrms[0].position - transform.position).normalized;
+                Vector3 targetDir = (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST,transform.position).transform.position - transform.position).normalized;
                 float dot = Vector3.Dot(transform.forward, targetDir);
                 float degree = Mathf.Acos(dot) * Mathf.Rad2Deg;
-                //float degree = Mathf.Acos(Vector3.Dot(transform.forward, (testTrms[0].transform.position - transform.position).normalized) * Mathf.Rad2Deg);
-                print(degree);
+                
                 if (HeadingLimit.x < degree && degree < HeadingLimit.y)
                 {
-                    print("?");
-                    targetY = testTrms[0].position;
+                    targetY = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position;
                     targetY.y = barrelY.position.y;
                 }
                 Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);

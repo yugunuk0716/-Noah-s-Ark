@@ -13,8 +13,10 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     /// <summary>
     /// 스테이지에 스폰되어있는 적 숫자
     /// </summary>
-    public int EnemyCount { 
-        get {
+    public int EnemyCount 
+    { 
+        get 
+        {
             return activeEnemyList.Count;
         }
     }

@@ -10,6 +10,7 @@ namespace FORGE3D
         RaycastHit hitInfo; // Raycast structure
         private bool isFiring; // Is turret currently in firing state
         private F3DTurret turret;
+        [HideInInspector]
         public F3DFXController fxController;
 
 
