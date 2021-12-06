@@ -6,7 +6,7 @@ using FORGE3D;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public Transform EnemySpawnPosition = null;
+    public Transform enemySpawnPosition = null;
 
 }
 

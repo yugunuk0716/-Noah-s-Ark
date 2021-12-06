@@ -10,56 +10,83 @@ public class WaveManager : MonoSingleton<WaveManager>
     [Header("불러올 웨이브 수")]
     [SerializeField] private int waveCount = 0; // 이것보다 적으면 전부 불러올 수 있음
 
+#region Action
+    /// <summary>
+    /// 웨이브 하나가 끝나면 호출됩니다.
+    /// </summary>
+    public event System.Action OnWaveCompleted;
+
+    /// <summary>
+    /// 웨이브가 실행되면 호출됩니다.
+    /// </summary>
+    public event System.Action OnWaveStarted;
+
+    /// <summary>
+    /// 스테이지 클리어 시 호출됩니다.<br/>
+    /// 모든 웨이브 클리어 시.
+    /// </summary>
+    public event System.Action OnStageCompleted;
+#endregion
+
     public Difficulty difficulty = Difficulty.NORMAL; // 아직은 적용 안함
 
     /// <summary>
     /// 모든 웨이브들을 가짐
     /// </summary>
-    private WaveVO waves;
-    private float time = 0;
-    private int idx = 0;
+    private List<WaveVO> waves = new List<WaveVO>();
+    private float time = 0; // 웨이브 지나고 시간
+    private int waveIndex = 0; // 웨이브
+    private int midWaveIndex = 0; // 웨이브 안 웨이브
 
 
     private void Awake()
     {
-        int index = 0;
-
-        while(index < waveCount)
+        while(waveIndex < waveCount)
         {
-            string waveJson = JsonFileManager.Read(waveName + ++index);
+            string waveJson = JsonFileManager.Read(waveName + ++waveIndex);
             Debug.Log(waveJson);
 
             if(waveJson == null) break;
-            waves = JsonUtility.FromJson<WaveVO>(waveJson);
+            waves.Add(JsonUtility.FromJson<WaveVO>(waveJson));
         }
+        waveIndex = 0;
+
+        OnWaveStarted   += () => { StartCoroutine(StartWave()); };
+        OnWaveCompleted += () => { };
+
     }
 
-    private void Start()
+    #region 웨이브
+    /// <summary>
+    /// 웨이브를 시작합니다.
+    /// </summary>
+    public void StartNewWave()
     {
-        foreach(var item in waves.spawnData)
-        {
-            Debug.Log(item.time);
-        }
-
-        StartCoroutine(StartWave());
+        OnWaveStarted();
     }
-
     IEnumerator StartWave()
     {
+        time = 0.0f;
+
         while (true)
         {
             time += Time.deltaTime;
-            if (time >= waves[idx].time)
+            if (time >= waves[waveIndex][midWaveIndex].time)
             {
-                StartCoroutine(SpawnEnemy(waves[idx++].spawn));
+                StartCoroutine(SpawnEnemy(waves[waveIndex][midWaveIndex++].spawn));
 
-                if(idx >= waves.spawnData.Length) break;
+                if(midWaveIndex >= waves[waveIndex].spawnData.Length) break;
             }
             yield return null;
         }
 
+        ++waveIndex;
+        midWaveIndex = 0;
 
+        if(waveIndex >= waves.Count) OnStageCompleted();
+        else OnWaveCompleted();
     }
+    #endregion
 
     IEnumerator SpawnEnemy(SpawnAmountVO spawnData)
     {

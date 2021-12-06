@@ -108,9 +108,9 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     /// <param name="enemy">제거할 적</param>
     public void Remove(GameObject enemy)
     {
-        enemy.SetActive(false);
         activeEnemyMoveManagementList.Remove(enemy.GetComponent<IMoveManagement>());
         activeEnemyList.Remove(enemy);
+        enemy.SetActive(false);
     }
 
 

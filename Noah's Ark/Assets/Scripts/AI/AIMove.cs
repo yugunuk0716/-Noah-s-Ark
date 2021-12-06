@@ -16,8 +16,9 @@ public class AIMove : MonoBehaviour, IMoveManagement
     /// </summary>
     public Action OnFinalDestinationArrived;
 
-    // AI 목적지
-    public List<Transform> defaultDestination = new List<Transform>(); // 기본 목적지
+    // 기본 스폰 포지션
+    public Transform defaultSpawnPosition;
+
     private List<Transform> destination = new List<Transform>(); // 실제 목적지
 
     private NavMeshAgent agent; // agent
@@ -47,6 +48,7 @@ public class AIMove : MonoBehaviour, IMoveManagement
         ++_currentDestIdx;
         if(_currentDestIdx >= destination.Count)
         {
+            agent.ResetPath();
             OnFinalDestinationArrived();
             return;
         }
@@ -59,13 +61,16 @@ public class AIMove : MonoBehaviour, IMoveManagement
     {
         agent = GetComponent<NavMeshAgent>();
 
-        for (int i = 0; i < defaultDestination.Count; ++i) // 복사
-        {
-            destination.Add(defaultDestination[i]);
-        }
-
         OnFinalDestinationArrived += () => { };
         OnDestinationArrived      += () => { };
+    }
+
+    private void OnEnable()
+    {
+        agent.destination = destination[0].position;
+        _currentDestIdx = 0;
+
+        transform.position = destination[0].position;
     }
 
     protected virtual void Start()
@@ -91,7 +96,7 @@ public class AIMove : MonoBehaviour, IMoveManagement
     public void SetSpeed(float multipy, float duration)
     {
         agent.speed *= multipy;
-        
+
         if(currentSpeedEffect != null)
             StopCoroutine(currentSpeedEffect);
 
@@ -103,11 +108,18 @@ public class AIMove : MonoBehaviour, IMoveManagement
     {
         yield return new WaitForSeconds(duration);
         agent.speed = _defaultSpeed;
-        
     }
 
     public float GetRemainDistance()
     {
         return agent.remainingDistance;
+    }
+
+    public void SetDest(List<Transform> dest)
+    {
+        for (int i = 0; i < dest.Count; ++i) // 복사
+        {
+            destination.Add(dest[i]);
+        }
     }
 }
