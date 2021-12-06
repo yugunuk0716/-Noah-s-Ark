@@ -1179,6 +1179,7 @@ MonoBehaviour:
   DebugDraw: 0
   DebugTarget: {fileID: 0}
   Animators: []
+  attackPossibleAngle: {fileID: 0}
 --- !u!114 &183544235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2148,6 +2149,7 @@ MonoBehaviour:
   DebugDraw: 1
   DebugTarget: {fileID: 0}
   Animators: []
+  attackPossibleAngle: {fileID: 0}
 --- !u!4 &348957734
 Transform:
   m_ObjectHideFlags: 0
@@ -3843,6 +3845,7 @@ MonoBehaviour:
   DebugDraw: 1
   DebugTarget: {fileID: 0}
   Animators: []
+  attackPossibleAngle: {fileID: 0}
 --- !u!4 &875301041
 Transform:
   m_ObjectHideFlags: 0
@@ -7702,6 +7705,7 @@ MonoBehaviour:
   DebugDraw: 0
   DebugTarget: {fileID: 0}
   Animators: []
+  attackPossibleAngle: {fileID: 0}
 --- !u!114 &1519095725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9309,6 +9313,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1350623779608813860, guid: 02c26f8fdd0660649a8d8872e6978b8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912514249385673558, guid: 02c26f8fdd0660649a8d8872e6978b8b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912514249385673558, guid: 02c26f8fdd0660649a8d8872e6978b8b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6731829567329881448, guid: 02c26f8fdd0660649a8d8872e6978b8b, type: 3}
       propertyPath: m_RootOrder
       value: 2
