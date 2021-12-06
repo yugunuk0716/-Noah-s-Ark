@@ -15,8 +15,14 @@ public class CreateTowerPopup : Popup
         createBtn.onClick.AddListener(() => {
             F3DTurret a =  TowerSpawner.instance.CreateTower(TowerSpawner.instance.GetTowerSpawnPos().parent);
             a.transform.localScale = new Vector3(0.25f, 1, 0.25f);
+            TowerSpawner.instance.GroundStateChange();
             PopupManager.instance.ClosePopup();
-            TowerSpawner.instance.Init();
         });
+    }
+
+    public override void Close()
+    {
+        base.Close();
+        TowerSpawner.instance.Init();
     }
 }

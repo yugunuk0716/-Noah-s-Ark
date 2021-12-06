@@ -5,8 +5,9 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     public TowerGroundState state;
-
+    
     public Transform towerPos;
+    public SpriteRenderer attackRange;
 
     private void Awake()
     {

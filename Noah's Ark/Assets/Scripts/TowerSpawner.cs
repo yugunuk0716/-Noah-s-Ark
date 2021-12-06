@@ -15,7 +15,10 @@ public class TowerSpawner : MonoBehaviour
 
     private Transform towerSpawnPos;
 
+    public Ground ground;
+
     Quaternion towerRot;
+    Quaternion initRot;
 
     public LayerMask isGround;
     Ray ray;
@@ -31,6 +34,7 @@ public class TowerSpawner : MonoBehaviour
         instance = this;
 
         towerRot = Quaternion.identity;
+        initRot = Quaternion.Euler(90, 0, 0);
     }
 
     private void Update()
@@ -43,7 +47,7 @@ public class TowerSpawner : MonoBehaviour
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray,out hit, Mathf.Infinity,1 << isGround))
             {
-                Ground ground = hit.transform.GetComponent<Ground>();
+                ground = hit.transform.GetComponent<Ground>();
 
                 if (ground == null) return;
 
@@ -58,7 +62,7 @@ public class TowerSpawner : MonoBehaviour
                 {
                     //건설 해야함
                     towerSpawnPos = ground.towerPos;
-                    ground.ChangeTowerGroundState(TowerGroundState.Builded);
+                    ground.attackRange.enabled = true;
                     isCreate = true;
                     PopupManager.instance.OpenPopup("createTower");
 
@@ -70,10 +74,13 @@ public class TowerSpawner : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                towerRot.y += 90f;
-            } else if (Input.GetKeyDown(KeyCode.S))
-            {
                 towerRot.y -= 90f;
+                ground.attackRange.transform.rotation = Quaternion.Euler(90, towerRot.y, 0);
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                towerRot.y += 90f;
+                ground.attackRange.transform.rotation = Quaternion.Euler(90, towerRot.y, 0);
             }
         }
     }
@@ -81,7 +88,17 @@ public class TowerSpawner : MonoBehaviour
     public void Init()
     {
         isCreate = false;
-        towerRot = Quaternion.identity;
+        ground.attackRange.transform.rotation = towerRot = initRot;
+        ground.attackRange.enabled = false;
+        ground = null;
+    }
+
+    public void GroundStateChange()
+    {
+        if(ground != null)
+        {
+            ground.ChangeTowerGroundState(TowerGroundState.Builded);
+        }
     }
     
 
