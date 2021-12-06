@@ -6,6 +6,7 @@ namespace FORGE3D
 {
     public class F3DTurret : MonoBehaviour
     {
+        #region Turret
         [HideInInspector] public bool destroyIt;
 
         public enum TurretTrackingType
@@ -15,7 +16,7 @@ namespace FORGE3D
         }
 
         public TurretTrackingType TrackingType;
-        
+
         public GameObject Mount;
         public GameObject Swivel;
         public Transform camTrm;
@@ -44,13 +45,17 @@ namespace FORGE3D
         public PlayerShooting shooter;
 
         public bool DebugDraw;
-        
+
         [HideInInspector]
         public Transform DebugTarget;
 
         private bool fullAccess;
         public Animator[] Animators;
+        #endregion
 
+        private bool isBuilding = false;
+        public GameObject attackPossibleAngle;
+        private SpriteRenderer sr;
 
         private void Awake()
         {
@@ -86,6 +91,9 @@ namespace FORGE3D
             defaultRot = Quaternion.FromToRotation(transform.forward, defaultDir);
             fullAccess = true;
             StopAnimation();
+            //sr = attackPossibleAngle.GetComponent<SpriteRenderer>();
+            //sr.gameObject.SetActive(false);
+
         }
 
         // Autotrack
@@ -102,13 +110,35 @@ namespace FORGE3D
 
         private Vector3 PreviousTargetPosition = Vector3.zero;
 
-        
-        
+
+        //public void TurretTurnRight(float turnAmount) 
+        //{
+        //    HeadingLimit.x += turnAmount;
+        //    HeadingLimit.y += turnAmount;
+        //    Swivel.transform.localEulerAngles = new Vector3(Swivel.transform.localEulerAngles.x, Swivel.transform.localEulerAngles.y + turnAmount, Swivel.transform.localEulerAngles.z);
+        //}
+
+        //public void TurretTurnLeft(float turnAmount)
+        //{
+        //    HeadingLimit.x -= turnAmount;
+        //    HeadingLimit.y -= turnAmount;
+        //    Swivel.transform.localEulerAngles = new Vector3(Swivel.transform.localEulerAngles.x, Swivel.transform.localEulerAngles.y - turnAmount, Swivel.transform.localEulerAngles.z);
+        //}
+
+
+        //public void Building(bool _isBuilding) 
+        //{
+        //    isBuilding = _isBuilding;
+        //    sr.gameObject.SetActive(_isBuilding);
+        //}
+
 
         private void Update()
         {
             if (isPlayer)
             {
+                
+
                 //return;
                 if (DebugTarget != null)
                     targetPos = DebugTarget.transform.position;
