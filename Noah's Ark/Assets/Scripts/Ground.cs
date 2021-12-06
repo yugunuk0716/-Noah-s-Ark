@@ -12,6 +12,8 @@ public class Ground : MonoBehaviour
     private void Awake()
     {
         state = TowerGroundState.None;
+        towerPos = transform.GetChild(0);
+        attackRange = transform.GetChild(1).GetComponent<SpriteRenderer>();
     }
 
     public void ChangeTowerGroundState(TowerGroundState state)
