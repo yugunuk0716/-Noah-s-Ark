@@ -1,3 +1,4 @@
+using FORGE3D;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,10 @@ public class CreateTowerPopup : Popup
     {
         closeBtn.onClick.AddListener(() =>PopupManager.instance.ClosePopup());
         createBtn.onClick.AddListener(() => {
-            TowerSpawner.instance.CreateTower(TowerSpawner.instance.GetTowerSpawnPos().parent);
+            F3DTurret a =  TowerSpawner.instance.CreateTower(TowerSpawner.instance.GetTowerSpawnPos().parent);
+            a.transform.localScale = new Vector3(0.25f, 1, 0.25f);
             PopupManager.instance.ClosePopup();
+            TowerSpawner.instance.Init();
         });
     }
 }

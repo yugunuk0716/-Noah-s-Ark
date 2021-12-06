@@ -1,3 +1,4 @@
+using FORGE3D;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,13 @@ public class TowerSpawner : MonoBehaviour
 {
     public static TowerSpawner instance;
 
-    public Tower towerPrefab;
+    public bool isCreate = false;
+
+    public F3DTurret towerPrefab;
 
     private Transform towerSpawnPos;
+
+    Quaternion towerRot;
 
     public LayerMask isGround;
     Ray ray;
@@ -24,6 +29,8 @@ public class TowerSpawner : MonoBehaviour
             return;
         }
         instance = this;
+
+        towerRot = Quaternion.identity;
     }
 
     private void Update()
@@ -52,11 +59,29 @@ public class TowerSpawner : MonoBehaviour
                     //건설 해야함
                     towerSpawnPos = ground.towerPos;
                     ground.ChangeTowerGroundState(TowerGroundState.Builded);
+                    isCreate = true;
                     PopupManager.instance.OpenPopup("createTower");
 
                 }
             }
         }
+
+        if(isCreate)
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                towerRot.y += 90f;
+            } else if (Input.GetKeyDown(KeyCode.S))
+            {
+                towerRot.y -= 90f;
+            }
+        }
+    }
+
+    public void Init()
+    {
+        isCreate = false;
+        towerRot = Quaternion.identity;
     }
     
 
@@ -64,8 +89,8 @@ public class TowerSpawner : MonoBehaviour
     {
         return towerSpawnPos;
     }
-    public Tower CreateTower(Transform parent)
+    public F3DTurret CreateTower(Transform parent)
     {
-        return Instantiate(towerPrefab, towerSpawnPos.position,Quaternion.identity, parent);
+        return Instantiate(towerPrefab, towerSpawnPos.position,towerRot, parent);
     }
 }
