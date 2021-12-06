@@ -16,29 +16,38 @@ public class AIHealth : MonoBehaviour
     public event Action OnDead;
 
     [SerializeField] private int _hp = 20;
-    public int HP { 
-        get {
+    public int HP
+    {
+        get
+        {
             return _hp;
         }
-        set {
+        set
+        {
+            int lastHP = _hp;
             _hp = value;
-            switch(_hp <= 0)
-            {
-                case true: // 사망
-                    OnDead();
-                    break;
-                case false: // 채력 감소
-                    OnHealthDecreased();
-                    break;
-            }
-        } 
-    }
 
+            if (_hp < lastHP) // 공격 받은 경우만
+            {
+                if (_hp > 0) OnHealthDecreased(); // 데미지
+                else OnDead(); // 사망
+            }
+
+        }
+    }
+    public int DefaultHP { get; private set; }
+
+    private void OnEnable()
+    {
+        HP = DefaultHP;
+    }
 
     protected virtual void Awake()
     {
         OnHealthDecreased += () => { };
         OnDead += Dead;
+
+        DefaultHP = HP;
     }
 
     /// <summary>

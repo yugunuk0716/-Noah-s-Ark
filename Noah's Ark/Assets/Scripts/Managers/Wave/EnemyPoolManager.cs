@@ -9,6 +9,8 @@ public class EnemyPoolManager : MonoSingleton<EnemyPoolManager>
 
     private Dictionary<EnemyType, List<GameObject>> enemyPool = new Dictionary<EnemyType, List<GameObject>>();
 
+    public List<Transform> enemyDestList = new List<Transform>();
+
     private int initObjectCount = 50; // 처음에 Pool 에 넣어줄 오브젝트 수
 
     private void Awake()
@@ -39,6 +41,7 @@ public class EnemyPoolManager : MonoSingleton<EnemyPoolManager>
     private GameObject Create(EnemyType type)
     {
         GameObject temp = Instantiate(enemyPrefabs[(int)type], transform);
+        temp.GetComponent<AIMove>().SetDest(enemyDestList);
         temp.SetActive(false);
         return temp;
     }
