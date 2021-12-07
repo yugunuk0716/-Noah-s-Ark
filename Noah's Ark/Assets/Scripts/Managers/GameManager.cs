@@ -6,21 +6,31 @@ using FORGE3D;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    private static GameManager _instance;
-    public static GameManager instance { get { return _instance; } }
-
-
-    private void Awake()
+    private int _money = 0;
+    public int Money 
     {
-        _instance = this;
+        get {
+            return _money;
+        }
+
+        set {
+            _money = value;
+        }
     }
 
-    public Transform enemySpawnPosition = null;
+    private int _hp = 100;
+    public int Hp
+    {
+        get {
+            return _hp;
+        }
 
-    private int money = 0;
+        set {
+            _hp = value;
+        }
+    }
 
 
-  
 
 }
 
