@@ -28,7 +28,8 @@ public class WaveManager : MonoSingleton<WaveManager>
     public event System.Action OnStageCompleted;
     #endregion
 
-    public bool IsWavePlaying { get; private set; } = false;
+    public bool IsSpawnFinished { get; private set; } = true;
+    public bool IsWaveFinished { get; private set; } = true;
 
     public Difficulty difficulty = Difficulty.NORMAL; // 아직은 적용 안함
 
@@ -65,12 +66,14 @@ public class WaveManager : MonoSingleton<WaveManager>
     /// </summary>
     public void StartNewWave()
     {
-        if(IsWavePlaying) return;
+        if(!IsWaveFinished) return;
         OnWaveStarted();
     }
     IEnumerator StartWave()
     {
-        IsWavePlaying = true;
+        if(waveIndex >= waves.Count) yield break;
+
+        IsSpawnFinished = false;
         time = 0.0f;
 
         while (true)
@@ -87,11 +90,21 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         ++waveIndex;
         midWaveIndex = 0;
-        IsWavePlaying = false;
+        IsSpawnFinished = true;
 
         if(waveIndex >= waves.Count) OnStageCompleted();
         else OnWaveCompleted();
     }
+
+    /// <summary>
+    /// 웨이브를 끝남으로 설정합니다.
+    /// </summary>
+    public void SetWaveFinished()
+    {
+        IsWaveFinished = true;
+        Debug.LogWarning("Done!");
+    }
+
     #endregion
 
     IEnumerator SpawnEnemy(SpawnAmountVO spawnData)
