@@ -26,7 +26,9 @@ public class WaveManager : MonoSingleton<WaveManager>
     /// 모든 웨이브 클리어 시.
     /// </summary>
     public event System.Action OnStageCompleted;
-#endregion
+    #endregion
+
+    public bool IsWavePlaying { get; private set; } = false;
 
     public Difficulty difficulty = Difficulty.NORMAL; // 아직은 적용 안함
 
@@ -53,6 +55,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         OnWaveStarted   += () => { StartCoroutine(StartWave()); };
         OnWaveCompleted += () => { };
+        OnStageCompleted += () => { };
 
     }
 
@@ -62,10 +65,12 @@ public class WaveManager : MonoSingleton<WaveManager>
     /// </summary>
     public void StartNewWave()
     {
+        if(IsWavePlaying) return;
         OnWaveStarted();
     }
     IEnumerator StartWave()
     {
+        IsWavePlaying = true;
         time = 0.0f;
 
         while (true)
@@ -82,6 +87,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         ++waveIndex;
         midWaveIndex = 0;
+        IsWavePlaying = false;
 
         if(waveIndex >= waves.Count) OnStageCompleted();
         else OnWaveCompleted();
@@ -98,5 +104,14 @@ public class WaveManager : MonoSingleton<WaveManager>
             yield return wait;
             EnemyPoolManager.Instance.Spawn(spawnData.spawnList[i]);
         }
+    }
+
+    /// <summary>
+    /// 웨이브 단계를 반환합니다.
+    /// </summary>
+    /// <returns>현재 웨이브 / 총 웨이브</returns>
+    public (int, int) GetWaveData()
+    {
+        return (waveIndex, waves.Count);
     }
 }
