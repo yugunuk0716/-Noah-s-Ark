@@ -99,4 +99,13 @@ public class WaveManager : MonoSingleton<WaveManager>
             EnemyPoolManager.Instance.Spawn(spawnData.spawnList[i]);
         }
     }
+
+    /// <summary>
+    /// 웨이브 단계를 반환합니다.
+    /// </summary>
+    /// <returns>현재 웨이브 / 총 웨이브</returns>
+    public (int, int) GetWaveData()
+    {
+        return (waveIndex, waves.Count);
+    }
 }
