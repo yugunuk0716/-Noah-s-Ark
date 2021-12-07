@@ -30,6 +30,7 @@ public class InGameUI : MonoBehaviour
 
     public void SetText() 
     {
-        
+        (int a, int b) = WaveManager.Instance.GetWaveData();
+        waveText.text = string.Format("Wave {0} / {1}", a, b);
     }
 }

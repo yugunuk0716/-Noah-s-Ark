@@ -1613,8 +1613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 819.9558, y: 0}
-  m_SizeDelta: {x: 215, y: 100}
+  m_AnchoredPosition: {x: 795.6278, y: 0}
+  m_SizeDelta: {x: 263.656, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317044526
 MonoBehaviour:
@@ -1649,7 +1649,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC6E8\uC774\uBE0C \uC815\uBCF4"
+  m_Text: 'Wave : 12 / 20'
 --- !u!222 &1317044527
 CanvasRenderer:
   m_ObjectHideFlags: 0
