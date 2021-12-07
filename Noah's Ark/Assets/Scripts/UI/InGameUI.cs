@@ -35,6 +35,7 @@ public class InGameUI : MonoBehaviour
         //(int a, int b) = WaveManager.Instance.GetWaveData();
         //waveText.text = string.Format("Wave {0} / {1}", a, b);
 
+        hpBar.fillAmount = (float)GameManager.Instance.Hp / 100;
         mpBar.fillAmount = (float)TurretManager.Instance.GetCurrentTurret().curMp / TurretManager.Instance.GetCurrentTurret().maxMp;
 
 

@@ -57,10 +57,13 @@ namespace FORGE3D
         public GameObject attackPossibleAngle;
         public int maxMp = 100;
         public int curMp;
+        float arrange = 0;
         private SpriteRenderer sr;
 
         private void Awake()
         {
+            if (HeadingLimit.y - HeadingLimit.x >= 359.9f)
+                fullAccess = true;
             headTransform = Swivel.GetComponent<Transform>();
             barrelTransform = Mount.GetComponent<Transform>();
             shooter = GetComponent<PlayerShooting>();
@@ -217,6 +220,7 @@ namespace FORGE3D
                 barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
 
 
+
                 //checking for turning up too much
                 if (barrelX.transform.localEulerAngles.x >= 180f &&
                     barrelX.transform.localEulerAngles.x <= (360f - ElevationLimit.y))
@@ -235,13 +239,40 @@ namespace FORGE3D
 
                 Vector3 targetY = targetPos;
                 targetY.y = barrelY.position.y;
+                //Mathf.Clamp( targetY.y, HeadingLimit.x, HeadingLimit.y);
                 Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
 
                 barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
                     ElevationTrackingSpeed * Time.deltaTime);
-                barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
 
 
+                
+
+                if (Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y >= 300f && Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y <= 360 || 0 <= Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y && Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y  <= 60f) 
+                {
+                    
+                    arrange = Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y;
+                    
+                }
+                
+                barrelY.transform.localEulerAngles = new Vector3(0f, arrange, 0f);
+
+                if (!fullAccess)
+                {
+                    //checking for turning left
+                    if (barrelY.transform.localEulerAngles.y >= 180f &&
+                        barrelY.transform.localEulerAngles.y < (360f - HeadingLimit.y))
+                    {
+                        barrelY.transform.localEulerAngles = new Vector3(0f, 360f - HeadingLimit.y, 0f);
+                    }
+
+                    //right
+                    else if (barrelY.transform.localEulerAngles.y < 180f &&
+                             barrelY.transform.localEulerAngles.y > -HeadingLimit.x)
+                    {
+                        barrelY.transform.localEulerAngles = new Vector3(0f, -HeadingLimit.x, 0f);
+                    }
+                }
 
 
 
