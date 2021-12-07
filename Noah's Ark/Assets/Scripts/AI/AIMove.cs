@@ -31,6 +31,41 @@ public class AIMove : MonoBehaviour, IMoveManagement
 
     private Coroutine currentSpeedEffect = null; // 속도 원상복귀 저장용
 
+    protected virtual void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+
+        OnFinalDestinationArrived += () => { };
+        OnDestinationArrived += () => { };
+    }
+
+    private void OnDisable()
+    {
+        agent.destination = destination[0].position;
+        _currentDestIdx = 0;
+
+        transform.position = destination[0].position;
+    }
+
+    protected virtual void Start()
+    {
+        agent.destination = destination[0].position;
+        _defaultSpeed = agent.speed;
+    }
+
+    protected virtual void Update()
+    {
+        if (agent.remainingDistance <= 0.1f)
+        {
+            ToNextDestination();
+        }
+    }
+
+    // public
+
+
+#region 목적지
+
     /// <summary>
     /// AI가 지나갈 목적지를 추가합니다.
     /// </summary>
@@ -57,35 +92,9 @@ public class AIMove : MonoBehaviour, IMoveManagement
         OnDestinationArrived();
     }
 
-    protected virtual void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
+#endregion
 
-        OnFinalDestinationArrived += () => { };
-        OnDestinationArrived      += () => { };
-    }
-
-    private void OnEnable()
-    {
-        agent.destination = destination[0].position;
-        _currentDestIdx = 0;
-
-        transform.position = destination[0].position;
-    }
-
-    protected virtual void Start()
-    {
-        agent.destination = destination[0].position;
-        _defaultSpeed = agent.speed;
-    }
-
-    protected virtual void Update()
-    {
-        if(agent.remainingDistance <= 0.1f)
-        {
-            ToNextDestination();
-        }
-    }
+#region 속도
 
     /// <summary>
     /// AI 속도를 설정합니다.<br/>
@@ -109,7 +118,9 @@ public class AIMove : MonoBehaviour, IMoveManagement
         yield return new WaitForSeconds(duration);
         agent.speed = _defaultSpeed;
     }
-
+#endregion
+    
+#region 거리
     public float GetRemainDistance()
     {
         return agent.remainingDistance;
@@ -122,4 +133,5 @@ public class AIMove : MonoBehaviour, IMoveManagement
             destination.Add(dest[i]);
         }
     }
+#endregion
 }
