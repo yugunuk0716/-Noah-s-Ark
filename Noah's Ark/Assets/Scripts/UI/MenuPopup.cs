@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class MenuPopup : Popup
 {
-    public Button closeBtn;
+    public Button continueBtn;
 
     void Start()
     {
-        closeBtn.onClick.AddListener(() => PopupManager.instance.ClosePopup());
+        continueBtn.onClick.AddListener(() => PopupManager.instance.ClosePopup());
     }
 
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829566787407870}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: barrel_socket (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829566797247693}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_ELECTRIC'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829566803153520}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_FLACK'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6731829566841070536}
   - component: {fileID: 6731829566841070550}
   - component: {fileID: 6731829566841070537}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BARREL_Mortar_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 6731829566857562031}
   - component: {fileID: 6731829566857562030}
   - component: {fileID: 6731829566857562017}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BASE_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829566863102516}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_FLAMER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829566871177851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_MORTAR'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829566872256479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_MOUNT'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6731829567468128742}
-  - {fileID: 6731829567362044872}
+  - {fileID: 6731829567827964196}
   m_Father: {fileID: 6731829567605340849}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -399,7 +399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829566892955901}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_GATLING'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567077111660}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_REPEATER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567088133843}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_WEAPON_Right'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ Transform:
   m_Children:
   - {fileID: 6731829568353196839}
   m_Father: {fileID: 6731829567468128742}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6731829567197735093
 GameObject:
@@ -490,7 +490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567197735090}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_GATLING'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567282765931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_LASER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567303023315}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_LASER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 6731829567329881451}
   - component: {fileID: 6731829567329881449}
   - component: {fileID: 6731829567329881462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -684,7 +684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567362044872}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CamTrm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,13 +698,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6731829567362044875}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.705, z: 0.684}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.70500004, z: 0.68399984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6731829568018166163}
-  m_Father: {fileID: 6731829566872256479}
-  m_RootOrder: 1
+  m_Father: {fileID: 6731829567468128742}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6731829567365818999
 GameObject:
@@ -715,7 +715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567365818996}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: barrel_socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567365894803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_SWIVEL'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 6731829567370349138}
   - component: {fileID: 6731829567370349136}
   - component: {fileID: 6731829567370349139}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_HEAD_Single_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,7 +858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567426374279}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_REPEATER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 6731829567468128742}
   - component: {fileID: 6731829567468128740}
   - component: {fileID: 6731829567468128743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_MOUNT_Double_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -908,6 +908,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6731829567362044872}
   - {fileID: 6731829568298387389}
   - {fileID: 6731829568594101117}
   - {fileID: 6731829568834376012}
@@ -975,7 +976,7 @@ GameObject:
   - component: {fileID: 6731829567516290588}
   - component: {fileID: 6731829567516290586}
   - component: {fileID: 6731829567516290589}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BARREL_Mortar_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567541567489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_FLAMER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1088,7 @@ GameObject:
   - component: {fileID: 6731829567605340849}
   - component: {fileID: 6731829567605340863}
   - component: {fileID: 6731829567605340862}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_SWIVEL_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,7 +1108,6 @@ Transform:
   m_Children:
   - {fileID: 6731829567758486514}
   - {fileID: 6731829566872256479}
-  - {fileID: 6731829567827964196}
   - {fileID: 6731829567230400813}
   - {fileID: 6731829567130612704}
   - {fileID: 6731829568828084477}
@@ -1174,7 +1174,7 @@ GameObject:
   - component: {fileID: 6731829567728624192}
   - component: {fileID: 6731829567728624206}
   - component: {fileID: 6731829567728624193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BARREL_Mortar_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 6731829567758486514}
   - component: {fileID: 6731829567758486512}
   - component: {fileID: 6731829567758486515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_SWIVEL_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1335,7 +1335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567778474147}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_ELECTRIC'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,7 +1365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567827423227}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_MORTAR'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1396,7 +1396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567827964196}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_HEAD'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,13 +1410,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6731829567827964199}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.06900003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6731829567370349138}
-  m_Father: {fileID: 6731829567605340849}
-  m_RootOrder: 2
+  m_Father: {fileID: 6731829566872256479}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6731829567870678257
 GameObject:
@@ -1427,7 +1427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567870678270}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_GAUSS'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1457,7 +1457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567892465711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_REPEATER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1487,7 +1487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829567896143504}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_GAUSS'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1519,7 @@ GameObject:
   - component: {fileID: 6731829567900097179}
   - component: {fileID: 6731829567900097177}
   - component: {fileID: 6731829567900097176}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_HEAD_Single_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1600,7 +1600,7 @@ GameObject:
   - component: {fileID: 6731829567949834951}
   - component: {fileID: 6731829567949834949}
   - component: {fileID: 6731829567949834948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BARREL_Mortar_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1680,7 +1680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568000434094}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: barrel_socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1715,7 +1715,7 @@ GameObject:
   - component: {fileID: 6731829568018166167}
   - component: {fileID: 6731829568018166161}
   - component: {fileID: 6731829568018166166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1859,7 +1859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568048816514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_FLACK'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1889,7 +1889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568152791408}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_ELECTRIC'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1919,7 +1919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568160955180}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_FLACK'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1951,7 +1951,7 @@ GameObject:
   - component: {fileID: 6731829568223487620}
   - component: {fileID: 6731829568223487618}
   - component: {fileID: 6731829568223487621}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BARREL_Mortar_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2031,7 +2031,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568241632509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_FLAMER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2063,7 +2063,7 @@ GameObject:
   - component: {fileID: 6731829568298387389}
   - component: {fileID: 6731829568298387387}
   - component: {fileID: 6731829568298387386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_MOUNT_Double_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2082,7 +2082,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6731829567468128742}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6731829568298387387
 MeshFilter:
@@ -2142,7 +2142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568336071058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_GAUSS'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2174,7 +2174,7 @@ GameObject:
   - component: {fileID: 6731829568353196839}
   - component: {fileID: 6731829568353196837}
   - component: {fileID: 6731829568353196836}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BREECH_Ballistic_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2264,7 +2264,7 @@ GameObject:
   - component: {fileID: 6731829568387798093}
   - component: {fileID: 6731829568387798091}
   - component: {fileID: 6731829568387798090}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BREECH_Ballistic_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2354,7 +2354,7 @@ GameObject:
   - component: {fileID: 6731829568393853067}
   - component: {fileID: 6731829568393853065}
   - component: {fileID: 6731829568393853064}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BREECH_Ballistic_LOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2444,7 +2444,7 @@ GameObject:
   - component: {fileID: 6731829568456181822}
   - component: {fileID: 6731829568456181820}
   - component: {fileID: 6731829568456181823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BREECH_Ballistic_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2523,7 +2523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568541765964}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_MORTAR'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2554,7 +2554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568594101117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_WEAPON_Center'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2574,7 +2574,7 @@ Transform:
   m_Children:
   - {fileID: 6731829568393853067}
   m_Father: {fileID: 6731829567468128742}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6731829568649949952
 GameObject:
@@ -2585,7 +2585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568649949953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_GATLING'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2617,7 +2617,7 @@ GameObject:
   - component: {fileID: 6731829568655019651}
   - component: {fileID: 6731829568655019649}
   - component: {fileID: 6731829568655019648}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BREECH_Ballistic_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2698,7 +2698,7 @@ GameObject:
   - component: {fileID: 6731829568801589870}
   - component: {fileID: 6731829568801589868}
   - component: {fileID: 6731829568801589871}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BASE_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2777,7 +2777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568834376012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_WEAPON_Left'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2797,7 +2797,7 @@ Transform:
   m_Children:
   - {fileID: 6731829568387798093}
   m_Father: {fileID: 6731829567468128742}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6731829568874021904
 GameObject:
@@ -2810,7 +2810,7 @@ GameObject:
   - component: {fileID: 6731829568874021905}
   - component: {fileID: 6731829568874021919}
   - component: {fileID: 6731829568874021918}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TURRET_BREECH_Ballistic_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2889,7 +2889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731829568890715562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: '*SOCKET_BARREL_LASER'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2922,12 +2922,16 @@ PrefabInstance:
       value: vulcan_shell (1)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_LocalScale.x
@@ -2997,12 +3001,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 6731829567605340849}
     m_Modifications:
     - target: {fileID: 100000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_LocalScale.x
@@ -3076,12 +3084,16 @@ PrefabInstance:
       value: vulcan_shell (2)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 74a34a83164977b48accb800c8a3dd67, type: 3}
       propertyPath: m_LocalScale.x
