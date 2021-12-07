@@ -55,6 +55,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         OnWaveStarted   += () => { StartCoroutine(StartWave()); };
         OnWaveCompleted += () => { };
+        OnStageCompleted += () => { };
 
     }
 

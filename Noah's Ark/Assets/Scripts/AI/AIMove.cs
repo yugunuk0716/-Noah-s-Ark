@@ -39,14 +39,6 @@ public class AIMove : MonoBehaviour, IMoveManagement
         OnDestinationArrived += () => { };
     }
 
-    private void OnDisable()
-    {
-        agent.destination = destination[0].position;
-        _currentDestIdx = 0;
-
-        transform.position = destination[0].position;
-    }
-
     protected virtual void Start()
     {
         agent.destination = destination[0].position;
@@ -61,7 +53,15 @@ public class AIMove : MonoBehaviour, IMoveManagement
         }
     }
 
-    // public
+    /// <summary>
+    /// 적의 목적지, 포지션을 리셋합니다.
+    /// </summary>
+    public void ResetAI()
+    {
+        agent.destination  = destination[0].position;
+        transform.position = destination[0].position;
+        _currentDestIdx    = 0;
+    }
 
 
 #region 목적지
