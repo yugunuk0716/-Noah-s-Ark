@@ -1417,7 +1417,8 @@ MonoBehaviour:
   waveStartButton: {fileID: 1844552194}
   moneyText: {fileID: 608696407}
   waveText: {fileID: 1317044526}
-  lifeBar: {fileID: 2018165047}
+  hpBar: {fileID: 204413950}
+  mpBar: {fileID: 1823426349}
 --- !u!1 &961277224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1615,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 795.6278, y: 0}
-  m_SizeDelta: {x: 263.656, y: 100}
+  m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317044526
 MonoBehaviour:
@@ -1658,6 +1659,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317044524}
   m_CullTransparentMesh: 1
+--- !u!114 &1318610489 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6731829567329881451, guid: 02c26f8fdd0660649a8d8872e6978b8b, type: 3}
+  m_PrefabInstance: {fileID: 1353605536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e372740a20947eb4f8b6f67a70eee34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1332189074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2972,6 +2984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2012619159}
   - component: {fileID: 2012619158}
+  - component: {fileID: 2012619160}
   m_Layer: 0
   m_Name: ManagerObj
   m_TagString: Untagged
@@ -3009,6 +3022,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2012619160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012619157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca6002235fe9463281718fcd0b37204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turrets:
+  - {fileID: 1318610489}
+  mainCam: {fileID: 0}
 --- !u!1 &2018165045
 GameObject:
   m_ObjectHideFlags: 0

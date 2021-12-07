@@ -8,7 +8,8 @@ public class InGameUI : MonoBehaviour
     public Button waveStartButton;
     public Text moneyText;
     public Text waveText;
-    public Image lifeBar;
+    public Image hpBar;
+    public Image mpBar;
 
 
     void Start()
@@ -17,6 +18,7 @@ public class InGameUI : MonoBehaviour
         {
             WaveManager.Instance.StartNewWave();
         });
+        SetUI();
     }
 
     void Update()
@@ -28,9 +30,13 @@ public class InGameUI : MonoBehaviour
         
     }
 
-    public void SetText() 
+    public void SetUI() 
     {
-        (int a, int b) = WaveManager.Instance.GetWaveData();
-        waveText.text = string.Format("Wave {0} / {1}", a, b);
+        //(int a, int b) = WaveManager.Instance.GetWaveData();
+        //waveText.text = string.Format("Wave {0} / {1}", a, b);
+
+        mpBar.fillAmount = (float)TurretManager.Instance.GetCurrentTurret().curMp / TurretManager.Instance.GetCurrentTurret().maxMp;
+
+
     }
 }

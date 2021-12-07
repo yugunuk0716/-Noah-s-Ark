@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class TurretManager : MonoSingleton<TurretManager>
 {
-
     public List<F3DTurret> turrets = new List<F3DTurret>();
+
 
     private int currentTurretIndex = 0;
 
+    [HideInInspector]
     public Camera mainCam;
 
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class TurretManager : MonoSingleton<TurretManager>
     }
 
 
-    public void SetTurret(F3DTurret turret)
+    public void AddTurret(F3DTurret turret)
     {
         turrets.Add(turret);
     }
@@ -62,5 +63,10 @@ public class TurretManager : MonoSingleton<TurretManager>
             turrets[currentTurretIndex].isPlayer = true;
         }
 
+    }
+
+    public F3DTurret GetCurrentTurret() 
+    {
+        return turrets[currentTurretIndex];
     }
 }

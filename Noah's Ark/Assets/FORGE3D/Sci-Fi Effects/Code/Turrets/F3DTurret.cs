@@ -55,6 +55,8 @@ namespace FORGE3D
 
         private bool isBuilding = false;
         public GameObject attackPossibleAngle;
+        public int maxMp = 100;
+        public int curMp;
         private SpriteRenderer sr;
 
         private void Awake()
@@ -62,7 +64,7 @@ namespace FORGE3D
             headTransform = Swivel.GetComponent<Transform>();
             barrelTransform = Mount.GetComponent<Transform>();
             shooter = GetComponent<PlayerShooting>();
-
+            curMp = maxMp;
         }
 
         public void PlayAnimation()
