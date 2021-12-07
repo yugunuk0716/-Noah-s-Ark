@@ -108,10 +108,23 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     /// <param name="enemy">제거할 적</param>
     public void Remove(GameObject enemy)
     {
-        enemy.GetComponent<AIMove>().ResetAI(); // 음
+        enemy.GetComponent<AIMove>().ResetAI();
         activeEnemyMoveManagementList.Remove(enemy.GetComponent<IMoveManagement>());
         activeEnemyList.Remove(enemy);
         enemy.SetActive(false);
+
+        CheckAllEnemyGone();
+    }
+
+    /// <summary>
+    /// 모든 적 스폰이 완료됬고, 남은 적이 있는지
+    /// </summary>
+    private void CheckAllEnemyGone()
+    {
+        if(activeEnemyMoveManagementList.Count == 0 && WaveManager.Instance.IsSpawnFinished)
+        {
+            WaveManager.Instance.SetWaveFinished();
+        }
     }
 
 
