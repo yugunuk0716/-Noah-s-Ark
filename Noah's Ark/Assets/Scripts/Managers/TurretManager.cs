@@ -16,7 +16,11 @@ public class TurretManager : MonoSingleton<TurretManager>
     // Start is called before the first frame update
     void Start()
     {
-        turrets[0].isPlayer = true;
+        mainCam = Camera.main;
+        turrets[currentTurretIndex].isPlayer = true;
+        mainCam.transform.SetParent(turrets[currentTurretIndex].camTrm);
+        mainCam.transform.localPosition = Vector3.zero;
+        mainCam.transform.localRotation = Quaternion.identity;
     }
 
     // Update is called once per frame

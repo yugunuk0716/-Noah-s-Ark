@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace FORGE3D 
 {
@@ -33,26 +34,29 @@ namespace FORGE3D
 
         void CheckForFire()
         {
-            // Fire turret
-            if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0))
+            if (!EventSystem.current.IsPointerOverGameObject()) 
             {
-                isFiring = true;
-                fxController.Fire();
-            }
+                // Fire turret
+                if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0))
+                {
+                    isFiring = true;
+                    fxController.Fire();
+                }
 
-            // Stop firing
-            if (turret.isPlayer && isFiring && Input.GetMouseButtonUp(0))
-            {
-                isFiring = false;
-                fxController.Stop();
-            }
-            if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.Mp >= mpDecreaseAmount)
-            {
-                isFiring = true;
-                GameManager.Instance.Mp -= mpDecreaseAmount;
-                fxController.Fire(isFiring);
-                fxController.Stop();
-                isFiring = false;
+                // Stop firing
+                if (turret.isPlayer && isFiring && Input.GetMouseButtonUp(0))
+                {
+                    isFiring = false;
+                    fxController.Stop();
+                }
+                if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.Mp >= mpDecreaseAmount)
+                {
+                    isFiring = true;
+                    GameManager.Instance.Mp -= mpDecreaseAmount;
+                    fxController.Fire(isFiring);
+                    fxController.Stop();
+                    isFiring = false;
+                }
             }
         }
 
