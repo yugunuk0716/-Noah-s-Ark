@@ -7,7 +7,7 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     /// <summary>
     /// 적 스폰시 적 오브젝트를 인자로 전달하면서 호출됨
     /// </summary>
-    public event System.Action<GameObject> OnSpawnEnemy = (e) => { };
+    public event System.Action<GameObject> OnSpawnEnemy;
 
     // 맵에 스폰되어있는 모든 적을 가짐
     private List<GameObject> activeEnemyList = new List<GameObject>();
@@ -30,6 +30,11 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
         FRONT,
         BACK,
         CLOSEST
+    }
+
+    private void Start()
+    {
+        OnSpawnEnemy += (e) => { };
     }
 
     /// <summary>
@@ -127,7 +132,7 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     /// </summary>
     private void CheckAllEnemyGone()
     {
-        if(activeEnemyMoveManagementList.Count == 0 && WaveManager.Instance.IsSpawnFinished)
+        if(activeEnemyList.Count == 0 && WaveManager.Instance.IsSpawnFinished)
         {
             WaveManager.Instance.SetWaveFinished();
         }

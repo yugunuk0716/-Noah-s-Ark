@@ -55,8 +55,20 @@ public class WaveManager : MonoSingleton<WaveManager>
         waveIndex = 0;
 
         OnWaveStarted   += () => { StartCoroutine(StartWave()); };
-        OnWaveCompleted += () => { };
-        OnStageCompleted += () => { };
+
+        OnWaveCompleted += () => {
+            Debug.Log("OnWaveCompleted");
+            ++waveIndex;
+            midWaveIndex = 0;
+            IsSpawnFinished = true;
+        };
+        
+        OnStageCompleted += () => {
+            Debug.Log("OnStageCompleted");
+            waveIndex = 0;
+            midWaveIndex = 0;
+            // IsWaveFinished = true;
+        };
 
     }
 
@@ -66,14 +78,17 @@ public class WaveManager : MonoSingleton<WaveManager>
     /// </summary>
     public void StartNewWave()
     {
-        if(!IsWaveFinished) return;
-        OnWaveStarted();
+        Debug.Log("Called StartWave:" + IsWaveFinished);
+        if(IsWaveFinished)
+        {
+            IsWaveFinished = false;
+            IsSpawnFinished = false;
+            OnWaveStarted();
+        }
     }
     IEnumerator StartWave()
     {
         if(waveIndex >= waves.Count) yield break;
-
-        IsSpawnFinished = false;
         time = 0.0f;
 
         while (true)
@@ -87,10 +102,6 @@ public class WaveManager : MonoSingleton<WaveManager>
             }
             yield return null;
         }
-
-        ++waveIndex;
-        midWaveIndex = 0;
-        IsSpawnFinished = true;
 
         if(waveIndex >= waves.Count) OnStageCompleted();
         else OnWaveCompleted();

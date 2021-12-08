@@ -6,6 +6,7 @@ public class AISpawnHandler : MonoBehaviour
 {
     AIHealth health;
     AIMove move;
+    AIBase aiBase;
     AIAnimation anim;
 
 
@@ -14,11 +15,12 @@ public class AISpawnHandler : MonoBehaviour
         health = GetComponent<AIHealth>();
         move   = GetComponent<AIMove>();
         anim   = GetComponent<AIAnimation>();
+        aiBase = GetComponent<AIBase>();
 
         ActiveEnemyManager.Instance.OnSpawnEnemy += (enemy) => {
             health.HP = health.DefaultHP;
-            move.SetDefaultSpeed((int)anim.CurrentRunMode); // RunMode 에 따른 속도
-            // anim.SetRunmode();
+            move.SetDefaultSpeed((int)anim.CurrentRunMode); // RunMode 에 른 속도
+            anim.SetRunmode((AIAnimation.RunMode)aiBase.GetEnemyType());
         };
     }
 

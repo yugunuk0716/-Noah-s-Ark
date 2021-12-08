@@ -16,10 +16,7 @@ public class AIMove : MonoBehaviour, IMoveManagement
     /// </summary>
     public Action OnFinalDestinationArrived;
 
-    // 기본 스폰 포지션
-    public Transform defaultSpawnPosition;
-
-    private List<Transform> destination = new List<Transform>(); // 실제 목적지
+    public List<Transform> destination = new List<Transform>(); // 실제 목적지
 
     private NavMeshAgent agent; // agent
 
@@ -67,23 +64,14 @@ public class AIMove : MonoBehaviour, IMoveManagement
 #region 목적지
 
     /// <summary>
-    /// AI가 지나갈 목적지를 추가합니다.
-    /// </summary>
-    /// <param name="dest">추가할 목적지</param>
-    public void AddDestination(Transform dest)
-    {
-        destination.Add(dest);
-    }
-
-    /// <summary>
     /// 다음 목적지로 전환합니다.
     /// </summary>
     protected virtual void ToNextDestination()
     {
         ++_currentDestIdx;
+
         if(_currentDestIdx >= destination.Count)
         {
-            agent.ResetPath();
             OnFinalDestinationArrived();
             return;
         }

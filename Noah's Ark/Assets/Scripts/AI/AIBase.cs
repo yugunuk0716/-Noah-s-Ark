@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class AIBase : MonoBehaviour
 {
-    
+    [SerializeField] private EnemyType type;
 
-    private void Awake()
+    public EnemyType GetEnemyType()
     {
-        
+        return type;
     }
+
 }

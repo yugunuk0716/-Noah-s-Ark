@@ -15,7 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         set {
             _money = value;
-            UIManganager.Instance.moneyText.text = string.Format("°ñµå :  {0} ¿ø",_money);
+            // UIManganager.Instance.moneyText.text = string.Format("??? :  {0} ??",_money);
         }
     }
 
@@ -29,7 +29,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         set {
             _hp = value;
-            UIManganager.Instance.hpBar.fillAmount = (float)_hp /maxHp;
+            // UIManganager.Instance.hpBar.fillAmount = (float)_hp /maxHp;
         }
     }
 
@@ -46,16 +46,16 @@ public class GameManager : MonoSingleton<GameManager>
         set
         {
             _mp = value;
-            UIManganager.Instance.mpBar.fillAmount = (float)_mp / maxMp;
+            // UIManganager.Instance.mpBar.fillAmount = (float)_mp / maxMp;
         }
     }
 
 
-    private void Start()
+    private void Start2()
     {
-        UIManganager.Instance.hpBar.fillAmount = (float)_hp / maxHp;
-        UIManganager.Instance.mpBar.fillAmount = (float)_mp / maxMp;
-        UIManganager.Instance.moneyText.text = string.Format("°ñµå :  {0} ¿ø", _money);
+        // UIManganager.Instance.hpBar.fillAmount = (float)_hp / maxHp;
+        // UIManganager.Instance.mpBar.fillAmount = (float)_mp / maxMp;
+        // UIManganager.Instance.moneyText.text = string.Format("??? :  {0} ??", _money);
     }
 
 

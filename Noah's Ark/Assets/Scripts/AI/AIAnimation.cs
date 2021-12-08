@@ -18,7 +18,7 @@ public class AIAnimation : MonoBehaviour
 
     private Animator animator;
 
-    private int runModeHash = Animator.StringToHash("RunModeHash");
+    private int runModeHash = Animator.StringToHash("RunMode");
 
     private void Awake()
     {

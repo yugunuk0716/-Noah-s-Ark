@@ -4,7 +4,9 @@
 [System.Serializable]
 public enum EnemyType
 {
-    NO_TYPE = 0,
+    NO_TYPE = -1,
+    SLOW = 0,
     NORMAL,
+    FAST,
     END_OF_ENUM // 반복문 사용시
 }
