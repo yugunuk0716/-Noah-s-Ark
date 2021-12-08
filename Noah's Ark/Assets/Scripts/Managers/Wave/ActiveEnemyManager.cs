@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
 {
+    /// <summary>
+    /// 적 스폰시 적 오브젝트를 인자로 전달하면서 호출됨
+    /// </summary>
+    public event System.Action<GameObject> OnSpawnEnemy = (e) => { };
+
     // 맵에 스폰되어있는 모든 적을 가짐
     private List<GameObject> activeEnemyList = new List<GameObject>();
 
@@ -27,7 +32,6 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
         CLOSEST
     }
 
-
     /// <summary>
     /// 적을 스폰합니다.
     /// </summary>
@@ -38,6 +42,8 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
 
         activeEnemyList.Add(enemy);
         activeEnemyMoveManagementList.Add(enemy.GetComponent<IMoveManagement>());
+
+        OnSpawnEnemy(enemy);
     }
 
     /// <summary>
