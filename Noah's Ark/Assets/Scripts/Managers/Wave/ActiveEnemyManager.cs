@@ -43,12 +43,12 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     /// <param name="enemy"></param>
     public void Spawn(GameObject enemy)
     {
-        enemy.SetActive(true);
-
         activeEnemyList.Add(enemy);
         activeEnemyMoveManagementList.Add(enemy.GetComponent<IMoveManagement>());
 
         OnSpawnEnemy(enemy);
+
+        enemy.SetActive(true);
     }
 
     /// <summary>

@@ -20,13 +20,15 @@ public class AIMove : MonoBehaviour, IMoveManagement
 
     private NavMeshAgent agent; // agent
 
-    private float _defaultSpeed = 0.0f;
+    [Header("최저 속도 - 1")]
+    [SerializeField] float _defaultSpeed = 4.0f;
     public float DefaultSpeed { get; } // 기본 속도
 
     private int _currentDestIdx = 0;
     public int CurrentDestIdx { get; } // 목적지 인덱스
 
     private Coroutine currentSpeedEffect = null; // 속도 원상복귀 저장용
+    private float originalSpeed = 0.0f;
 
     protected virtual void Awake()
     {
@@ -39,12 +41,12 @@ public class AIMove : MonoBehaviour, IMoveManagement
     protected virtual void Start()
     {
         agent.destination = destination[0].position;
-        _defaultSpeed = agent.speed;
+        // _defaultSpeed = agent.speed;
     }
 
     protected virtual void Update()
     {
-        if (agent.remainingDistance <= 0.1f)
+        if (agent.remainingDistance <= 0.2f)
         {
             ToNextDestination();
         }
@@ -104,7 +106,7 @@ public class AIMove : MonoBehaviour, IMoveManagement
     private IEnumerator SetSpeedToNormal(float duration) // 속도 원상복귀 용도
     {
         yield return new WaitForSeconds(duration);
-        agent.speed = _defaultSpeed;
+        agent.speed = originalSpeed;
     }
 
     /// <summary>
@@ -113,7 +115,7 @@ public class AIMove : MonoBehaviour, IMoveManagement
     /// </summary>
     public void SetDefaultSpeed(float speed)
     {
-        _defaultSpeed = speed;
+        originalSpeed = agent.speed = speed + _defaultSpeed;
     }
 #endregion
     
