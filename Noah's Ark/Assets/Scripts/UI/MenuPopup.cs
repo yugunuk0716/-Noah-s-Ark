@@ -23,6 +23,15 @@ public class MenuPopup : Popup
         optionButton.onClick.AddListener(() => OnClickOptionButton());
         homeButton.onClick.AddListener(() => OnClickHomeButton());
         backButton.onClick.AddListener(() => OnClickBackButton());
+        soundSlider.onValueChanged.AddListener(a => 
+        {
+            SoundManager.Instance.ChangeBgmVolume(soundSlider.value);
+        });
+        sfxSlider.onValueChanged.AddListener(a =>
+        {
+            SoundManager.Instance.ChangeSfxVolume(sfxSlider.value);
+        });
+
     }
 
 
@@ -67,6 +76,7 @@ public class MenuPopup : Popup
     {
         //씬이동 넣어야 되구요
     }
+
 
 
 
