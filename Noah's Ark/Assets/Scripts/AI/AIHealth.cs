@@ -37,11 +37,6 @@ public class AIHealth : MonoBehaviour
     }
     public int DefaultHP { get; private set; }
 
-    private void OnEnable()
-    {
-        HP = DefaultHP;
-    }
-
     protected virtual void Awake()
     {
         OnHealthDecreased += () => { };

@@ -118,6 +118,15 @@ public class AIMove : MonoBehaviour, IMoveManagement
         yield return new WaitForSeconds(duration);
         agent.speed = _defaultSpeed;
     }
+
+    /// <summary>
+    /// 기본 속도를 설정합니다.<br/>
+    /// Spawn 이외에서 호출되면 안됩니다.
+    /// </summary>
+    public void SetDefaultSpeed(float speed)
+    {
+        _defaultSpeed = speed;
+    }
 #endregion
     
 #region 거리
