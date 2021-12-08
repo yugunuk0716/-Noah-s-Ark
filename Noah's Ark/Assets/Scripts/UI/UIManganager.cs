@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameUI : MonoBehaviour
+public class UIManganager : MonoSingleton<UIManganager>
 {
+    
     public Button waveStartButton;
     public Text moneyText;
     public Text waveText;
@@ -18,7 +19,7 @@ public class InGameUI : MonoBehaviour
         {
             WaveManager.Instance.StartNewWave();
         });
-        SetUI();
+        SetText();
     }
 
     void Update()
@@ -30,14 +31,10 @@ public class InGameUI : MonoBehaviour
         
     }
 
-    public void SetUI() 
+    public void SetText() 
     {
         //(int a, int b) = WaveManager.Instance.GetWaveData();
         //waveText.text = string.Format("Wave {0} / {1}", a, b);
-
-        hpBar.fillAmount = (float)GameManager.Instance.Hp / 100;
-        mpBar.fillAmount = (float)TurretManager.Instance.GetCurrentTurret().curMp / TurretManager.Instance.GetCurrentTurret().maxMp;
-
 
     }
 }

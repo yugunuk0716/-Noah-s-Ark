@@ -10,6 +10,7 @@ namespace FORGE3D
         RaycastHit hitInfo; // Raycast structure
         private bool isFiring; // Is turret currently in firing state
         private F3DTurret turret;
+        private int mpDecreaseAmount = 10;
         [HideInInspector]
         public F3DFXController fxController;
 
@@ -45,9 +46,10 @@ namespace FORGE3D
                 isFiring = false;
                 fxController.Stop();
             }
-            if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space))
+            if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.Mp >= mpDecreaseAmount)
             {
                 isFiring = true;
+                GameManager.Instance.Mp -= mpDecreaseAmount;
                 fxController.Fire(isFiring);
                 fxController.Stop();
                 isFiring = false;
