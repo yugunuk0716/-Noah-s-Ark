@@ -103,8 +103,7 @@ public class WaveManager : MonoSingleton<WaveManager>
             yield return null;
         }
 
-        if(waveIndex >= waves.Count) OnStageCompleted();
-        else OnWaveCompleted();
+        if(waveIndex < waves.Count) OnWaveCompleted();
     }
 
     /// <summary>
@@ -113,6 +112,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     public void SetWaveFinished()
     {
         IsWaveFinished = true;
+        OnStageCompleted();
         Debug.LogWarning("Done!");
     }
 
