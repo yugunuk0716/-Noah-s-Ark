@@ -27,9 +27,9 @@ public class UIManganager : MonoSingleton<UIManganager>
         });
         SetText();
 
-        WaveManager.Instance.OnStageCompleted += MinimapFocus;
         WaveManager.Instance.OnWaveCompleted += MinimapFocus;
-        WaveManager.Instance.OnWaveStarted += MinimapFocus;
+        WaveManager.Instance.OnStageCompleted += MinimapFocus;
+        WaveManager.Instance.OnWaveStarted += MinimapDefocus;
 
     }
 

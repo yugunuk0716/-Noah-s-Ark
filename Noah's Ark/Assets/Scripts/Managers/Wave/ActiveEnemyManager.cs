@@ -132,9 +132,12 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     /// </summary>
     private void CheckAllEnemyGone()
     {
-        if(activeEnemyList.Count == 0 && WaveManager.Instance.IsSpawnFinished)
+        if(activeEnemyList.Count == 0)
         {
-            WaveManager.Instance.SetWaveFinished();
+            if(WaveManager.Instance.NomoreWaveLeft)
+                WaveManager.Instance.SetStageCompleted();
+            if(WaveManager.Instance.IsSpawnFinished)
+                WaveManager.Instance.SetWaveCompleted();
         }
     }
 
