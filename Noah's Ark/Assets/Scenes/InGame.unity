@@ -619,9 +619,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 54bb2ea65f0f2d042aeb9dcff8bc31ba, type: 3}
+    m_Font: {fileID: 12800000, guid: 83fdc58c6a70769409ce5006ef2cedb9, type: 3}
     m_FontSize: 40
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
@@ -988,9 +988,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 54bb2ea65f0f2d042aeb9dcff8bc31ba, type: 3}
+    m_Font: {fileID: 12800000, guid: 83fdc58c6a70769409ce5006ef2cedb9, type: 3}
     m_FontSize: 40
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
@@ -1681,9 +1681,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 54bb2ea65f0f2d042aeb9dcff8bc31ba, type: 3}
+    m_Font: {fileID: 12800000, guid: 83fdc58c6a70769409ce5006ef2cedb9, type: 3}
     m_FontSize: 40
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
@@ -2900,9 +2900,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 54bb2ea65f0f2d042aeb9dcff8bc31ba, type: 3}
+    m_Font: {fileID: 12800000, guid: 83fdc58c6a70769409ce5006ef2cedb9, type: 3}
     m_FontSize: 40
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
@@ -3349,7 +3349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 1691218147}
-  sfxSource: {fileID: 216287061}
   ingameBgm: {fileID: 8300000, guid: 1e83804c3dabf3349b8ea8394cd8e05a, type: 3}
 --- !u!114 &2012619163
 MonoBehaviour:
@@ -3368,8 +3367,8 @@ MonoBehaviour:
   mpBar: {fileID: 1823426349}
   moneyText: {fileID: 608696407}
   waveText: {fileID: 1317044526}
-  miniMapCamera: {fileID: 1529234320}
-  miniMapImage: {fileID: 533836585}
+  minimapCamera: {fileID: 0}
+  minimapImage: {fileID: 0}
   miniMapTexture: {fileID: 8400000, guid: 624ee9822934ed544b8650e90b2243ad, type: 2}
 --- !u!1 &2018165045
 GameObject:

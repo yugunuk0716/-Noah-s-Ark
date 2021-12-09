@@ -14,8 +14,8 @@ public class UIManganager : MonoSingleton<UIManganager>
 
 
     [Header("MiniMap")]
-    public Camera miniMapCamera;
-    public RawImage miniMapImage;
+    public Camera minimapCamera;
+    public RawImage minimapImage;
     public RenderTexture miniMapTexture;
 
 
@@ -39,16 +39,16 @@ public class UIManganager : MonoSingleton<UIManganager>
     }
 
 
-    public void MiniMaptoMain()  //웨이브 끝났을 때
+    public void MinimapFocus()  //웨이브 끝났을 때
     {
-        miniMapCamera.targetTexture = null;
-        miniMapImage.gameObject.SetActive(false);
+        minimapCamera.targetTexture = null;
+        minimapImage.gameObject.SetActive(false);
     }
 
-    public void MiniMapReset() //웨이브 시작할 때
+    public void MinimapDefocus() //웨이브 시작할 때
     {
-        miniMapCamera.targetTexture = miniMapTexture;
-        miniMapImage.gameObject.SetActive(true);
+        minimapCamera.targetTexture = miniMapTexture;
+        minimapImage.gameObject.SetActive(true);
     }
 
     public void SetText() 

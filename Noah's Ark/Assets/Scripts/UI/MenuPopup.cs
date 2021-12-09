@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using FORGE3D;
 
 public class MenuPopup : Popup
 {
@@ -31,7 +32,7 @@ public class MenuPopup : Popup
         });
         sfxSlider.onValueChanged.AddListener(a =>
         {
-            SoundManager.Instance.ChangeSfxVolume(sfxSlider.value);
+            F3DAudioController.instance.audioSource.GetComponent<AudioSource>().volume = sfxSlider.value;
         });
 
     }

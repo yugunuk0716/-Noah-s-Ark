@@ -53,10 +53,8 @@ namespace FORGE3D
         public Animator[] Animators;
         #endregion
 
-        private bool isBuilding = false;
         public GameObject attackPossibleAngle;
         float arrange = 0;
-        private SpriteRenderer sr;
 
         private void Awake()
         {
