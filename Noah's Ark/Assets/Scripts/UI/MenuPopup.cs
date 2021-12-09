@@ -16,6 +16,8 @@ public class MenuPopup : Popup
 
     public CanvasGroup menuWindow, optionWindow;
 
+    
+
 
     void Start()
     {
@@ -33,6 +35,7 @@ public class MenuPopup : Popup
         });
 
     }
+
 
 
     private void OnClickOptionButton() 

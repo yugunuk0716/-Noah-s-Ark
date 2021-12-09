@@ -7,10 +7,16 @@ public class UIManganager : MonoSingleton<UIManganager>
 {
     
     public Button waveStartButton;
-    public Text moneyText;
-    public Text waveText;
     public Image hpBar;
     public Image mpBar;
+    public Text moneyText;
+    public Text waveText;
+
+
+    [Header("MiniMap")]
+    public Camera miniMapCamera;
+    public RawImage miniMapImage;
+    public RenderTexture miniMapTexture;
 
 
     void Start()
@@ -28,7 +34,21 @@ public class UIManganager : MonoSingleton<UIManganager>
         {
             PopupManager.instance.OpenPopup("menu");
         }
-        
+       
+
+    }
+
+
+    public void MiniMaptoMain()  //웨이브 끝났을 때
+    {
+        miniMapCamera.targetTexture = null;
+        miniMapImage.gameObject.SetActive(false);
+    }
+
+    public void MiniMapReset() //웨이브 시작할 때
+    {
+        miniMapCamera.targetTexture = miniMapTexture;
+        miniMapImage.gameObject.SetActive(true);
     }
 
     public void SetText() 
