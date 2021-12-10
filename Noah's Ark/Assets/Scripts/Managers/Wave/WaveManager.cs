@@ -10,7 +10,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     [Header("불러올 웨이브 수")]
     [SerializeField] private int waveCount = 0; // 이것보다 적으면 전부 불러올 수 있음
 
-#region Action
+    #region Action
     /// <summary>
     /// 웨이브 하나가 끝나면 호출됩니다.
     /// </summary>
@@ -30,6 +30,8 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     public bool IsSpawnFinished { get; private set; } = true;
     public bool IsWaveFinished { get; private set; } = true;
+    public bool NomoreWaveLeft { get; private set; } = false;
+    public bool StageCleared { get; private set; } = false;
 
     public Difficulty difficulty = Difficulty.NORMAL; // 아직은 적용 안함
 
@@ -60,7 +62,6 @@ public class WaveManager : MonoSingleton<WaveManager>
             Debug.Log("OnWaveCompleted");
             ++waveIndex;
             midWaveIndex = 0;
-            IsSpawnFinished = true;
         };
         
         OnStageCompleted += () => {
@@ -79,7 +80,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     public void StartNewWave()
     {
         Debug.Log("Called StartWave:" + IsWaveFinished);
-        if(IsWaveFinished)
+        if(IsWaveFinished && !StageCleared)
         {
             IsWaveFinished = false;
             IsSpawnFinished = false;
@@ -103,16 +104,28 @@ public class WaveManager : MonoSingleton<WaveManager>
             yield return null;
         }
 
-        if(waveIndex >= waves.Count) OnStageCompleted();
-        else OnWaveCompleted();
+        if(waveIndex >= waves.Count) NomoreWaveLeft = true;
+
+        IsSpawnFinished = true;
+    }
+
+    /// <summary>
+    /// 스테이지를 끝남으로 설정합니다.
+    /// </summary>
+    public void SetStageCompleted()
+    {
+        OnStageCompleted();
+        StageCleared = true;
+        Debug.LogWarning("Clear!");
     }
 
     /// <summary>
     /// 웨이브를 끝남으로 설정합니다.
     /// </summary>
-    public void SetWaveFinished()
+    public void SetWaveCompleted()
     {
         IsWaveFinished = true;
+        OnWaveCompleted();
         Debug.LogWarning("Done!");
     }
 
