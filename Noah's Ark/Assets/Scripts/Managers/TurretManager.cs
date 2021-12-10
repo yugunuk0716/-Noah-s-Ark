@@ -17,10 +17,7 @@ public class TurretManager : MonoSingleton<TurretManager>
     void Start()
     {
         mainCam = Camera.main;
-        turrets[currentTurretIndex].isPlayer = true;
-        mainCam.transform.SetParent(turrets[currentTurretIndex].camTrm);
-        mainCam.transform.localPosition = Vector3.zero;
-        mainCam.transform.localRotation = Quaternion.identity;
+        
     }
 
     // Update is called once per frame
@@ -72,5 +69,20 @@ public class TurretManager : MonoSingleton<TurretManager>
     public F3DTurret GetCurrentTurret() 
     {
         return turrets[currentTurretIndex];
+    }
+
+
+    public bool IsPlayer() 
+    {
+        foreach (var turret in turrets)
+        {
+            if (turret.isPlayer) 
+            {
+                return true;
+            }
+        }
+
+
+        return false;
     }
 }
