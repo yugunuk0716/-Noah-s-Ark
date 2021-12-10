@@ -19,4 +19,6 @@ public class AIHealthEventHandler : MonoBehaviour
             GameManager.Instance.Mp += mpGain;
         };
     }
+
+
 }

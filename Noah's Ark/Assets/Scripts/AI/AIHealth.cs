@@ -40,16 +40,23 @@ public class AIHealth : MonoBehaviour
     protected virtual void Awake()
     {
         OnHealthDecreased += () => { };
-        OnDead += Dead;
+        OnDead += () => { };
 
         DefaultHP = HP;
     }
 
-    /// <summary>
-    /// 사망 시 호출됨
-    /// </summary>
-    protected virtual void Dead()
+
+    private void OnCollisionEnter(Collision other)
     {
-        gameObject.SetActive(false);
+        if(other.transform.CompareTag("BULLET"))
+        {
+            HP -= 5;
+        }
+        // if (other.transform.CompareTag("BULLET"))
+        // {
+
+        // }
     }
+
+    
 }
