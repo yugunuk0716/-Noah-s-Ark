@@ -9,24 +9,25 @@ public class ClearPopup : Popup
     public Button goStageSelectButton;
     public Button retryButton;
 
+    Fade fade;
 
     private void Start()
     {
-        
+        fade = GetComponentInParent<Fade>();
     }
 
     private void OnClickNextSceneButton() 
     {
-        
+        fade.FadeIn();
     }
 
     private void OnClickGoStageSelectButton() 
     {
-    
+        fade.FadeIn();
     }
 
     private void OnClickRetryButton() 
     {
-        
+        fade.FadeIn();
     }
 }

@@ -34,30 +34,29 @@ namespace FORGE3D
 
         void CheckForFire()
         {
-            if (!EventSystem.current.IsPointerOverGameObject()) 
-            {
-                // Fire turret
-                if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0))
-                {
-                    isFiring = true;
-                    fxController.Fire();
-                }
 
-                // Stop firing
-                if (turret.isPlayer && isFiring && Input.GetMouseButtonUp(0))
-                {
-                    isFiring = false;
-                    fxController.Stop();
-                }
-                if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.Mp >= mpDecreaseAmount)
-                {
-                    isFiring = true;
-                    GameManager.Instance.Mp -= mpDecreaseAmount;
-                    fxController.Fire(isFiring);
-                    fxController.Stop();
-                    isFiring = false;
-                }
+            // Fire turret
+            if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                isFiring = true;
+                fxController.Fire();
             }
+
+            // Stop firing
+            if ((turret.isPlayer && isFiring && Input.GetMouseButtonUp(0)) || EventSystem.current.IsPointerOverGameObject())
+            {
+                isFiring = false;
+                fxController.Stop();
+            }
+            if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.Mp >= mpDecreaseAmount)
+            {
+                isFiring = true;
+                GameManager.Instance.Mp -= mpDecreaseAmount;
+                fxController.Fire(isFiring);
+                fxController.Stop();
+                isFiring = false;
+            }
+
         }
 
         void CheckForTurn()
