@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 563468071495477699}
   - component: {fileID: 943720261602578247}
   m_Layer: 5
-  m_Name: HomeButton
+  m_Name: GoStageSelectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 5042091352219871215}
   - component: {fileID: 5003207088133845011}
   m_Layer: 5
-  m_Name: ContinueButton
+  m_Name: GoNextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue
+  m_Text: Go Next
 --- !u!1 &2766864345290584416
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 6044064214188290178}
   - component: {fileID: 6044064214188290181}
   m_Layer: 5
-  m_Name: OptionButton
+  m_Name: RetryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 6044064214528824860}
   - component: {fileID: 6044064214528824863}
   - component: {fileID: 6044064214528824861}
-  - component: {fileID: 6727298661518563720}
+  - component: {fileID: 6314334445517863033}
   m_Layer: 5
   m_Name: ClearPanel
   m_TagString: Untagged
@@ -703,7 +703,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &6727298661518563720
+--- !u!114 &6314334445517863033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -712,17 +712,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6044064214528824849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a33b9ec829f854088dd6731d43b8ca, type: 3}
+  m_Script: {fileID: 11500000, guid: b4d822a6d32aa3f41939a736cef5ce51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueBtn: {fileID: 5003207088133845011}
-  homeButton: {fileID: 943720261602578247}
-  optionButton: {fileID: 6044064214188290181}
-  backButton: {fileID: 0}
-  soundSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
-  menuWindow: {fileID: 9212372950295148318}
-  optionWindow: {fileID: 0}
+  nextSceneButton: {fileID: 5003207088133845011}
+  goStageSelectButton: {fileID: 943720261602578247}
+  retryButton: {fileID: 6044064214188290181}
 --- !u!1 &6044064215098915696
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +796,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option
+  m_Text: Retry
 --- !u!1 &8739347657184495039
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,4 +875,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Home
+  m_Text: Stage Select

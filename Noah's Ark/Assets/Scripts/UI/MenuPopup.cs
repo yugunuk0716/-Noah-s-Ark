@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using FORGE3D;
 
+
 public class MenuPopup : Popup
 {
     public Button continueBtn;
@@ -78,7 +79,7 @@ public class MenuPopup : Popup
 
     private void OnClickHomeButton() 
     {
-        //씬이동 넣어야 되구요
+        
     }
 
 
