@@ -20,7 +20,6 @@ public class TowerSpawner : MonoBehaviour
     Quaternion towerRot;
     Quaternion initRot;
 
-    public LayerMask isGround;
     Ray ray;
     RaycastHit hit;
 
@@ -39,13 +38,13 @@ public class TowerSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && TurretManager.Instance.IsPlayer())
         {
             Vector3 pos = Input.mousePosition;
             pos.z = Camera.main.farClipPlane;
 
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray,out hit, Mathf.Infinity,1 << isGround))
+            if(Physics.Raycast(ray,out hit, Mathf.Infinity))
             {
                 ground = hit.transform.GetComponent<Ground>();
 
