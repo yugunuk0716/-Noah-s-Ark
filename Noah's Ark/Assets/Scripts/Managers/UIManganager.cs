@@ -19,6 +19,10 @@ public class UIManganager : MonoSingleton<UIManganager>
     public RenderTexture miniMapTexture;
 
 
+    [SerializeField] private Button startButton = null;
+
+
+
     void Start()
     {
         waveStartButton.onClick.AddListener(() => 
@@ -30,6 +34,19 @@ public class UIManganager : MonoSingleton<UIManganager>
         WaveManager.Instance.OnWaveCompleted += MinimapFocus;
         WaveManager.Instance.OnStageCompleted += MinimapFocus;
         WaveManager.Instance.OnWaveStarted += MinimapDefocus;
+
+
+        if (startButton == null)
+        {
+            Debug.LogError($"StartWaveUI > Button is null.\r\nAt object: {this.gameObject.name}");
+            this.enabled = false;
+            return;
+        }
+
+
+        startButton.onClick.AddListener(() => {
+            WaveManager.Instance.StartNewWave();
+        });
 
         MinimapFocus();
 
@@ -48,12 +65,17 @@ public class UIManganager : MonoSingleton<UIManganager>
 
     public void MinimapFocus()  //웨이브 끝났을 때
     {
+        TurretManager.Instance.GetCurrentTurret().isPlayer = false;
         minimapCamera.targetTexture = null;
         minimapImage.gameObject.SetActive(false);
+        TurretManager.Instance.mainCam.transform.SetParent(TurretManager.Instance.GetCurrentTurret().camTrm);
+        TurretManager.Instance.mainCam.transform.localPosition = Vector3.zero;
+        TurretManager.Instance.mainCam.transform.localRotation = Quaternion.identity;
     }
 
     public void MinimapDefocus() //웨이브 시작할 때
     {
+        TurretManager.Instance.GetCurrentTurret().isPlayer = true;
         minimapCamera.targetTexture = miniMapTexture;
         minimapImage.gameObject.SetActive(true);
     }

@@ -16,7 +16,7 @@ public class ClearPopup : Popup
         fade = GetComponentInParent<Fade>();
     }
 
-    private void OnClickNextSceneButton() 
+    private void OnClickNextStageButton() 
     {
         fade.FadeIn();
     }

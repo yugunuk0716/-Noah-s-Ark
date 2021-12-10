@@ -282,16 +282,23 @@ namespace FORGE3D
                 Transform barrelY = Swivel.transform;
 
                 //finding position for turning just for X axis (down-up)
-          
 
 
-                Vector3 targetX = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - barrelX.transform.position;
+
+                if (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position) != null) 
+                {
+
+                    Vector3 targetX = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - barrelX.transform.position;
+
+                    Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
+
+                    barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
+                        HeadingTrackingSpeed * Time.deltaTime);
+                    barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
+
+                }
                
-                Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
-
-                barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
-                    HeadingTrackingSpeed * Time.deltaTime);
-                barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
+               
 
 
                 //checking for turning up too much
@@ -308,23 +315,29 @@ namespace FORGE3D
                     barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
                 }
 
-
-                //finding position for turning just for Y axis
-                Vector3 targetY = new Vector3(30f, 0);
-                Vector3 targetDir = (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST,transform.position).transform.position - transform.position).normalized;
-                float dot = Vector3.Dot(transform.forward, targetDir);
-                float degree = Mathf.Acos(dot) * Mathf.Rad2Deg;
-                
-                if (HeadingLimit.x < degree && degree < HeadingLimit.y)
+                if (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position) != null)
                 {
-                    targetY = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position;
-                    targetY.y = barrelY.position.y;
-                }
-                Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
+                    //finding position for turning just for Y axis
+                    Vector3 targetY = new Vector3(30f, 0);
+                    Vector3 targetDir = (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - transform.position).normalized;
+                    float dot = Vector3.Dot(transform.forward, targetDir);
+                    float degree = Mathf.Acos(dot) * Mathf.Rad2Deg;
 
-                barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
-                    ElevationTrackingSpeed * Time.deltaTime);
-                barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
+                    if (HeadingLimit.x < degree && degree < HeadingLimit.y)
+                    {
+                        targetY = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position;
+                        targetY.y = barrelY.position.y;
+                    }
+                    Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
+
+                    barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
+                        ElevationTrackingSpeed * Time.deltaTime);
+                    barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
+
+                }
+                
+                
+
 
 
 
