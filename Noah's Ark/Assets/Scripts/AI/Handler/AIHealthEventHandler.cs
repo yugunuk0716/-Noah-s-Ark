@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AIHealthEventHandler : MonoBehaviour
 {
-    [SerializeField] private int moneyGain = 2;
     [SerializeField] private int mpGain = 5;
 
     AIHealth health;
@@ -15,7 +14,6 @@ public class AIHealthEventHandler : MonoBehaviour
         // 사망
         health.OnDead += () => {
             ActiveEnemyManager.Instance.Remove(health.gameObject);
-            GameManager.Instance.Money += moneyGain;
             GameManager.Instance.Mp += mpGain;
         };
     }
