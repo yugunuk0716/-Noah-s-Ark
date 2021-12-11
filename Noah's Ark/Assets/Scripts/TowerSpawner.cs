@@ -38,7 +38,7 @@ public class TowerSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && TurretManager.Instance.IsPlayer())
+        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && !TurretManager.Instance.IsPlayer())
         {
             Vector3 pos = Input.mousePosition;
             pos.z = Camera.main.farClipPlane;

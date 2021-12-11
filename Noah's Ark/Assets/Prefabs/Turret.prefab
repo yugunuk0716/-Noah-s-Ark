@@ -622,7 +622,7 @@ MonoBehaviour:
   Mount: {fileID: 6731829567468128729}
   Swivel: {fileID: 6731829567605340848}
   camTrm: {fileID: 6731829567362044872}
-  isPlayer: 1
+  isPlayer: 0
   HeadingTrackingSpeed: 1
   ElevationTrackingSpeed: 1
   headingVetor: {x: 0, y: 0, z: 0}
