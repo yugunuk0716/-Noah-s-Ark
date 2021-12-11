@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 using FORGE3D;
 
 
@@ -79,7 +80,7 @@ public class MenuPopup : Popup
 
     private void OnClickHomeButton() 
     {
-        
+        SceneManager.LoadScene("Title");
     }
 
 

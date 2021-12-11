@@ -29,7 +29,7 @@ public class Fade : MonoBehaviour
 	
 
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-		StartCoroutine(FadeOut());
+		//StartCoroutine(FadeOut());
 	}
 	public IEnumerator FadeOut()
 	{

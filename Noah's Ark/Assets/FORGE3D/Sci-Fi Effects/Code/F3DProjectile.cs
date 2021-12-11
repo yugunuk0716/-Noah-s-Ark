@@ -76,8 +76,15 @@ namespace FORGE3D
         void ApplyForce(float force)
         {
             if (hitPoint.rigidbody != null)
+            {
                 hitPoint.rigidbody.AddForceAtPosition(transform.forward * force, hitPoint.point,
-                    ForceMode.VelocityChange);
+                   ForceMode.VelocityChange);
+
+                if (hitPoint.collider.CompareTag("Enemy"))
+                {
+                    hitPoint.collider.GetComponent<AIHealth>().HP -= 2;
+                }
+            }
         }
 
         void Update()
