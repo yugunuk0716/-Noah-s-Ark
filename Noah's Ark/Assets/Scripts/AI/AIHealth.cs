@@ -45,17 +45,18 @@ public class AIHealth : MonoBehaviour
         DefaultHP = HP;
     }
 
-
-    private void OnCollisionEnter(Collision other)
+    private void OnParticleCollision(GameObject other)
     {
-        if(other.transform.CompareTag("BULLET"))
+        Debug.Log(other.name);
+        if(other.CompareTag("BULLET"))
+        {
+            HP -= 1;
+        }
+
+        if(other.CompareTag("SKILL"))
         {
             HP -= 5;
         }
-        // if (other.transform.CompareTag("BULLET"))
-        // {
-
-        // }
     }
 
     
