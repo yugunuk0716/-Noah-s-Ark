@@ -68,6 +68,10 @@ public class TurretManager : MonoSingleton<TurretManager>
 
     public F3DTurret GetCurrentTurret() 
     {
+        if (turrets.Count == 0) 
+        {
+            return null;
+        }
         return turrets[currentTurretIndex];
     }
 

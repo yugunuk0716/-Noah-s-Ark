@@ -65,12 +65,15 @@ public class UIManganager : MonoSingleton<UIManganager>
 
     public void MinimapFocus()  //웨이브 끝났을 때
     {
-        TurretManager.Instance.GetCurrentTurret().isPlayer = false;
-        minimapCamera.targetTexture = null;
+        if (TurretManager.Instance.GetCurrentTurret() != null) 
+        {
+            TurretManager.Instance.GetCurrentTurret().isPlayer = false;
+            minimapCamera.targetTexture = null;
+            TurretManager.Instance.mainCam.transform.SetParent(TurretManager.Instance.GetCurrentTurret().camTrm);
+            TurretManager.Instance.mainCam.transform.localPosition = Vector3.zero;
+            TurretManager.Instance.mainCam.transform.localRotation = Quaternion.identity;
+        }
         minimapImage.gameObject.SetActive(false);
-        TurretManager.Instance.mainCam.transform.SetParent(TurretManager.Instance.GetCurrentTurret().camTrm);
-        TurretManager.Instance.mainCam.transform.localPosition = Vector3.zero;
-        TurretManager.Instance.mainCam.transform.localRotation = Quaternion.identity;
     }
 
     public void MinimapDefocus() //웨이브 시작할 때
