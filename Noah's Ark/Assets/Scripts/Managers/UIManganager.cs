@@ -69,9 +69,7 @@ public class UIManganager : MonoSingleton<UIManganager>
         {
             TurretManager.Instance.GetCurrentTurret().isPlayer = false;
             minimapCamera.targetTexture = null;
-            TurretManager.Instance.mainCam.transform.SetParent(TurretManager.Instance.GetCurrentTurret().camTrm);
-            TurretManager.Instance.mainCam.transform.localPosition = Vector3.zero;
-            TurretManager.Instance.mainCam.transform.localRotation = Quaternion.identity;
+            
         }
         minimapImage.gameObject.SetActive(false);
     }
@@ -80,6 +78,9 @@ public class UIManganager : MonoSingleton<UIManganager>
     {
         TurretManager.Instance.GetCurrentTurret().isPlayer = true;
         minimapCamera.targetTexture = miniMapTexture;
+        TurretManager.Instance.mainCam.transform.SetParent(TurretManager.Instance.GetCurrentTurret().camTrm);
+        TurretManager.Instance.mainCam.transform.localPosition = Vector3.zero;
+        TurretManager.Instance.mainCam.transform.localRotation = Quaternion.identity;
         minimapImage.gameObject.SetActive(true);
     }
 

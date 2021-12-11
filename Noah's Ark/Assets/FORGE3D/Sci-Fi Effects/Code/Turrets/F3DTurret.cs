@@ -276,72 +276,72 @@ namespace FORGE3D
                         barrelTransform.position +
                         barrelTransform.forward * Vector3.Distance(barrelTransform.position, targetPos), Color.red);
             }
-            else 
-            {
-                Transform barrelX = barrelTransform;
-                Transform barrelY = Swivel.transform;
+            //else 
+            //{
+            //    Transform barrelX = barrelTransform;
+            //    Transform barrelY = Swivel.transform;
 
-                //finding position for turning just for X axis (down-up)
+            //    //finding position for turning just for X axis (down-up)
 
 
 
-                if (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position) != null) 
-                {
+            //    if (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position) != null) 
+            //    {
 
-                    Vector3 targetX = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - barrelX.transform.position;
+            //        Vector3 targetX = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - barrelX.transform.position;
 
-                    Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
+            //        Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
 
-                    barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
-                        HeadingTrackingSpeed * Time.deltaTime);
-                    barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
+            //        barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
+            //            HeadingTrackingSpeed * Time.deltaTime);
+            //        barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
 
-                }
+            //    }
                
                
 
 
-                //checking for turning up too much
-                if (barrelX.transform.localEulerAngles.x >= 180f &&
-                    barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
-                {
-                    barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
-                }
+            //    //checking for turning up too much
+            //    if (barrelX.transform.localEulerAngles.x >= 180f &&
+            //        barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
+            //    {
+            //        barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
+            //    }
 
-                //down
-                else if (barrelX.transform.localEulerAngles.x < 180f &&
-                         barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
-                {
-                    barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
-                }
+            //    //down
+            //    else if (barrelX.transform.localEulerAngles.x < 180f &&
+            //             barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
+            //    {
+            //        barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
+            //    }
 
-                if (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position) != null)
-                {
-                    //finding position for turning just for Y axis
-                    Vector3 targetY = new Vector3(30f, 0);
-                    Vector3 targetDir = (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - transform.position).normalized;
-                    float dot = Vector3.Dot(transform.forward, targetDir);
-                    float degree = Mathf.Acos(dot) * Mathf.Rad2Deg;
+            //    if (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position) != null)
+            //    {
+            //        //finding position for turning just for Y axis
+            //        Vector3 targetY = new Vector3(30f, 0);
+            //        Vector3 targetDir = (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - transform.position).normalized;
+            //        float dot = Vector3.Dot(transform.forward, targetDir);
+            //        float degree = Mathf.Acos(dot) * Mathf.Rad2Deg;
 
-                    if (HeadingLimit.x < degree && degree < HeadingLimit.y)
-                    {
-                        targetY = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position;
-                        targetY.y = barrelY.position.y;
-                    }
-                    Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
+            //        if (HeadingLimit.x < degree && degree < HeadingLimit.y)
+            //        {
+            //            targetY = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position;
+            //            targetY.y = barrelY.position.y;
+            //        }
+            //        Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
 
-                    barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
-                        ElevationTrackingSpeed * Time.deltaTime);
-                    barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
+            //        barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
+            //            ElevationTrackingSpeed * Time.deltaTime);
+            //        barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
 
-                }
+            //    }
                 
                 
 
 
 
 
-            }
+            //}
 
         }
 
