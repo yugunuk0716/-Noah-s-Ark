@@ -18,7 +18,7 @@ public class Stage : MonoBehaviour
             int a = i;
             stageBtns[a].onClick.AddListener(() =>
             {
-                //GameManager.Instance.Stage = a;
+                StageManager.instance.Stage = a;
                 SceneManager.LoadScene("InGame");
             });
         }
