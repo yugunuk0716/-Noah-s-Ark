@@ -3711,6 +3711,7 @@ GameObject:
   - component: {fileID: 2012619162}
   - component: {fileID: 2012619163}
   - component: {fileID: 2012619164}
+  - component: {fileID: 2012619165}
   m_Layer: 0
   m_Name: ManagerObj
   m_TagString: Untagged
@@ -3827,6 +3828,18 @@ MonoBehaviour:
   isCreate: 0
   towerPrefab: {fileID: 6731829567329881451, guid: 02c26f8fdd0660649a8d8872e6978b8b, type: 3}
   ground: {fileID: 0}
+--- !u!114 &2012619165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012619157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3765b8ec4301a48af7a9e7628777d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2018165045
 GameObject:
   m_ObjectHideFlags: 0

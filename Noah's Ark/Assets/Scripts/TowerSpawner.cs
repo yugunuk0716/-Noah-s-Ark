@@ -87,9 +87,12 @@ public class TowerSpawner : MonoBehaviour
     public void Init()
     {
         isCreate = false;
-        ground.attackRange.transform.rotation = towerRot = initRot;
-        ground.attackRange.enabled = false;
-        ground = null;
+        if(ground != null)
+        {
+            ground.attackRange.transform.rotation = towerRot = initRot;
+            ground.attackRange.enabled = false;
+            ground = null;
+        }
     }
 
     public void GroundStateChange()

@@ -13,15 +13,20 @@ public class ItemManager : MonoSingleton<ItemManager>
         itemDic = new Dictionary<string, Queue<Action>>();
 
         //테스트용코드
-        ItemAdd("EnemySlow", EnemySlowItem);
+        //ItemAdd("EnemySlow", EnemySlowItem);
     }
 
     private void Update()
     {
         //테스트용 코드
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        //if(Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    UseItem("EnemySlow");
+        //}
+        if (Input.GetKeyDown(KeyCode.Alpha1) && GameManager.Instance.Mp >= 20)
         {
-            UseItem("EnemySlow");
+            GameManager.Instance.Mp -= 20;
+            EnemySlowItem();
         }
     }
     /// <summary>
