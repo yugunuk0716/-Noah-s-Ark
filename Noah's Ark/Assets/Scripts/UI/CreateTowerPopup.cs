@@ -15,6 +15,7 @@ public class CreateTowerPopup : Popup
         createBtn.onClick.AddListener(() => {
             F3DTurret a =  TowerSpawner.instance.CreateTower(TowerSpawner.instance.GetTowerSpawnPos().parent);
             TurretManager.Instance.AddTurret(a);
+            print("Create");
             a.transform.localScale = new Vector3(0.25f, 0.33f, 0.25f);
             TowerSpawner.instance.GroundStateChange();
             PopupManager.instance.ClosePopup();
