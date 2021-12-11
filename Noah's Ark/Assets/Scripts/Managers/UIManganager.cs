@@ -34,7 +34,7 @@ public class UIManganager : MonoSingleton<UIManganager>
         WaveManager.Instance.OnWaveCompleted += MinimapFocus;
         WaveManager.Instance.OnStageCompleted += MinimapFocus;
         WaveManager.Instance.OnWaveStarted += MinimapDefocus;
-
+        WaveManager.Instance.OnWaveStarted += SetText;
 
         if (startButton == null)
         {
@@ -65,29 +65,31 @@ public class UIManganager : MonoSingleton<UIManganager>
 
     public void MinimapFocus()  //웨이브 끝났을 때
     {
+        minimapCamera.targetTexture = null;
         if (TurretManager.Instance.GetCurrentTurret() != null) 
         {
             TurretManager.Instance.GetCurrentTurret().isPlayer = false;
-            minimapCamera.targetTexture = null;
             
         }
         minimapImage.gameObject.SetActive(false);
+        print("Focus");
     }
 
     public void MinimapDefocus() //웨이브 시작할 때
     {
         TurretManager.Instance.GetCurrentTurret().isPlayer = true;
-        minimapCamera.targetTexture = miniMapTexture;
         TurretManager.Instance.mainCam.transform.SetParent(TurretManager.Instance.GetCurrentTurret().camTrm);
+        minimapCamera.targetTexture = miniMapTexture;
         TurretManager.Instance.mainCam.transform.localPosition = Vector3.zero;
         TurretManager.Instance.mainCam.transform.localRotation = Quaternion.identity;
         minimapImage.gameObject.SetActive(true);
+        print("Defocus");
     }
 
     public void SetText() 
     {
-        //(int a, int b) = WaveManager.Instance.GetWaveData();
-        //waveText.text = string.Format("Wave {0} / {1}", a, b);
+        (int a, int b) = WaveManager.Instance.GetWaveData();
+        waveText.text = string.Format("Wave {0} / {1}", a, b);
 
     }
 }
