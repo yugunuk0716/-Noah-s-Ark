@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TowerGroundState
+{
+    None = 0,
+    Builded,
+}
+
 public class Ground : MonoBehaviour
 {
     public TowerGroundState state;
