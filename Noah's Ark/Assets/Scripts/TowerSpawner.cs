@@ -10,6 +10,7 @@ public class TowerSpawner : MonoBehaviour
     public static TowerSpawner instance;
 
     public bool isCreate = false;
+    public Camera minimapCam;
 
     public F3DTurret towerPrefab;
 
@@ -40,10 +41,12 @@ public class TowerSpawner : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && !TurretManager.Instance.IsPlayer())
         {
-            Vector3 pos = Input.mousePosition;
-            pos.z = Camera.main.farClipPlane;
+            //Vector3 pos = Input.mousePosition;
 
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //pos.z = Camera.main.farClipPlane;
+            //print("A");
+            //print($"{pos.x}, {pos.y},{pos.z}");
+            ray = minimapCam.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray,out hit, Mathf.Infinity))
             {
                 ground = hit.transform.GetComponent<Ground>();
@@ -55,7 +58,7 @@ public class TowerSpawner : MonoBehaviour
                     //이미 건설되어 있음
                     //정보를 넘겨줄게 있으면 여기서 넘겨주면됨
                     //물론 거기에 변수가 없다면 만들어야함 
-                    PopupManager.instance.OpenPopup("upgradeTower");
+                    //PopupManager.instance.OpenPopup("upgradeTower");
                 }
                 else
                 {

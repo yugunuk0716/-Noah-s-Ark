@@ -3195,6 +3195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCreate: 0
+  minimapCam: {fileID: 1529234320}
   towerPrefab: {fileID: 6731829567329881451, guid: 02c26f8fdd0660649a8d8872e6978b8b, type: 3}
   ground: {fileID: 0}
 --- !u!114 &2012619165
