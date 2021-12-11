@@ -19,11 +19,15 @@ public class MenuPopup : Popup
 
     public CanvasGroup menuWindow, optionWindow;
 
+    private Fade fade;
+
     
 
 
     void Start()
     {
+        fade = GetComponentInParent<Fade>();
+
         continueBtn.onClick.AddListener(() => PopupManager.instance.ClosePopup());
         optionButton.onClick.AddListener(() => OnClickOptionButton());
         homeButton.onClick.AddListener(() => OnClickHomeButton());
@@ -36,6 +40,7 @@ public class MenuPopup : Popup
         {
             F3DAudioController.instance.audioSource.GetComponent<AudioSource>().volume = sfxSlider.value;
         });
+
 
     }
 
@@ -80,6 +85,7 @@ public class MenuPopup : Popup
 
     private void OnClickHomeButton() 
     {
+        fade.FadeIn();
         SceneManager.LoadScene("Title");
     }
 
