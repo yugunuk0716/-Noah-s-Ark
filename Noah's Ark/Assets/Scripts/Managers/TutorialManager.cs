@@ -41,7 +41,6 @@ public class TutorialManager : MonoBehaviour
 
         skipImg.enabled = false;
         skipImg.transform.DOLocalMoveY(skipImg.transform.localPosition.y + 10f, 0.5f).SetLoops(-1, LoopType.Yoyo);
-
     }
 
     private void Update()
@@ -58,6 +57,10 @@ public class TutorialManager : MonoBehaviour
         ShowText("ÇÒ¸»", 1f);
         yield return new WaitUntil(() => isFinished);
         isFinished = false;
+
+        HidePanel(true, 1f);
+        yield return oneSecWait;
+        isTuto = false;
     }
 
     private void ShowText(string text, float dur = 1f)

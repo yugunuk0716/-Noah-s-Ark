@@ -49,7 +49,10 @@ public class GameManager : MonoSingleton<GameManager>
             UIManganager.Instance.mpBar.fillAmount = (float)_mp / maxMp;
         }
     }
-   
+    private void Awake()
+    {
+        StageManager.instance.InitStage();
+    }
 
 
     private void Start()
@@ -58,7 +61,7 @@ public class GameManager : MonoSingleton<GameManager>
         UIManganager.Instance.mpBar.fillAmount = (float)_mp / maxMp;
         UIManganager.Instance.moneyText.text = string.Format("ÀçÈ­ :  {0} ¿ø", _money);
 
-        StageManager.instance.InitStage();
+        
     }
 
 

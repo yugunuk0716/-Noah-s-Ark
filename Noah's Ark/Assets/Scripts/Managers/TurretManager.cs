@@ -17,7 +17,7 @@ public class TurretManager : MonoSingleton<TurretManager>
     void Start()
     {
         mainCam = Camera.main;
-        
+
     }
 
     // Update is called once per frame
@@ -49,14 +49,14 @@ public class TurretManager : MonoSingleton<TurretManager>
             turrets[currentTurretIndex].isPlayer = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.E))
         {
             turrets[currentTurretIndex].isPlayer = false;
             turrets[currentTurretIndex].shooter.fxController.Stop();
             currentTurretIndex--;
             if (0 > currentTurretIndex)
             {
-                currentTurretIndex = turrets.Count-1;
+                currentTurretIndex = turrets.Count - 1;
             }
             mainCam.transform.SetParent(turrets[currentTurretIndex].camTrm);
             mainCam.transform.localPosition = Vector3.zero;
@@ -66,9 +66,9 @@ public class TurretManager : MonoSingleton<TurretManager>
 
     }
 
-    public F3DTurret GetCurrentTurret() 
+    public F3DTurret GetCurrentTurret()
     {
-        if (turrets.Count == 0) 
+        if (turrets.Count == 0)
         {
             return null;
         }
@@ -76,16 +76,21 @@ public class TurretManager : MonoSingleton<TurretManager>
     }
 
 
-    public bool IsPlayer() 
+    public bool IsPlayer()
     {
-        foreach (var turret in turrets)
+        if (turrets == null) return false;
+
+        if(turrets.Count > 0)
         {
-            if (turret.isPlayer) 
+            foreach (var turret in turrets)
             {
-                return true;
+                if (turret == null) continue;
+                if (turret.isPlayer)
+                {
+                    return true;
+                }
             }
         }
-
 
         return false;
     }

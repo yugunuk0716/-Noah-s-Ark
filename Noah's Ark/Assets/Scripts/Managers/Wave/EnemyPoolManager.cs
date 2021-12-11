@@ -18,6 +18,18 @@ public class EnemyPoolManager : MonoSingleton<EnemyPoolManager>
 
     private void Awake()
     {
+        
+    }
+
+    private void Start()
+    {
+        GameObject obj = GameObject.Find("Pos");
+
+        for (int i = 0; i < obj.transform.childCount; i++)
+        {
+            int a = i;
+            enemyDestList.Add(obj.transform.GetChild(a));
+        }
         InitPool();
     }
 
