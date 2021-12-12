@@ -39,7 +39,7 @@ public class TowerSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && !TurretManager.Instance.IsPlayer())
+        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && !TurretManager.Instance.IsPlayer() && !TutorialManager.instance.Tuto_Ing())
         {
             //Vector3 pos = Input.mousePosition;
 
