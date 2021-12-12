@@ -13,6 +13,7 @@ public class AIHealthEventHandler : MonoBehaviour
         health = GetComponent<AIHealth>();
         // 사망
         health.OnDead += () => {
+            Debug.Log("Died");
             ActiveEnemyManager.Instance.Remove(health.gameObject);
             GameManager.Instance.Mp += mpGain;
         };
