@@ -63,11 +63,14 @@ public class TowerSpawner : MonoBehaviour
                 else
                 {
                     //건설 해야함
-                    towerSpawnPos = ground.towerPos;
-                    ground.attackRange.enabled = true;
-                    isCreate = true;
-                    PopupManager.instance.OpenPopup("createTower");
-
+                    if(GameManager.Instance.Money > 0)
+                    {
+                        GameManager.Instance.Money--;
+                        towerSpawnPos = ground.towerPos;
+                        ground.attackRange.enabled = true;
+                        isCreate = true;
+                        PopupManager.instance.OpenPopup("createTower");
+                    }
                 }
             }
         }
