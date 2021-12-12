@@ -199,7 +199,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: C L E A R
+  m_Text: F A I L
 --- !u!1 &1159403594356544129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 6044064214528824861}
   - component: {fileID: 6314334445517863033}
   m_Layer: 5
-  m_Name: ClearPanel
+  m_Name: FailPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

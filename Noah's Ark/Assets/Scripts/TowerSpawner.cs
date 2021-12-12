@@ -40,7 +40,7 @@ public class TowerSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && !TurretManager.Instance.IsPlayer())
+        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && !TurretManager.Instance.IsPlayer() && !TutorialManager.instance.Tuto_Ing())
         {
             //Vector3 pos = Input.mousePosition;
 
@@ -64,11 +64,14 @@ public class TowerSpawner : MonoBehaviour
                 else
                 {
                     //건설 해야함
-                    towerSpawnPos = ground.towerPos;
-                    ground.attackRange.enabled = true;
-                    isCreate = true;
-                    PopupManager.instance.OpenPopup("createTower");
-
+                    if(GameManager.Instance.Money > 0)
+                    {
+                        GameManager.Instance.Money--;
+                        towerSpawnPos = ground.towerPos;
+                        ground.attackRange.enabled = true;
+                        isCreate = true;
+                        PopupManager.instance.OpenPopup("createTower");
+                    }
                 }
             }
         }
