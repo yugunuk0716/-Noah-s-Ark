@@ -77,15 +77,16 @@ public class UIManganager : MonoSingleton<UIManganager>
 
     public void MinimapDefocus() //웨이브 시작할 때
     {
-            TurretManager.Instance.GetCurrentTurret().isPlayer = true;
-            TurretManager.Instance.mainCam.transform.SetParent(TurretManager.Instance.GetCurrentTurret().camTrm);
-            minimapCamera.targetTexture = miniMapTexture;
-            TurretManager.Instance.mainCam.transform.localPosition = Vector3.zero;
-            TurretManager.Instance.mainCam.transform.localRotation = Quaternion.identity;
         if (TurretManager.Instance.GetCurrentTurret() != null)
         {
+            TurretManager.Instance.GetCurrentTurret().isPlayer = true;
+            TurretManager.Instance.mainCam.transform.SetParent(TurretManager.Instance.GetCurrentTurret().camTrm);
+            TurretManager.Instance.mainCam.transform.localPosition = Vector3.zero;
+            TurretManager.Instance.mainCam.transform.localRotation = Quaternion.identity;
+
         }
-            
+
+        minimapCamera.targetTexture = miniMapTexture;
         minimapImage.gameObject.SetActive(true);
         print("Defocus");
     }
