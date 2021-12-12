@@ -36,14 +36,14 @@ namespace FORGE3D
         {
 
             // Fire turret
-            if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0))
             {
                 isFiring = true;
                 fxController.Fire();
             }
 
             // Stop firing
-            if ((turret.isPlayer && isFiring && Input.GetMouseButtonUp(0)) || EventSystem.current.IsPointerOverGameObject())
+            if ((turret.isPlayer && isFiring && Input.GetMouseButtonUp(0)))
             {
                 isFiring = false;
                 fxController.Stop();
