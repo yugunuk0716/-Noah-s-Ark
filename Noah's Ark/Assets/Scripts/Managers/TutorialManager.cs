@@ -79,7 +79,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => isFinished);
         isFinished = false;
 
-        ShowText("흰색 땅만 타워를 설치할 수 있습니다.", 1f);
+        ShowText("흰색 땅에만 타워를 설치할 수 있습니다.", 1f);
         yield return new WaitUntil(() => isFinished);
         isFinished = false;
 
@@ -99,7 +99,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => isFinished);
         isFinished = false;
 
-        ShowText("나머지 플레이 방식은 필요할 때 나와서 가르쳐드리도록 하겠습니다.", 1.8f);
+        ShowText("나머지 플레이 방식은 필요할 때 가르쳐드리도록 하겠습니다.", 1.8f);
         yield return new WaitUntil(() => isFinished);
         isFinished = false;
         isTutoStart = false;
@@ -116,7 +116,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => isFinished);
         isFinished = false;
 
-        ShowText("좌클릭시 공격을 할 수 있으먀, Space Bar로 MP를 사용하여 공격 스킬을 사용할 수 있습니다.", 2f);
+        ShowText("좌클릭시 공격을 할 수 있으며, Space Bar로 MP를 사용하여 공격 스킬을 사용할 수 있습니다.", 2f);
         yield return new WaitUntil(() => isFinished);
         isFinished = false;
 
