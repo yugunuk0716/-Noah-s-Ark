@@ -151,8 +151,8 @@ namespace FORGE3D
 
                 F3DTurret newScript = this.gameObject.AddComponent<F3DTurret>();
                 
-                newScript.HeadingLimit.x = -60f;
-                newScript.HeadingLimit.y = 60;
+                //newScript.HeadingLimit.x = -60f;
+                //newScript.HeadingLimit.y = 60;
                 newScript.ElevationLimit.x = -60f;
                 newScript.ElevationLimit.y = 60f;
                 newScript.ElevationTrackingSpeed = 30f;

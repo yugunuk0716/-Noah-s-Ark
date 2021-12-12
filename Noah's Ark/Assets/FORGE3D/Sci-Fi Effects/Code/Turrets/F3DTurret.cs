@@ -38,7 +38,9 @@ namespace FORGE3D
         private float curHeadingAngle;
         private float curElevationAngle;
 
-        public Vector2 HeadingLimit;
+        private Vector2 HeadingLimit;
+        public float headMin = 300f;
+        public float headMax = 60f;
         public Vector2 ElevationLimit;
 
         [HideInInspector]
@@ -53,7 +55,8 @@ namespace FORGE3D
         public Animator[] Animators;
         #endregion
 
-        public GameObject attackPossibleAngle;
+        //public GameObject attackPossibleAngle;
+        public GameObject crosshair;
         float arrange = 0;
 
         private void Awake()
@@ -86,13 +89,13 @@ namespace FORGE3D
         // Use this for initialization
         private void Start()
         {
+            
             targetPos = headTransform.transform.position + headTransform.transform.forward * 100f;
             defaultDir = Swivel.transform.forward;
             defaultRot = Quaternion.FromToRotation(transform.forward, defaultDir);
             fullAccess = true;
             StopAnimation();
-            //sr = attackPossibleAngle.GetComponent<SpriteRenderer>();
-            //sr.gameObject.SetActive(false);
+          
 
         }
 
@@ -241,9 +244,9 @@ namespace FORGE3D
                     ElevationTrackingSpeed * Time.deltaTime);
 
 
-                
 
-                if (Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y >= 300f && Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y <= 360 || 0 <= Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y && Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y  <= 60f) 
+
+                if (Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y >= headMin && Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y <= 360 || 0 <= Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y && Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y  <= headMax) 
                 {
                     
                     arrange = Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y;

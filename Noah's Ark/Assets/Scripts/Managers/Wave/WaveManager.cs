@@ -73,6 +73,11 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     }
 
+    public bool FirstWave()
+    {
+        return (waveIndex == 0 && midWaveIndex == 0);
+    }
+
     #region 웨이브
     /// <summary>
     /// 웨이브를 시작합니다.

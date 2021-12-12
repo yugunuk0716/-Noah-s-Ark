@@ -39,7 +39,7 @@ public class TowerSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && !TurretManager.Instance.IsPlayer())
+        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && !TurretManager.Instance.IsPlayer() && !TutorialManager.instance.Tuto_Ing())
         {
             //Vector3 pos = Input.mousePosition;
 
@@ -77,12 +77,12 @@ public class TowerSpawner : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 towerRot.y -= 90f;
-                ground.attackRange.transform.rotation = Quaternion.Euler(90, towerRot.y, 0);
+                ground.attackRange.transform.eulerAngles = new Vector3(90, towerRot.y + 270, 0);
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
                 towerRot.y += 90f;
-                ground.attackRange.transform.rotation = Quaternion.Euler(90, towerRot.y, 0);
+                ground.attackRange.transform.eulerAngles = new Vector3(90, towerRot.y +270, 0);
             }
         }
     }
@@ -92,10 +92,10 @@ public class TowerSpawner : MonoBehaviour
         isCreate = false;
         if(ground != null)
         {
-            ground.attackRange.transform.rotation = towerRot = initRot;
             ground.attackRange.enabled = false;
-            ground = null;
+            ground.attackRange.transform.rotation = towerRot = initRot;
         }
+        ground = null;
     }
 
     public void GroundStateChange()
@@ -111,8 +111,14 @@ public class TowerSpawner : MonoBehaviour
     {
         return towerSpawnPos;
     }
-    public F3DTurret CreateTower(Transform parent)
+    public void CreateTower(Transform parent)
     {
-        return Instantiate(towerPrefab, towerSpawnPos.position,towerRot, parent);
+        F3DTurret obj =  Instantiate(towerPrefab, towerSpawnPos.position,Quaternion.identity, parent);
+
+        obj.transform.localEulerAngles = new Vector3(0, towerRot.y, 0);
+        print(towerRot.y);
+        obj.transform.localScale = new Vector3(0.25f, 0.33f, 0.25f);
+        TurretManager.Instance.AddTurret(obj);
+
     }
 }

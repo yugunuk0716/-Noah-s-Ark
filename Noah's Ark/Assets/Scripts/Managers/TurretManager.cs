@@ -46,6 +46,7 @@ public class TurretManager : MonoSingleton<TurretManager>
         if (Input.GetKeyDown(KeyCode.Q))
         {
             turrets[currentTurretIndex].isPlayer = false;
+            turrets[currentTurretIndex].crosshair.SetActive(false);
             turrets[currentTurretIndex].shooter.fxController.Stop();
             currentTurretIndex++;
             if (turrets.Count <= currentTurretIndex)
@@ -56,11 +57,13 @@ public class TurretManager : MonoSingleton<TurretManager>
             mainCam.transform.localPosition = Vector3.zero;
             mainCam.transform.localRotation = Quaternion.identity;
             turrets[currentTurretIndex].isPlayer = true;
+            turrets[currentTurretIndex].crosshair.SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             turrets[currentTurretIndex].isPlayer = false;
+            turrets[currentTurretIndex].crosshair.SetActive(false);
             turrets[currentTurretIndex].shooter.fxController.Stop();
             currentTurretIndex--;
             if (0 > currentTurretIndex)
@@ -71,6 +74,7 @@ public class TurretManager : MonoSingleton<TurretManager>
             mainCam.transform.localPosition = Vector3.zero;
             mainCam.transform.localRotation = Quaternion.identity;
             turrets[currentTurretIndex].isPlayer = true;
+            turrets[currentTurretIndex].crosshair.SetActive(true);
         }
 
     }
