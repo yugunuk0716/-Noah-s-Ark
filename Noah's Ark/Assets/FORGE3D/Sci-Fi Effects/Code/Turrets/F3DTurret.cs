@@ -38,9 +38,7 @@ namespace FORGE3D
         private float curHeadingAngle;
         private float curElevationAngle;
 
-        private Vector2 HeadingLimit;
-        public float headMin = 300f;
-        public float headMax = 60f;
+        public Vector2 HeadingLimit;
         public Vector2 ElevationLimit;
 
         [HideInInspector]
@@ -58,6 +56,8 @@ namespace FORGE3D
         //public GameObject attackPossibleAngle;
         public GameObject crosshair;
         float arrange = 0;
+
+        private Vector3 originVec;
 
         private void Awake()
         {
@@ -89,14 +89,14 @@ namespace FORGE3D
         // Use this for initialization
         private void Start()
         {
-            
+            HeadingLimit = TowerSpawner.instance.GetLimit();
             targetPos = headTransform.transform.position + headTransform.transform.forward * 100f;
             defaultDir = Swivel.transform.forward;
             defaultRot = Quaternion.FromToRotation(transform.forward, defaultDir);
-            fullAccess = true;
+            fullAccess = false;
             StopAnimation();
-          
 
+            originVec = transform.forward;
         }
 
         // Autotrack
@@ -146,114 +146,40 @@ namespace FORGE3D
                 if (DebugTarget != null)
                     targetPos = DebugTarget.transform.position;
 
-
-                if (barrelTransform != null)
-                {
-                    /////// Heading
-                    headingVetor =
-                        Vector3.Normalize(F3DMath.ProjectVectorOnPlane(headTransform.up,
-                            targetPos - headTransform.position));
-                    float headingAngle =
-                        F3DMath.SignedVectorAngle(headTransform.forward, headingVetor, headTransform.up);
-                    float turretDefaultToTargetAngle = F3DMath.SignedVectorAngle(defaultRot * headTransform.forward,
-                        headingVetor, headTransform.up);
-                    float turretHeading = F3DMath.SignedVectorAngle(defaultRot * headTransform.forward,
-                        headTransform.forward, headTransform.up);
-
-                    float headingStep = HeadingTrackingSpeed * Time.deltaTime;
-
-                    // Heading step and correction
-                    // Full rotation
-                    if (HeadingLimit.x <= -180f && HeadingLimit.y >= 180f)
-                        headingStep *= Mathf.Sign(headingAngle);
-                    else // Limited rotation
-                        headingStep *= Mathf.Sign(turretDefaultToTargetAngle - turretHeading);
-
-                    // Hard stop on reach no overshooting
-                    if (Mathf.Abs(headingStep) > Mathf.Abs(headingAngle))
-                        headingStep = headingAngle;
-
-                    // Heading limits
-                    if (curHeadingAngle + headingStep > HeadingLimit.x &&
-                        curHeadingAngle + headingStep < HeadingLimit.y ||
-                        HeadingLimit.x <= -180f && HeadingLimit.y >= 180f || fullAccess)
-                    {
-                        curHeadingAngle += headingStep;
-                        headTransform.rotation = headTransform.rotation * Quaternion.Euler(0f, headingStep, 0f);
-                    }
-
-                    /////// Elevation
-                    Vector3 elevationVector =
-                        Vector3.Normalize(F3DMath.ProjectVectorOnPlane(headTransform.right,
-                            targetPos - barrelTransform.position));
-                    float elevationAngle =
-                        F3DMath.SignedVectorAngle(barrelTransform.forward, elevationVector, headTransform.right);
-
-                    // Elevation step and correction
-                    float elevationStep = Mathf.Sign(elevationAngle) * ElevationTrackingSpeed * Time.deltaTime;
-                    if (Mathf.Abs(elevationStep) > Mathf.Abs(elevationAngle))
-                        elevationStep = elevationAngle;
-
-                    // Elevation limits
-                    if (curElevationAngle + elevationStep < ElevationLimit.y &&
-                        curElevationAngle + elevationStep > ElevationLimit.x)
-                    {
-                        curElevationAngle += elevationStep;
-                        barrelTransform.rotation = barrelTransform.rotation * Quaternion.Euler(elevationStep, 0f, 0f);
-                    }
-                }
-
-
                 Transform barrelX = barrelTransform;
                 Transform barrelY = Swivel.transform;
 
                 //finding position for turning just for X axis (down-up)
-
                 Vector3 targetX = targetPos - barrelX.transform.position;
-
                 Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
 
                 barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
                     HeadingTrackingSpeed * Time.deltaTime);
                 barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
 
-
-
                 //checking for turning up too much
                 if (barrelX.transform.localEulerAngles.x >= 180f &&
-                    barrelX.transform.localEulerAngles.x <= (360f - ElevationLimit.y))
+                    barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
                 {
                     barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
                 }
 
                 //down
-                else if (barrelX.transform.localEulerAngles.x <= 180f &&
-                         barrelX.transform.localEulerAngles.x >= -ElevationLimit.x)
+                else if (barrelX.transform.localEulerAngles.x < 180f &&
+                         barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
                 {
                     barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
                 }
 
                 //finding position for turning just for Y axis
-
                 Vector3 targetY = targetPos;
                 targetY.y = barrelY.position.y;
-                //Mathf.Clamp( targetY.y, HeadingLimit.x, HeadingLimit.y);
+
                 Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
 
                 barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
                     ElevationTrackingSpeed * Time.deltaTime);
-
-
-
-
-                if (Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y >= headMin && Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y <= 360 || 0 <= Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y && Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y  <= headMax) 
-                {
-                    
-                    arrange = Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y;
-                    
-                }
-                
-                barrelY.transform.localEulerAngles = new Vector3(0f, arrange, 0f);
+                barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
 
                 if (!fullAccess)
                 {
@@ -271,86 +197,92 @@ namespace FORGE3D
                         barrelY.transform.localEulerAngles = new Vector3(0f, -HeadingLimit.x, 0f);
                     }
                 }
-
-
-
-                if (DebugDraw)
-                    Debug.DrawLine(barrelTransform.position,
-                        barrelTransform.position +
-                        barrelTransform.forward * Vector3.Distance(barrelTransform.position, targetPos), Color.red);
             }
-            //else 
+
+            if (DebugDraw)
+                Debug.DrawLine(barrelTransform.position,
+                    barrelTransform.position +
+                    barrelTransform.forward * Vector3.Distance(barrelTransform.position, targetPos), Color.red);
+            //Transform barrelX = barrelTransform;
+            //Transform barrelY = Swivel.transform;
+
+            ////finding position for turning just for X axis (down-up)
+
+            //Vector3 targetX = targetPos - barrelX.transform.position;
+
+            //Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
+
+            //barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
+            //    HeadingTrackingSpeed * Time.deltaTime);
+            //barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
+
+
+
+            ////checking for turning up too much
+            //if (barrelX.transform.localEulerAngles.x >= 180f &&
+            //    barrelX.transform.localEulerAngles.x <= (360f - ElevationLimit.y))
             //{
-            //    Transform barrelX = barrelTransform;
-            //    Transform barrelY = Swivel.transform;
+            //    barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
+            //}
 
-            //    //finding position for turning just for X axis (down-up)
+            ////down
+            //else if (barrelX.transform.localEulerAngles.x <= 180f &&
+            //         barrelX.transform.localEulerAngles.x >= -ElevationLimit.x)
+            //{
+            //    barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
+            //}
 
+            ////finding position for turning just for Y axis
 
+            //Vector3 targetY = targetPos;
+            //print(targetY);
+            //targetY.y = barrelY.position.y;
+            //Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
 
-            //    if (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position) != null) 
-            //    {
-
-            //        Vector3 targetX = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - barrelX.transform.position;
-
-            //        Quaternion targetRotationX = Quaternion.LookRotation(targetX, headTransform.up);
-
-            //        barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
-            //            HeadingTrackingSpeed * Time.deltaTime);
-            //        barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
-
-            //    }
-               
-               
+            ////barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
+            ////   ElevationTrackingSpeed * Time.deltaTime);
 
 
-            //    //checking for turning up too much
-            //    if (barrelX.transform.localEulerAngles.x >= 180f &&
-            //        barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
-            //    {
-            //        barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
-            //    }
+            //print(HeadingLimit);
 
-            //    //down
-            //    else if (barrelX.transform.localEulerAngles.x < 180f &&
-            //             barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
-            //    {
-            //        barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
-            //    }
-
-            //    if (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position) != null)
-            //    {
-            //        //finding position for turning just for Y axis
-            //        Vector3 targetY = new Vector3(30f, 0);
-            //        Vector3 targetDir = (ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position - transform.position).normalized;
-            //        float dot = Vector3.Dot(transform.forward, targetDir);
-            //        float degree = Mathf.Acos(dot) * Mathf.Rad2Deg;
-
-            //        if (HeadingLimit.x < degree && degree < HeadingLimit.y)
-            //        {
-            //            targetY = ActiveEnemyManager.Instance.GetEnemy(ActiveEnemyManager.SearchType.CLOSEST, transform.position).transform.position;
-            //            targetY.y = barrelY.position.y;
-            //        }
-            //        Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
-
-            //        barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
-            //            ElevationTrackingSpeed * Time.deltaTime);
-            //        barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
-
-            //    }
-                
-                
+            ////float angle = Quaternion.FromToRotation(Vector3.right, barrelY.right).eulerAngles.y;
 
 
+            //Vector3 currentVec = barrelY.forward;
+
+
+            //print($"anmgle : {Vector3.Angle(currentVec, originVec)}");
+
+
+            //if (Vector3.Angle(currentVec, originVec) < HeadingLimit.y)
+
+            //{
 
 
             //}
 
+
+
+
+
+
+
+            //if (DebugDraw)
+            //    Debug.DrawLine(barrelTransform.position,
+            //        barrelTransform.position +
+            //        barrelTransform.forward * Vector3.Distance(barrelTransform.position, targetPos), Color.red);
         }
 
 
-        
 
-        
+
+
+
+
     }
+
+
+
+
+
 }

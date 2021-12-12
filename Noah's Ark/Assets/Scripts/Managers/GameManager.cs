@@ -59,7 +59,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         UIManganager.Instance.hpBar.fillAmount = (float)_hp / maxHp;
         UIManganager.Instance.mpBar.fillAmount = (float)_mp / maxMp;
-        UIManganager.Instance.moneyText.text = string.Format("재화 :  {0} 원", _money);
+        UIManganager.Instance.moneyText.text = string.Format("설치 가능한 타워 수 :  {0} 개", _money);
 
         
     }

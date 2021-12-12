@@ -16,6 +16,7 @@ public class TowerSpawner : MonoBehaviour
 
     private Transform towerSpawnPos;
 
+
     public Ground ground;
 
     Quaternion towerRot;
@@ -34,7 +35,7 @@ public class TowerSpawner : MonoBehaviour
         instance = this;
 
         towerRot = Quaternion.identity;
-        initRot = Quaternion.Euler(90, 0, 0);
+        initRot = Quaternion.Euler(90f, 0, 0);
     }
 
     private void Update()
@@ -77,12 +78,14 @@ public class TowerSpawner : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 towerRot.y -= 90f;
-                ground.attackRange.transform.eulerAngles = new Vector3(90, towerRot.y + 270, 0);
+
+                ground.attackRange.transform.eulerAngles = new Vector3(90f, towerRot.y + 270f, 0f);
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
                 towerRot.y += 90f;
-                ground.attackRange.transform.eulerAngles = new Vector3(90, towerRot.y +270, 0);
+
+                ground.attackRange.transform.eulerAngles = new Vector3(90f, towerRot.y +270f, 0f);
             }
         }
     }
@@ -120,5 +123,12 @@ public class TowerSpawner : MonoBehaviour
         obj.transform.localScale = new Vector3(0.25f, 0.33f, 0.25f);
         TurretManager.Instance.AddTurret(obj);
 
+    }
+
+    public Vector2 GetLimit() 
+    {
+        float limitAngle = 120f;
+
+        return new Vector2(-(limitAngle / 2f), limitAngle / 2f);
     }
 }

@@ -627,7 +627,7 @@ MonoBehaviour:
   ElevationTrackingSpeed: 1
   headingVetor: {x: 0, y: 0, z: 0}
   HeadingLimit: {x: -50, y: 50}
-  ElevationLimit: {x: -30, y: 0}
+  ElevationLimit: {x: -40, y: 0}
   shooter: {fileID: 0}
   DebugDraw: 1
   DebugTarget: {fileID: 0}
