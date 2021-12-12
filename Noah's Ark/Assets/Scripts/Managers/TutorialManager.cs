@@ -112,7 +112,6 @@ public class TutorialManager : MonoBehaviour
         HidePanel(false, 1f);
         yield return oneSecWait;
 
-        WaveManager.Instance.DoNotSpawn = true;
         ShowText("Wave가 시작하면 터렛에 들어갈 수 있습니다. 또한 Q,E키를 사용하여 타고 있는 터렛을 바꿀수 있습니다.", 2.5f);
         yield return new WaitUntil(() => isFinished);
         isFinished = false;
