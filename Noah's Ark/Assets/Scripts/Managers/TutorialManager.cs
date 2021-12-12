@@ -129,7 +129,7 @@ public class TutorialManager : MonoBehaviour
         isFinished = false;
 
         isWaveStart = false;
-
+        WaveManager.Instance.DoNotSpawn = false;
         HidePanel(true, 1f);
         yield return oneSecWait;
         isTuto = false;

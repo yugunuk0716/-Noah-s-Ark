@@ -30,6 +30,7 @@ public class UIManganager : MonoSingleton<UIManganager>
             if(WaveManager.Instance.FirstWave())
             {
                 TutorialManager.instance.isWaveStart = true;
+                WaveManager.Instance.DoNotSpawn = true;
             }
             WaveManager.Instance.StartNewWave();
         });
