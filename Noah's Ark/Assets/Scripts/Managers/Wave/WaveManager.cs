@@ -28,6 +28,12 @@ public class WaveManager : MonoSingleton<WaveManager>
     public event System.Action OnStageCompleted;
     #endregion
 
+    private bool _doNotSpawn = false;
+    public bool DoNotSpawn { 
+        get { return _doNotSpawn; }
+        set { _doNotSpawn = value; }
+    }
+
     public bool IsSpawnFinished { get; private set; } = true;
     public bool IsWaveFinished { get; private set; } = true;
     public bool NomoreWaveLeft { get; private set; } = false;
@@ -99,6 +105,8 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         while (true)
         {
+            if(DoNotSpawn) continue;
+
             time += Time.deltaTime;
             if (time >= waves[waveIndex][midWaveIndex].time)
             {
@@ -154,6 +162,6 @@ public class WaveManager : MonoSingleton<WaveManager>
     /// <returns>현재 웨이브 / 총 웨이브</returns>
     public (int, int) GetWaveData()
     {
-        return (waveIndex, waves.Count);
+        return (waveIndex + 1, waves.Count);
     }
 }
