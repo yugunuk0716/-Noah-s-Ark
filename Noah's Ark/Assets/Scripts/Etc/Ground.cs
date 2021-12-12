@@ -20,6 +20,8 @@ public class Ground : MonoBehaviour
         state = TowerGroundState.None;
         towerPos = transform.GetChild(0);
         attackRange = transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        attackRange.transform.eulerAngles = new Vector3(90, 270, 0);
     }
 
     public void ChangeTowerGroundState(TowerGroundState state)

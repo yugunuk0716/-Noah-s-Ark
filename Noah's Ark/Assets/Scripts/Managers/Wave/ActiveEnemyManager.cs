@@ -45,6 +45,7 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     {
         activeEnemyList.Add(enemy);
         activeEnemyMoveManagementList.Add(enemy.GetComponent<IMoveManagement>());
+        enemy.GetComponent<ISpawnable>()?.OnSpawn(enemy);
 
         OnSpawnEnemy(enemy);
 

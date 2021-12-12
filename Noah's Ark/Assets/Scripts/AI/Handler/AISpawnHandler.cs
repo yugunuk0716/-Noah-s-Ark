@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AISpawnHandler : MonoBehaviour
+public class AISpawnHandler : MonoBehaviour, ISpawnable
 {
     AIHealth health;
     AIMove move;
@@ -16,11 +16,9 @@ public class AISpawnHandler : MonoBehaviour
         move   = GetComponent<AIMove>();
         anim   = GetComponent<AIAnimation>();
         aiBase = GetComponent<AIBase>();
-
-        ActiveEnemyManager.Instance.OnSpawnEnemy += OnSpawn; // TODO : 이거 조금 잘못됨. 하나 생성될때 전부 호출됨
     }
 
-    private void OnSpawn(GameObject enemy)
+    public void OnSpawn(GameObject enemy)
     {
         Debug.Log("OnSpawnEnemy");
         health.HP = health.DefaultHP;

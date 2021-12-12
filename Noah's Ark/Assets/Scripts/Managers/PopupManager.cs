@@ -48,12 +48,13 @@ public class PopupManager : MonoBehaviour
         //최초로 열리는 팝업
         if (popupStack.Count == 0)
         {
-            popupCanvasGroup.interactable = true;
-            DOTween.To(() => popupCanvasGroup.alpha, value => popupCanvasGroup.alpha = value, 1, 0.8f).OnComplete(() =>
-            {
+            //popupCanvasGroup.interactable = true;
+            //DOTween.To(() => popupCanvasGroup.alpha, value => popupCanvasGroup.alpha = value, 1, 0.8f).OnComplete(() =>
+            //{
+                popupCanvasGroup.alpha = 1;
                 popupCanvasGroup.interactable = true;
                 popupCanvasGroup.blocksRaycasts = true;
-            });
+            //});
 
         }
         popupStack.Push(popupDic[name]);
@@ -65,11 +66,12 @@ public class PopupManager : MonoBehaviour
         popupStack.Pop().Close();
         if (popupStack.Count == 0)
         {
-            DOTween.To(() => popupCanvasGroup.alpha, value => popupCanvasGroup.alpha = value, 0, 0.8f).OnComplete(() =>
-            {
+            //DOTween.To(() => popupCanvasGroup.alpha, value => popupCanvasGroup.alpha = value, 0, 0.8f).OnComplete(() =>
+            //{
+                popupCanvasGroup.alpha = 0;
                 popupCanvasGroup.interactable = false;
                 popupCanvasGroup.blocksRaycasts = false;
-            });
+            //});
         }
 
 
