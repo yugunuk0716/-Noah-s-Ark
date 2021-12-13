@@ -6,7 +6,7 @@ using FORGE3D;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    private int _money = 0;
+    private int _money = 1;
     public int Money 
     {
         get {
@@ -15,7 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         set {
             _money = value;
-            UIManganager.Instance.moneyText.text = string.Format("??? :  {0} ??",_money);
+            UIManganager.Instance.moneyText.text = string.Format("설치 가능한 타워 수 :  {0} 개", _money);
         }
     }
 
@@ -57,6 +57,10 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
+        Money = 1;
+        Hp = 100;
+        Mp = 100;
+
         UIManganager.Instance.hpBar.fillAmount = (float)_hp / maxHp;
         UIManganager.Instance.mpBar.fillAmount = (float)_mp / maxMp;
         UIManganager.Instance.moneyText.text = string.Format("설치 가능한 타워 수 :  {0} 개", _money);
