@@ -42,7 +42,7 @@ public class AIHealth : MonoBehaviour
 
         }
     }
-    public int DefaultHP { get; private set; } = 20;
+    public int DefaultHP { get; private set; } = 10;
 
     protected virtual void Awake()
     {
