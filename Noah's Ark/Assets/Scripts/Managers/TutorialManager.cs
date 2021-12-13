@@ -47,7 +47,10 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Tutorial());
+        if(StageManager.instance.Stage == 0)
+        {
+            StartCoroutine(Tutorial());
+        }
     }
 
     private void Update()
