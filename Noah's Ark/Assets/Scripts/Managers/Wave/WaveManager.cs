@@ -106,6 +106,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         while (true)
         {
+            yield return null;
             if(DoNotSpawn) continue;
 
             time += Time.deltaTime;
@@ -115,7 +116,6 @@ public class WaveManager : MonoSingleton<WaveManager>
 
                 if(midWaveIndex >= waves[waveIndex].spawnData.Length) break;
             }
-            yield return null;
         }
 
         if(waveIndex >= waves.Count) NomoreWaveLeft = true;
