@@ -5116,6 +5116,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  isSkill: 1
   lifeTime: 5
   despawnDelay: 1
   velocity: 200

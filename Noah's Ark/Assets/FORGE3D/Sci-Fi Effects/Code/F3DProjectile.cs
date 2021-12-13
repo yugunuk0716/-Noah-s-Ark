@@ -7,6 +7,7 @@ namespace FORGE3D
     {
         //public F3DFXType fxType; // Weapon type 
         public LayerMask layerMask;
+        public bool isSkill = false;
         public float lifeTime = 5f; // Projectile life time
         public float despawnDelay; // Delay despawn in ms
         public float velocity = 300f; // Projectile velocity
@@ -82,7 +83,14 @@ namespace FORGE3D
 
                 if (hitPoint.collider.CompareTag("Enemy"))
                 {
-                    hitPoint.collider.GetComponent<AIHealth>().HP -= 2;
+                    if (!isSkill) 
+                    {
+                        hitPoint.collider.GetComponent<AIHealth>().HP -= 2;
+                    }
+                    else
+                    {
+                        hitPoint.collider.GetComponent<AIHealth>().HP -= 5;
+                    }
                 }
             }
         }

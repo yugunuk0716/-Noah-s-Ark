@@ -11,7 +11,7 @@ namespace FORGE3D
         RaycastHit hitInfo; // Raycast structure
         private bool isFiring; // Is turret currently in firing state
         private F3DTurret turret;
-        private int mpDecreaseAmount = 10;
+        private int mpDecreaseAmount = 20;
         [HideInInspector]
         public F3DFXController fxController;
 
@@ -21,7 +21,6 @@ namespace FORGE3D
         {
             turret = GetComponent<F3DTurret>();
             fxController = GetComponent<F3DFXController>();
-            //fxController.SetTurretSocket(turretSockets);
         }
 
         void Update()
@@ -35,26 +34,29 @@ namespace FORGE3D
         void CheckForFire()
         {
 
-            // Fire turret
-            if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0))
+            if (!TutorialManager.instance.Tuto_Ing()) 
             {
-                isFiring = true;
-                fxController.Fire();
-            }
+                // Fire turret
+                if (turret.isPlayer && !isFiring && Input.GetMouseButtonDown(0))
+                {
+                    isFiring = true;
+                    fxController.Fire();
+                }
 
-            // Stop firing
-            if ((turret.isPlayer && isFiring && Input.GetMouseButtonUp(0)))
-            {
-                isFiring = false;
-                fxController.Stop();
-            }
-            if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.Mp >= mpDecreaseAmount)
-            {
-                isFiring = true;
-                GameManager.Instance.Mp -= mpDecreaseAmount;
-                fxController.Fire(isFiring);
-                fxController.Stop();
-                isFiring = false;
+                // Stop firing
+                if ((turret.isPlayer && isFiring && Input.GetMouseButtonUp(0)) || WaveManager.Instance.IsWaveFinished)
+                {
+                    isFiring = false;
+                    fxController.Stop();
+                }
+                if (turret.isPlayer && !isFiring && Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.Mp >= mpDecreaseAmount)
+                {
+                    isFiring = true;
+                    GameManager.Instance.Mp -= mpDecreaseAmount;
+                    fxController.Fire(isFiring);
+                    fxController.Stop();
+                    isFiring = false;
+                }
             }
 
         }
