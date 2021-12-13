@@ -13,9 +13,13 @@ public class CreateTowerPopup : Popup
     {
         closeBtn.onClick.AddListener(() =>PopupManager.instance.ClosePopup());
         createBtn.onClick.AddListener(() => {
-            TowerSpawner.instance.CreateTower(TowerSpawner.instance.GetTowerSpawnPos().parent);
-            TowerSpawner.instance.GroundStateChange();
-            PopupManager.instance.ClosePopup();
+            if (GameManager.Instance.Money > 0)
+            {
+                GameManager.Instance.Money--;
+                TowerSpawner.instance.CreateTower(TowerSpawner.instance.GetTowerSpawnPos().parent);
+                TowerSpawner.instance.GroundStateChange();
+                PopupManager.instance.ClosePopup();
+            }
         });
     }
 
