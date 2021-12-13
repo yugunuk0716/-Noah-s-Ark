@@ -135,10 +135,18 @@ public class ActiveEnemyManager : MonoSingleton<ActiveEnemyManager>
     {
         if(activeEnemyList.Count == 0)
         {
-            if(WaveManager.Instance.NomoreWaveLeft)
+            if(WaveManager.Instance.NomoreWaveLeft && !WaveManager.Instance.IsSpawning) {
+
                 WaveManager.Instance.SetStageCompleted();
-            if(WaveManager.Instance.IsSpawnFinished)
+            }
+
+            if(WaveManager.Instance.IsSpawnFinished && !WaveManager.Instance.IsSpawning) {
+                Debug.LogWarning("SpawnFinished: " + WaveManager.Instance.IsSpawnFinished);
+                Debug.LogWarning("IsSpawning: " + WaveManager.Instance.IsSpawning);
+                Debug.LogWarning("activeEnemyList: " + activeEnemyList.Count);
+                Debug.LogWarning("");
                 WaveManager.Instance.SetWaveCompleted();
+            }
         }
     }
 

@@ -27,13 +27,6 @@ public class AIHealth : MonoBehaviour
             int lastHP = _hp;
             _hp = value;
 
-            Debug.Log("");
-            Debug.Log("LASTHP: " + lastHP);
-            Debug.Log("HP:" + _hp);
-            Debug.Log("VALUE: " + value);
-            Debug.Log("");
-
-
             if (_hp < lastHP) // 공격 받은 경우만
             {
                 if (_hp > 0) OnHealthDecreased(); // 데미지

@@ -6,6 +6,7 @@ public class WaveEndHandler : MonoBehaviour
     {
         WaveManager.Instance.OnWaveCompleted += () => {
             ++GameManager.Instance.Money;
+            Debug.Log(GameManager.Instance.Money);
         };
     }
 }

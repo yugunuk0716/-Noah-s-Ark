@@ -38,6 +38,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     public bool IsSpawnFinished { get; private set; } = true;
     public bool IsWaveFinished { get; private set; } = true;
     public bool NomoreWaveLeft { get; private set; } = false;
+    public bool IsSpawning { get; private set; } = false;
     public bool StageCleared { get; private set; } = false;
 
     public Difficulty difficulty = Difficulty.NORMAL; // 아직은 적용 안함
@@ -92,7 +93,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     public void StartNewWave()
     {
         Debug.Log("Called StartWave:" + IsWaveFinished);
-        if(IsWaveFinished && !StageCleared)
+        if(!StageCleared && IsSpawnFinished && IsWaveFinished)
         {
             IsWaveFinished = false;
             IsSpawnFinished = false;
@@ -148,6 +149,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     IEnumerator SpawnEnemy(SpawnAmountVO spawnData)
     {
         WaitForSeconds wait = new WaitForSeconds(spawnData.delay);
+        IsSpawning = true;
 
         //EnemyPoolManager.Instance.Spawn(spawnData);
         for (int i = 0; i < spawnData.spawnList.Count; ++i)
@@ -155,6 +157,8 @@ public class WaveManager : MonoSingleton<WaveManager>
             yield return wait;
             EnemyPoolManager.Instance.Spawn(spawnData.spawnList[i]);
         }
+
+        IsSpawning = false;
     }
 
     /// <summary>
