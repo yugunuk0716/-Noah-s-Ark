@@ -1,3 +1,4 @@
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +55,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     {
         while(waveIndex < waveCount)
         {
-            string waveJson = JsonFileManager.Read(waveName + ++waveIndex);
+            string waveJson = JsonFileManager.Read(waveName + ++waveIndex, Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Waves"), true);
             Debug.Log(waveJson);
 
             if(waveJson == null) break;

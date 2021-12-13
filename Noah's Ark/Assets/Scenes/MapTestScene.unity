@@ -236,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &40262192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &281977217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2527,7 +2527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1834313592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2623,7 +2623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1969914904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2827,7 +2827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2143686218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2841,20 +2841,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnData:
-  - time: 1
+  - time: 0.5
+    spawn:
+      delay: 0.8
+      spawnList: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - time: 1.5
     spawn:
       delay: 0.8
       spawnList: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
-  - time: 0.5
+  - time: 1.5
     spawn:
-      delay: 0.5
-      spawnList: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
-  - time: 2
-    spawn:
-      delay: 0.25
-      spawnList: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
+      delay: 0.8
+      spawnList: 02000000020000000200000002000000020000000200000002000000020000000200000002000000
   waveName: wave
-  waveNumber: 2
+  waveNumber: 15
 --- !u!4 &2143686219
 Transform:
   m_ObjectHideFlags: 0
