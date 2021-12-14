@@ -47,6 +47,6 @@ public class WaveCreater : MonoBehaviour
             // waveJson.Add(JsonUtility.ToJson(spawnData[i]));
         }
 
-        JsonFileManager.Write(waveName + waveNumber.ToString(), JsonUtility.ToJson(new WaveVO(spawnData)), Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Waves"), true);
+        JsonFileManager.Write(waveName + waveNumber.ToString(), JsonUtility.ToJson(new WaveVO(spawnData)), Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Resources", "Waves"), true);
     }
 }
