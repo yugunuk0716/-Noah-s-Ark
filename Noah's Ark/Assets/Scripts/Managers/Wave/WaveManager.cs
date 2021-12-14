@@ -119,7 +119,7 @@ public class WaveManager : MonoSingleton<WaveManager>
             }
         }
 
-        if(waveIndex >= waves.Count) NomoreWaveLeft = true;
+        if(waveIndex + 1 >= waves.Count) NomoreWaveLeft = true;
 
         IsSpawnFinished = true;
     }
