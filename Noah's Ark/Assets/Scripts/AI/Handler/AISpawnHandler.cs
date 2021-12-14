@@ -23,7 +23,6 @@ public class AISpawnHandler : MonoBehaviour, ISpawnable
         Debug.Log("OnSpawnEnemy");
         health.HP = health.DefaultHP + (int)aiBase.GetEnemyType() * 5;
         move.SetDefaultSpeed((int)anim.CurrentRunMode); // RunMode 에 른 속도
-        Debug.Log("Type:" + aiBase.GetEnemyType());
         anim.SetRunmode((AIAnimation.RunMode)aiBase.GetEnemyType());
         ActiveEnemyManager.Instance.OnSpawnEnemy -= OnSpawn;
     }

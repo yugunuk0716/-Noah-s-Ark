@@ -9,8 +9,8 @@ public class AIAnimation : MonoBehaviour
     public enum RunMode
     {
         IDLE = 0,
-        WALK,
-        RUN,
+        WALK = 1,
+        RUN = 2,
         DASH
     }
 
@@ -33,5 +33,6 @@ public class AIAnimation : MonoBehaviour
     {
         animator.SetInteger(runModeHash, (int)mode);
         CurrentRunMode = mode;
+        Debug.LogWarning("RunMode: " + mode);
     }
 }
