@@ -12,7 +12,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     //[Header("sfx")]
     //
 
-    
+    private void Start()
+    {
+        PlayBgmSound(ingameBgm);
+    }
+
     public void PlayBgmSound(AudioClip clip)
     {
         bgmSource.clip = clip;
