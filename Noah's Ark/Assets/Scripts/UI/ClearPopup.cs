@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ClearPopup : Popup
 {
-    public Button nextStageButton;
+    // public Button nextStageButton;
     public Button goStageSelectButton;
     public Button retryButton;
 
@@ -16,27 +16,27 @@ public class ClearPopup : Popup
     {
         fade = GetComponentInParent<Fade>();
 
-        nextStageButton.onClick.AddListener(OnClickNextStageButton);
+        // nextStageButton.onClick.AddListener(OnClickNextStageButton);
         goStageSelectButton.onClick.AddListener(OnClickGoStageSelectButton);
         retryButton.onClick.AddListener(OnClickRetryButton);
     }
 
-    private void OnClickNextStageButton() 
-    {
-        fade.FadeIn();
-        StageManager.instance.Stage++;
-        SceneManager.LoadScene("InGame");
-    }
+    // private void OnClickNextStageButton() 
+    // {
+    //     fade.FadeIn();
+    //     StageManager.instance.Stage++;
+    //     SceneManager.LoadScene("InGame");
+    // }
 
     private void OnClickGoStageSelectButton() 
     {
         fade.FadeIn();
-        SceneManager.LoadScene("Stage");
+        SceneManager.LoadScene("StageSelect");
     }
 
     private void OnClickRetryButton() 
     {
         fade.FadeIn();
-        SceneManager.LoadScene("InGame");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
