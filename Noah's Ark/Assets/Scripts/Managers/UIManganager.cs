@@ -27,7 +27,7 @@ public class UIManganager : MonoSingleton<UIManganager>
     {
         waveStartButton.onClick.AddListener(() => 
         {
-            if(WaveManager.Instance.FirstWave())
+            if(StageManager.instance.Stage == 0 && TutorialManager.instance.tutoComplete == 0)
             {
                 TutorialManager.instance.isWaveStart = true;
                 WaveManager.Instance.DoNotSpawn = true;
