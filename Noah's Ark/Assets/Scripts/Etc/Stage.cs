@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class Stage : MonoBehaviour
 {
-    public Transform btnParent;
-    private Button[] stageBtns;
+    // public Transform btnParent;
+    public Button[] stageBtns;
 
     private void Start()
     {
-        stageBtns = btnParent.GetComponentsInChildren<Button>();
+        // stageBtns = btnParent.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < stageBtns.Length; i++)
         {
