@@ -54,9 +54,12 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private void Awake()
     {
+        Debug.Log(Application.persistentDataPath);
         while(waveIndex < waveCount)
         {
-            string waveJson = JsonFileManager.Read(waveName + ++waveIndex, Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Resources", "Waves"), true);
+            string waveJson = JsonFileManager.Read(waveName + ++waveIndex, Path.Combine(Directory.GetCurrentDirectory(), "Waves"), true);
+            // string waveJson = JsonFileManager.Read(waveName + ++waveIndex, Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Resources", "Waves"), true);
+            // string waveJson = JsonFileManager.Read(waveName + ++waveIndex, "waves");
             Debug.Log(waveJson);
 
             if(waveJson == null) break;
