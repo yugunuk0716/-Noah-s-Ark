@@ -31,8 +31,8 @@ public class StageManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public GameObject InitStage()
-    {
-        return Instantiate(mapPrfabs[Stage]);
-    }
+    //public GameObject InitStage()
+    //{
+    //    return Instantiate(mapPrfabs[Stage]);
+    //}
 }

@@ -51,7 +51,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private void Awake()
     {
-        StageManager.instance.InitStage();
+        //StageManager.instance.InitStage();
     }
 
 
