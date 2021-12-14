@@ -12,7 +12,7 @@ public class Title : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            SceneManager.LoadScene("StageSelect");
+            SceneManager.LoadScene("Stage");
         }
     }
 }
