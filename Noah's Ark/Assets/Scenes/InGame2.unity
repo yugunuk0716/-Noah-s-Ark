@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18956414, g: 0.2306486, b: 0.19841394, a: 1}
+  m_IndirectSpecularColor: {r: 0.18959248, g: 0.23062879, b: 0.19839135, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3336,7 +3336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 1691218147}
-  ingameBgm: {fileID: 8300000, guid: 1e83804c3dabf3349b8ea8394cd8e05a, type: 3}
+  ingameBgm: {fileID: 8300000, guid: ca13232e57628ed418ec4ccdebea2600, type: 3}
 --- !u!114 &2012619163
 MonoBehaviour:
   m_ObjectHideFlags: 0
