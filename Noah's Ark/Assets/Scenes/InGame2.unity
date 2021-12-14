@@ -3293,6 +3293,7 @@ MonoBehaviour:
   createTowerPopupPrefab: {fileID: 8489069019439166424, guid: bad31e136101f2d4c9620b5b9c27f998, type: 3}
   upgradeTowerPopupPrefab: {fileID: 7255983615095072032, guid: 34bc012776ca49f48bcb4d5c85cc973f, type: 3}
   menuPopupPrefab: {fileID: 6727298661518563720, guid: 0aba5667d527b494b9e9688cc5c9a560, type: 3}
+  clearPopupPrefab: {fileID: 6314334445517863033, guid: fb247796d2fd6d74bae47cb2cf9d81cd, type: 3}
 --- !u!4 &2012619159
 Transform:
   m_ObjectHideFlags: 0

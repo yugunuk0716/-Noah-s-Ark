@@ -36,6 +36,7 @@ public class UIManganager : MonoSingleton<UIManganager>
         });
         SetText();
 
+        WaveManager.Instance.OnStageCompleted += () => { PopupManager.instance.OpenPopup("clear"); };
         WaveManager.Instance.OnWaveCompleted += MinimapFocus;
         WaveManager.Instance.OnStageCompleted += MinimapFocus;
         WaveManager.Instance.OnWaveStarted += MinimapDefocus;

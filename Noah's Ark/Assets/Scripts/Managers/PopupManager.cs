@@ -12,6 +12,7 @@ public class PopupManager : MonoBehaviour
     public CreateTowerPopup createTowerPopupPrefab;
     public UpgradeTowerPopup upgradeTowerPopupPrefab;
     public MenuPopup menuPopupPrefab;
+    public ClearPopup clearPopupPrefab;
 
     private Dictionary<string, Popup> popupDic = new Dictionary<string, Popup>();
     private Stack<Popup> popupStack = new Stack<Popup>();
@@ -41,6 +42,7 @@ public class PopupManager : MonoBehaviour
         popupDic.Add("createTower", Instantiate(createTowerPopupPrefab, popupParent));
         popupDic.Add("upgradeTower", Instantiate(upgradeTowerPopupPrefab, popupParent));
         popupDic.Add("menu", Instantiate(menuPopupPrefab, popupParent));
+        popupDic.Add("clear", Instantiate(clearPopupPrefab,popupParent));
     }
 
     public void OpenPopup(string name, object data = null, int closeCount = 1)
