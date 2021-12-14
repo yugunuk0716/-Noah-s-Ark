@@ -25,6 +25,8 @@ public class TutorialManager : MonoBehaviour
     public bool isWaveStart = false;
     public bool isTutoStart = false;
 
+    private int tutoComplete = 0;
+
     private Tweener textTween = null;
 
     private readonly WaitForSeconds oneSecWait = new WaitForSeconds(1f);
@@ -43,11 +45,13 @@ public class TutorialManager : MonoBehaviour
 
         skipImg.enabled = false;
         skipImg.transform.DOLocalMoveY(skipImg.transform.localPosition.y + 10f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+
+        tutoComplete = PlayerPrefs.GetInt("tutoComplete", 0);
     }
 
     private void Start()
     {
-        if(StageManager.instance.Stage == 0)
+        if(StageManager.instance.Stage == 0 && tutoComplete == 0)
         {
             StartCoroutine(Tutorial());
         }
@@ -133,6 +137,7 @@ public class TutorialManager : MonoBehaviour
 
         isWaveStart = false;
         WaveManager.Instance.DoNotSpawn = false;
+        PlayerPrefs.SetInt("tutoComplete", 1);
         HidePanel(true, 1f);
         yield return oneSecWait;
         isTuto = false;
