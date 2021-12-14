@@ -25,7 +25,7 @@ public class TutorialManager : MonoBehaviour
     public bool isWaveStart = false;
     public bool isTutoStart = false;
 
-    private int tutoComplete = 0;
+    public int tutoComplete = 0;
 
     private Tweener textTween = null;
 
@@ -47,6 +47,8 @@ public class TutorialManager : MonoBehaviour
         skipImg.transform.DOLocalMoveY(skipImg.transform.localPosition.y + 10f, 0.5f).SetLoops(-1, LoopType.Yoyo);
 
         tutoComplete = PlayerPrefs.GetInt("tutoComplete", 0);
+        isWaveStart = false;
+        isTutoStart = false;
     }
 
     private void Start()
