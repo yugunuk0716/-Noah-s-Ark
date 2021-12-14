@@ -6,7 +6,7 @@ public enum EnemyType
 {
     NO_TYPE = -1,
     SLOW = 0,
-    NORMAL,
-    FAST,
+    NORMAL = 1,
+    FAST = 2,
     END_OF_ENUM // 반복문 사용시
 }
